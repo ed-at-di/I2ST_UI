@@ -1,0 +1,913 @@
+curriculum_scenario_id,document_id,item_number,category,subcategory,scenario_text,question_prompt,source_page,extraction_method,created_at
+sjt-sex-001,curriculum-f95c3e525005,1,Sex,Offensive Labels or Language - Use of Epithets and Slurs,"A female E3 claims a male officer in her unit called her a 'bitch' after blaming her for the
+unit's failure during a field exercise. She approaches you and explains what has happened.",Your next course of action would be to:,1,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-002,curriculum-f95c3e525005,2,Sex,Offensive Labels or Language - Use of Epithets and Slurs,"A female tells you that a male member of her unit refers to her and all the other unit members
+(male or female) as 'bitches'. She tells you, ""He ends every sentence with the word. I know he is
+using the word casually, he even smiles while he is saying it, but it still makes me very
+uncomfortable"".","Of the following, the most important course of action is to:",1,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-003,curriculum-f95c3e525005,3,Sex,Offensive Labels or Language - Use of Epithets and Slurs,"A male officer comes to you for advice. He tells you a female officer in his unit frequently
+tells him ""go fuck yourself'. He tells you it started out as a joke, but now she says it all the time.
+He tells you, ""If I said that to her, I know she would file a complaint on me, and because I am a
+man I would be a considered a sexist. It isn't fair that she can say whatever she wants because
+she is a woman.""",Your next course of action would be to:,1,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-005,curriculum-f95c3e525005,5,Sex,Offensive Labels or Language - Use of Epithets and Slurs,"There is a rumor circulating that a male officer in your unit is a pedophile. He comes to you
+for advice. He tells you that a female officer in the unit started these rumors in retaliation
+because he received a promotion she felt she deserved.","Of the following, your next question to the male officer would be:",1,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-006,curriculum-f95c3e525005,6,Sex,Offensive Labels or Language - Use of Epithets and Slurs,"A male officer tells you the females in the unit have been calling him a 'pedophile' because he
+went on a date with a 16-year old female. He tells you he didn't know her age at the time, and
+has since stopped seeing her. He also tells you that no sexual activity occurred. He is concerned
+that this type of rumor could ruin his career.","Of the following, the most important course of action is:",2,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-007,curriculum-f95c3e525005,7,Sex,Offensive Labels or Language - Use of Epithets and Slurs,"After overhearing one of your unit members profusely use the word 'bitch' when referring to
+another member of the unit, you decide to plan a training session on the use of inappropriate and
+offensive language.",Of the following your first course of action is:,2,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-008,curriculum-f95c3e525005,8,Sex,Offensive Labels or Language - Use of Epithets and Slurs,"A male E3 lost a competition to a female E3 in his unit. After the competition, while she was
+alone, he approached her, shook her hand, and sarcastically said, ""Way to go, you are the world's
+greatest cunt"". She comes to you because she is worried that he is taking the loss personally. She
+tells you that she doesn't know what he is capable of doing.","Of the following, your next question to female E3 would be:",2,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-009,curriculum-f95c3e525005,9,Sex,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"You overhear a male E4 tells a female E2, ""You know what your problem is? You need to get
+laid! You're way too uptight!""",Your next course of action would be to:,2,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-010,curriculum-f95c3e525005,10,Sex,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"While patrolling, a male E2 asked a female E2, ""Are you on your rag? It must be that time of
+the month because you are really being sensitive today!"" She tells you, ""I was so embarrassed
+that I was speechless, I can't believe he made that comment to me"".",Your next course of action would be to:,3,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-012,curriculum-f95c3e525005,12,Sex,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"Four females of the unit have come to you. Their male commanding officer is referred to as a
+'pimp' by other males in the unit. They tell you that as females in his unit, they are referred to as
+his 'hos'. They tell you the commanding officer has heard the comments but has remained silent
+on the issue.",Your next course of action would be to:,3,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-013,curriculum-f95c3e525005,13,Sex,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"One of the remarks submitted on a climate assessment survey is that ""a women's place is and
+always will be, in the kitchen, not in the military"".","Of the following, the most important course of action is to:",3,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-014,curriculum-f95c3e525005,14,Sex,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"During a climate assessment focus group, a female officer tells the group about a
+conversation she recently overheard in the dining facility. A group of males were talking about a
+local strip club they recently visited. One of the males at the table commented ""stripping is what
+all women should be doing for a living"". Another male at the table then commented, ""We sure
+don't need them here in the military"".","Of the following, the most important course of action is:",3,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-015,curriculum-f95c3e525005,15,Sex,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"A female officer frequently makes the comment that ""men serve absolutely no purpose here
+on earth"". When confronted about the comments, she contends she is not being sexist, and that
+her comments are scientifically supported.",Your next course of action would be to:,3,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-016,curriculum-f95c3e525005,16,Sex,Inappropriate Message Content - Inappropriate Jokes or Comments,"Following the trial of a popular music artist accused of urinating on underage girls, a male
+service member commented to a female service member, ""How about you let me pee on you?"",
+and then he simulated urinating in her direction. She comes to you for advice.","Of the following, the best course of action is:",4,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-018,curriculum-f95c3e525005,18,Sex,Inappropriate Message Content - Inappropriate Jokes or Comments,"During physical training, a male commanding officer made a suggestion to a female
+subordinate that she should work out in something that shows off her legs. He stated, ""Pretty,
+long legs like yours shouldn't be covered up"". She feels uncomfortable but doesn't know how to
+handle the situation.","Of the following, the next question to the female would be:",4,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-019,curriculum-f95c3e525005,19,Sex,Inappropriate Message Content - Inappropriate Jokes or Comments,"A rumor is going around that a male had a domestic disturbance with his wife. The unit has
+now started to refer to him as Ike Turner, a man notorious for beating his wife. He is
+uncomfortable with the comments and the negative attention. He comes to you.",Your next course of action would be to:,4,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-020,curriculum-f95c3e525005,20,Sex,Inappropriate Message Content - Inappropriate Jokes or Comments,"A female comes to your office. She tells you a male member of her unit said she looked just
+like one of the prostitutes from the television documentary on HBO called 'Pimp's up, Ho's
+down'. She said she was offended that he would say she looked like a prostitute, but now he has
+gone too far by referring to her as 'his little ho'.",Your next course of action would be to:,4,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-021,curriculum-f95c3e525005,21,Sex,Inappropriate Message Content - Inappropriate Jokes or Comments,"A male comes to your office. He tells you a male member of his unit said, ""I'm going home
+to put some water in your mother's dish!"" The male explains to you that he feels the comment, in
+essence, was calling his mother a dog and he will not stand for anyone disrespecting his mother.
+He tells you that you need to take care of this before he takes matters into his own hands.","Of the following, the next question you ask the male would be:",5,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-022,curriculum-f95c3e525005,22,Sex,Inappropriate Message Content - Inappropriate Jokes or Comments,"A female E4 brought her 10 year old son's class pictures in to work. After seeing the
+pictures, her male superior officer whispered, ""I had no idea you were a MILF"". She asked him,
+""What is a MILF?"" He replied, ""A Mom I'd Like to Fuck!"" He then smiled and walked away.
+She is shocked and angered with the comment, but is afraid to say something since he is her
+superior officer.",Your next course of action would be to:,5,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-023,curriculum-f95c3e525005,23,Sex,Inappropriate Message Content - Inappropriate Jokes or Comments,"A male officer hung a picture in his cubicle of his teenage daughter. The males in the unit
+were making sexually explicit comments about her to aggravate the male officer. He has since
+taken the picture down, and has yelled at all the males who made comments about his daughter.
+He tells you that he is still hearing explicit comments from the males in the unit, and that if you
+do not take care of this situation immediately, he will be forced to take matters into his own
+hands.","Of the following, the best course of action is to:",5,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-025,curriculum-f95c3e525005,25,Sex,Inappropriate Message Content - Inappropriate Jokes or Comments,"You are deployed with your unit. A male unit member tells you the females in the unit are
+constantly talking about how the local men are very well-endowed. He tells you it is aggravating
+to hear about their sexual exploits all day and he is tired of hearing about male genitalia all day.
+He tells you, ""I don't care what, or who, they do once they get off duty, but I'm tired of having
+to hear about it"".",Your next course of action would be to:,5,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-026,curriculum-f95c3e525005,26,Sex,Inappropriate Message Content - Inappropriate Jokes or Comments,"A female E2 has asked for your help. She tells you that she asked a male in her unit if he was
+worried about their upcoming deployment. He replied ""The only thing I'm worried about is
+getting a boner when I look at you"". She is uncomfortable working with him since he made that
+comment. She is also aware that since they will be deployed together it will be hard to avoid him.
+She asks for your help.","Of the following, the most important course of action is:",6,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-027,curriculum-f95c3e525005,27,Sex,Inappropriate Message Content - Inappropriate Jokes or Comments,"A male officer complains that other males in unit are making up lies about one of their
+female unit members. He tells you the males all claimed to have had sex with the female unit
+member and that they are making up vulgar stories about her that are not true. He tells you, ""I
+don't want to rat anyone out, but she is a good girl, and my friend, and I don't want them to talk
+about her that way"".",Your next course of action would be to:,6,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-029,curriculum-f95c3e525005,29,Sex,Inappropriate Message Content - Inappropriate Jokes or Comments,"You receive an email nominating members of your unit for various awards. You realize the
+email is a hoax as your read the awards. Most of the awards are not offensive, and are clearly
+intended to be jokes. One award, however, nominated a female member of the unit for 'Hottest
+piece of tail in the office'.","Of the following, the best course of action is:",6,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-030,curriculum-f95c3e525005,30,Sex,Inappropriate Message Content - Inappropriate Jokes or Comments,"At an awards ceremony, you are seated at a table with several members of your unit. One of
+males at the table raises his glass and says, ""Before the main event begins, I would like to present
+my friend Jen with the 'Tight Ass' award, because she is so very uptight and she also has a great
+rear end'. Everyone seated around the table begins to laugh.",Your next course of action would be to:,6,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-031,curriculum-f95c3e525005,31,Sex,Inappropriate Message Content - Inappropriate Jokes or Comments,"A unit member complains to you that her commanding officer is always forwarding
+inappropriate emails to her and the other members of her unit. She tells you that the most recent
+forwarded email included a video clip of two monkeys having sex.",Your next course of action would be to:,7,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-032,curriculum-f95c3e525005,32,Sex,Inappropriate Message Content - Inappropriate Jokes or Comments,"You learn through a climate assessment focus group that women in a particular unit are never
+assigned to drive in the motor pool. After speaking with the commanding officer he says, ""Off
+the record, I don't have time to be politically correct. It's a fact that women are too emotional
+and unfocused, and that makes them bad drivers. I have to protect the unit and the mission, not
+these ladies feelings. An investigating officer is now making an inquiry into the issue.","Of the following, the assistance you would volunteer to provide the investigating officer is:",7,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-033,curriculum-f95c3e525005,33,Sex,Inappropriate Message Content - Inappropriate Jokes or Comments,"Two months ago, a female officer accidently saw one of her male subordinates in the nude.
+Since the incident, negative jokes are being spread around the unit regarding his endowment. He
+is unhappy with the attention and approaches you about the situation seeking your help.",Your next course of action would be to:,7,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-034,curriculum-f95c3e525005,34,Sex,Inappropriate Message Content - Inappropriate Jokes or Comments,"You overhear several comments being made about a male officer's endowment. You find
+out that there has been a rumor going around that he is well-endowed ever since a female unit
+member saw him nude. The male unit member seems to be enjoying the attention and has added
+his own jokes and comments to the mix.",Your next course of action would be to:,7,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-036,curriculum-f95c3e525005,36,Sex,"Labels Indicative of a Personal Relationship - Use of labels like ""Honey""","You receive an anonymous complaint that the female commanding officer does not refer to
+the subordinate males in the unit by their rank. Instead they are referred to as 'beef cake',
+'stallion', or 'honey'.",Your next course of action would be to:,8,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-037,curriculum-f95c3e525005,37,Sex,"Labels Indicative of a Personal Relationship - Use of labels like ""Honey""","You receive an anonymous complaint that the male commanding officer does not refer to the
+subordinate males in the unit by their rank. Instead they are referred to as 'punk', 'loser', or
+""fag"".",Your next course of action would be to:,8,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-038,curriculum-f95c3e525005,38,Sex,Anonymous Threats - Physical or Psychological Threats from Unknown Source,"There is a condom with a note attached left in a female E4's gym bag. The note says ""Get
+ready, I'm going to use one of these on you--whether you like it or not"". The female E4 is shaken
+up and comes to you immediately.",Your next course of action would be to:,8,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-039,curriculum-f95c3e525005,39,Sex,Anonymous Threats - Physical or Psychological Threats from Unknown Source,"A male receives a note on the windshield of his car. The note says that 'he will pay dearly for
+what he has done'. He tells you he has no idea who would put this note on his car. He also tells
+you he has no idea who would have a problem with him.",Your next course of action would be to:,8,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-040,curriculum-f95c3e525005,40,Sex,Anonymous Threats - Physical or Psychological Threats from Unknown Source,"A manila envelope was left on a female officer's car. The envelope contained a photograph
+of a woman tied up and blind-folded, with a gun pressed to her head. The note attached said, ""I
+love it when military women put up a fight-You are next!"" The female officer tells you that she
+has reported the situation to the proper authorities and it is being investigated. She then tells you
+she is concerned that this situation is a sign of intolerance towards women in the installation.","Of the following, the best course of action is to:",9,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-042,curriculum-f95c3e525005,42,Sex,Anonymous Threats - Physical or Psychological Threats from Unknown Source,"A female has been receiving repeated calls at her work station. She tells you the calls started
+by saying ""Get out of here! We don't want you here!"" Then the calls said, ""Women don't belong
+in the military!"" She tells you the latest call stated, ""You have 1 week to get out of here, and if
+you don't, then I will get rid of you"". She is now very scared.",Your next course of action would be to:,9,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-043,curriculum-f95c3e525005,43,Sex,Direct Threats - Physical or Psychological Threats from Known Source,"A female comes to you to seek your advice. The men in her unit have a blow up doll in the
+office. She tells you that they often simulate having sex with the doll in the office when the
+commanding officer is not present. Recently, one of the males, commented to her 'this is going
+to be you' while simulating having sex with the blow up doll. She doesn't want to cause any
+trouble for the men and would like to handle the situation herself, but she is struggling with how
+to approach the male.",Your next course of action would be to:,9,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-044,curriculum-f95c3e525005,44,Sex,Direct Threats - Physical or Psychological Threats from Known Source,"A male exposes himself to a woman on base and told her to ""suck it"", he didn't touch her but
+she is worried that things could escalate. She comes to you and asks what she should do.","Of the following, the best course of action is to:",9,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-045,curriculum-f95c3e525005,45,Sex,Direct Threats - Physical or Psychological Threats from Known Source,"A female comes to you and claims that her ex-boyfriend, who is also in the military, is angry
+and is constantly sending her text messages threatening to expose explicit tapes of the female in
+an attempt to ruin her career.",Your next course of action would be to:,10,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-046,curriculum-f95c3e525005,46,Sex,Direct Threats - Physical or Psychological Threats from Known Source,"A female claims that her boyfriend has threatened to ruin her life if she broke off their on-
+going romantic relationship. She doesn't know what he is capable of doing and is not sure how to
+handle the situation. She comes to you.","Of the following, the best course of action is:",10,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-048,curriculum-f95c3e525005,48,Sex,Direct Threats - Physical or Psychological Threats from Known Source,"A male E3 comes to you and claims his ex-girlfriend is sending him harassing text messages
+and calling him constantly. You speak with the ex-girlfriend and she admits to making the phone
+calls and sending the text messages. She tells you she will stop calling the male E3.",Your next course of action would be to:,10,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-049,curriculum-f95c3e525005,49,Sex,Inappropriate Advances - Pursuit of an Unwanted Personal Relationship,"You are looking into an incident where a female was asked out for a date and when she
+declined, the male reportedly called her a ""stuck-up bitch."" You speak with the male who admits
+he may have called her an unpleasant name after she rejected him. He tells you that he responded
+that way out of frustration and wishes that he could take back his poor choice of words.",Your next course of action would be to:,10,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-050,curriculum-f95c3e525005,50,Sex,Inappropriate Advances - Pursuit of an Unwanted Personal Relationship,"A Black female tells you that a male service member touched her shoulder and whispered in
+her ear, ""Can I have a taste, sexy chocolate"" and began licking his lips at her. She is upset and
+comes to see you.",Your next course of action would be to:,11,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-051,curriculum-f95c3e525005,51,Sex,Inappropriate Advances - Pursuit of an Unwanted Personal Relationship,"A male service member tells you that a female in his unit is aggressively pursuing a
+relationship with him. He tells you that he is not attracted to this female, and that the he
+repeatedly has rejected her advances. He tells you that he is becoming very uncomfortable with
+the situation.","Of the following, your next question to the male would be:",11,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-052,curriculum-f95c3e525005,52,Sex,Inappropriate Advances - Pursuit of an Unwanted Personal Relationship,"A female reports that a male member of her unit has been pursuing a romantic relationship
+with her for the past two months. He has been blowing kisses at her, trying to get her attention
+with animal calls, and pretending to squeeze her bottom when she walks by. She tells you the
+situation is annoying and childish. She asks you for your help.",Your next course of action is to:,11,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-053,curriculum-f95c3e525005,53,Sex,Inappropriate Advances - Pursuit of an Unwanted Personal Relationship,"A male reports that a female member of his unit has been pursuing a romantic relationship
+with him for the past six months. She has been baking cookies for him, covering work shifts for
+him, and even washing his clothes. He tells you that he knows he should not have accepted her
+gifts for the past six months. He tells you that now she will not listen to him when he says he is
+not interested in her romantically and she is becoming very aggressive. He asks for your advice
+on how to handle the situation.",Your next course of action is to:,11,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-055,curriculum-f95c3e525005,55,Sex,Inappropriate Advances - Pursuit of an Unwanted Personal Relationship,"You are working on a special observance function with a male and female volunteer from
+your unit. The male volunteer notifies you that the female volunteer has been calling him several
+times a day supposedly in reference to the special observance function they are helping you plan.
+He tells you that at the end of every conversation, the female volunteer asks him out on a date.
+He then tells you that he is growing annoyed with her advances.","Of the following, the best course of action is to:",11,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-057,curriculum-f95c3e525005,57,Sex,Inappropriate Advances - Pursuit of an Unwanted Personal Relationship,"After a group training session, a female comes up to you and asks for your advice. She shares
+with you that she is not meeting the physical training (PT) requirements and her commanding
+officer has offered to help train her and get her into better shape. She tells you she feels
+pressured to accept his assistance in order to get a good performance evaluation but she feels
+uncomfortable spending the added personal time with him. She asks you how she should handle
+the situation.",Your next course of action would be to:,12,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-058,curriculum-f95c3e525005,58,Sex,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","An investigating officer is making an inquiry into a formal complaint from a group of male
+service members who claim that their superior officer treats the females in the unit better than he
+treats the males in the unit. The males claim that they are always assigned undesirable work
+shifts, for example nights, weekends, and holidays.","Of the following, the assistance you would volunteer to provide the investigating officer
+first is:",12,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-060,curriculum-f95c3e525005,60,Sex,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","An investigating officer is making an inquiry into a formal complaint brought by a group of
+male service members who claim that their performance ratings are unjustly lower than the
+female members of their unit. The males claim that they are being unfairly rated because of their
+gender.","Of the following, the assistance you would volunteer to provide the investigating officer
+first is:",12,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-061,curriculum-f95c3e525005,61,Sex,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","During a training seminar, a group of females tell you that their commanding officer
+regularly goes with the male members of the unit to a local strip club. The women tell you that
+they feel they are at a disadvantage because the male service members are getting additional time
+to build a bond with the commanding officer while at the strip club. They ask you for your
+advice.",Your next course of action would be to:,13,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-062,curriculum-f95c3e525005,62,Sex,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","You are conducting an interview with a unit's commanding officer as part of a unit climate
+assessment. During the interview the commander shares with you that he fears putting women or
+minorities into leadership positions in the unit because there are members of the unit who are
+unwelcoming to minorities and women.","Of the following, the most important course of action is to:",13,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-063,curriculum-f95c3e525005,63,Sex,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","A male service member tells you that he was raised to be respectful and chivalrous towards
+women. He tells you that if he tries to help out the females in his unit, for example, with their
+equipment, the females get angry with him, and say they can do it on their own. He then says,
+""on the other hand, if I don't hold a door, they still get angry with me"". He tells you he feels as
+though he is in a no-win situation.",Your next course of action would be to:,13,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-064,curriculum-f95c3e525005,64,Sex,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","You are conducting a unit inspection. After analyzing the unit's performance records, you
+notice that female unit members, on average, have much lower performance ratings than the
+male unit members. The commander of the unit is a female and is rumored to be much harder on
+the other females in unit because they are women and she feels the females must be better and
+tougher than the males if they want to last in the military.","Of the following, the most important course of action is to:",14,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-065,curriculum-f95c3e525005,65,Sex,Inappropriate Consensual Relationship - Personal Relationships that Violate Policy,"A female ES had a sexual relationship with a male E5 from another installation. She tells you
+it was only for one night, and that now he is threatening to sabotage her because she doesn't
+want to pursue a relationship with him. She is concerned and comes to you for advice.","Of the following, the best course of action is:",14,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-066,curriculum-f95c3e525005,66,Sex,Inappropriate Consensual Relationship - Personal Relationships that Violate Policy,"A male E3 had a sexual relationship with his female supervisor. He tells you that it was only
+for one night, and that now she is threatening to sabotage him because he doesn't want to pursue
+a relationship with her.","Of the following, the best course of action is:",14,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-067,curriculum-f95c3e525005,67,Sex,Inappropriate Consensual Relationship - Personal Relationships that Violate Policy,"You hear rumors that a male unit member is engaging in sexual activity with several female
+unit commanders. Two unit members come to you to tell you that they are concerned this will
+lead to future special treatment.",Your next course of action would be to:,14,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-068,curriculum-f95c3e525005,68,Sex,Inappropriate Consensual Relationship - Personal Relationships that Violate Policy,"Flyers were recently posted around the installation with a male service member's face
+superimposed on the nude body of someone else. The male service member's name and phone
+number were beneath the picture along with the phrase ""For a good time, call me"". The male is
+very upset and comes to see you.",Your next course of action would be to:,14,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-069,curriculum-f95c3e525005,69,Sex,Inappropriate Consensual Relationship - Personal Relationships that Violate Policy,"Flyers were recently posted around the installation with a female service member's face
+superimposed on the nude body of someone else. The female service member's name and phone
+number were beneath the picture along with the phrase ""For a good time, call me"". An
+individual was never found to be responsible for the incident and the female is still very upset.
+She comes to see you.","Of the following, the most important course of action is to:",15,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-071,curriculum-f95c3e525005,71,Sex,Inappropriate Consensual Relationship - Personal Relationships that Violate Policy,"A female E3 tells you that a male E3 in her unit sent her nude pictures of himself via email.
+She tells you she was shocked and offended and can not imagine why he would send those types
+of pictures to her.",Your next course of action would be to:,15,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-071-2,curriculum-f95c3e525005,71,Sex,Stalking - Any Behavior Rooted in Sexual Desires Intended to Intimidate,"A female comes to you and tells you that a former male friend has been relentlessly calling
+her and coming to her home and coming to her home at all times of the night. She tells you that
+she has asked him to stop contacting her but he continues. She tells you his behavior is making
+her nervous.",Your next course of action would be to:,15,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-072,curriculum-f95c3e525005,72,Sex,Stalking - Any Behavior Rooted in Sexual Desires Intended to Intimidate,"You have received word that there has been a series of incidents of gender-based intimidation
+incidents at your installation. You would like to coordinate a training session that will deals with
+the military's sexual harassment policies.",Of the following your first course of action is:,15,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-073,curriculum-f95c3e525005,73,Sex,Stalking - Any Behavior Rooted in Sexual Desires Intended to Intimidate,"A female comes to you and tells you that a former male friend has been relentlessly calling
+her and coming to her home and coming to her home at all times of the night. She tells you his
+behavior is making her nervous.","Of the following, the next question to ask the female is:",16,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-074,curriculum-f95c3e525005,74,Sex,Stalking - Any Behavior Rooted in Sexual Desires Intended to Intimidate,"Following the trial of a popular music artist accused of urinating on underage girls, a male
+service member began singing ""J want to pee on you?"" like the ballad of one of the artist's hit
+songs towards a female in his unit. He then pretended to urinate on her. She is angered and
+embarrassed by the incident.",Your first course of action would be:,16,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-075,curriculum-f95c3e525005,75,Sex,Stalking - Any Behavior Rooted in Sexual Desires Intended to Intimidate,"A male told a female member of his unit, ""I left something for you in your equipment. We
+can use it later,"" and winked as he walked away. When she looked in her equipment she found a
+condom. She feels intimidated and comes to you for help.",Your first course of action would be:,16,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-076,curriculum-f95c3e525005,76,Sex,Stalking - Any Behavior Rooted in Sexual Desires Intended to Intimidate,"During the planning of a special observance function there is an argument between a male
+and female service member. The female service member comes to you after the argument and
+tells you that he is her ex-boyfriend and that he has been following her around and constantly
+calling her for the past two weeks. She tells you that ever since their breakup she can't seem to
+get away from him. She begins to cry and tells you that she is worried he is turning into a stalker.",Your next course of action is to:,16,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-078,curriculum-f95c3e525005,78,Sex,Stalking - Any Behavior Rooted in Sexual Desires Intended to Intimidate,"Every day for the past week, a pair of women's panties has been left on top of a male service
+member's desk. He comes to you and tells you that he suspects someone is trying to frame him
+or embarrass him by insinuating he is having a sexual relationship with the only female in his
+unit.",Your next course of action would be to:,17,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-079,curriculum-f95c3e525005,79,Sex,Stalking - Any Behavior Rooted in Sexual Desires Intended to Intimidate,"A female E4comes to you because she would like to take a military sponsored training course
+to further her career. Commander permission is required to take the course. She tells you her
+commanding officer denied her permission to attend the course unless she was willing to go on a
+date with him.",Your next course of action would be to:,17,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-080,curriculum-f95c3e525005,80,Sex,Stalking - Any Behavior Rooted in Sexual Desires Intended to Intimidate,"A male E3comes to you because his supervisor denied his request for leave unless he is her
+escort to an upcoming award banquet she must attend.",Your next course of action would be to:,17,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-081,curriculum-f95c3e525005,81,Sex,Stalking - Any Behavior Rooted in Sexual Desires Intended to Intimidate,"A pair of women's panties has been left on top of the desk of a male service member's desk
+every day for the past two weeks. He comes to you and tells you that he suspects the underwear
+have been left by some of the other males in his unit. He claims the males are trying to
+embarrass him and wants immediate action to be taken.",Your next course of action would be to:,17,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-082,curriculum-f95c3e525005,82,Sex,Stalking - Any Behavior Rooted in Sexual Desires Intended to Intimidate,"While in the dining facility, you see a male service throw dollar bills in a females face. You
+then overhear the male ask the female for a table dance. The female leaves the dining facility.",Your next course of action would be to:,17,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-083,curriculum-f95c3e525005,83,Sex,Stalking - Any Behavior Rooted in Sexual Desires Intended to Intimidate,"A commander comes to you because he several members of his unit have applied to take a
+military sponsored training course. He tells you that he must give his recommendation for
+members of his unit to take the course, and he can only recommend two members of the unit. He
+tells you that one his female subordinates wanted to attend the course so badly that she offered to
+have sex with him for the recommendation. He tells you this situation could get ugly and he
+wants to be protected.",Your next course of action would be to:,18,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-084,curriculum-f95c3e525005,84,Sex,Stalking - Any Behavior Rooted in Sexual Desires Intended to Intimidate,"You are following up on an incident where a male service member threw dollar bills in a
+female's face, and then told her ""I can buy and sell trash like you"". The male apologized for his
+behavior and comments to the female during a mediation session.","Of the following, the most important question to ask the female is:",18,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-085,curriculum-f95c3e525005,85,Sex,Stalking - Any Behavior Rooted in Sexual Desires Intended to Intimidate,"After an incident where a female service member was intimidated by a male colleague, you
+decide a training seminar on respect and tolerance may be beneficial for the unit.",Your next course of action:,18,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-087,curriculum-f95c3e525005,87,Sex,Stalking - Any Behavior Rooted in Sexual Desires Intended to Intimidate,"A female ES comes to you because her commanding office told her that he will not give her a
+positive performance evaluation unless she is willing to participate in a sex act with him.",Your next course of action would be to:,18,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-088,curriculum-f95c3e525005,88,Sex,Sexual Contact,"A female officer comes to your office seeking your help. She tells you a male officer came
+behind her and grabbed her by the waist. He then asks if her if she wanted to ""Do it doggy style'.
+The female tells you she slapped the male officer in his face and came directly to see you.",Your next course of action would be to:,19,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-089,curriculum-f95c3e525005,89,Sex,Sexual Contact,"A female E3 comes to see you in your office. She tells you that while walking home last
+night, a group of males surrounded her, and one of the males stated ""Let's gang bang her'. She
+tells you the males then began bumping into her while making moaning sounds. She says that
+they then walked away, laughing hysterically. She tells you she isn't hurt but she is tired of being
+disrespected at this installation.","Of the following, the most important question to ask the female E3 is to:",19,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-090,curriculum-f95c3e525005,90,Sex,Sexual Contact,"While on duty, a female service member began to give a male member of her unit a lap
+dance. The male tells you that once he realized what she was trying to do, he quickly stood up
+and pushed her away and told her to stop. He tells you that he wanted to tell you about the
+incident to be protected from any possible rumors or lies about the story in the future.",Your next course of action is to:,19,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-091,curriculum-f95c3e525005,91,Sex,Sexual Contact,"A male service member exposed his genitalia to some of the members of his unit at a bar
+after work. The next day at work he apologized to the unit members and told you about the
+incident. He tells you that he had never been that drunk before and promises that he will never
+get that drunk again. Two months later a female member of the unit comes to see you about the
+incident. She tells you that she is still bothered by the incident.",Your next course of action would be to:,19,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-093,curriculum-f95c3e525005,93,Sex,Sexual Contact,"You are assisting in the investigation of a complaint where a male service member is accused
+of exposing his genitalia one night while guarding his post. He tells you that it was a slow night
+and he was bored. He admits he was wrong but says that he didn't realize it would be a big deal.",Your next course of action is to:,20,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-094,curriculum-f95c3e525005,94,Sex,Sexual Contact,"A female E2 comes to see you in tears. She tells you that while walking home last night, a
+group of males surrounded her. One of the males stated ""Let's gang bang her"". She tells you the
+males then began bumping into her while making moaning sounds. She says that they walked
+away, laughing hysterically. She tells you she isn't physically hurt but she is still shaken up by
+the incident and she is scared that something worse can happen.","Of the following, the most important course of action is to:",20,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-096,curriculum-f95c3e525005,96,Sex,Sexual Contact,"A female commanding officer repeatedly inappropriately touches a male E3 from another
+unit. He reports that he is not attracted to her but he doesn't want to damage his career. He
+comes to you for advice.",Your next course of action is to:,20,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-097,curriculum-f95c3e525005,97,Sex,Sexual Contact,"A male service member asked a female service member if she is a natural red head. When
+she replied yes, he said ""Why don't you prove it?"" Then he pushed her against a wall and
+grabbed her belt buckle. Someone came into the room and he walked away. She comes to see
+you right away.",Your next course of action is to:,20,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-098,curriculum-f95c3e525005,98,Sex,Sexual Contact,"A female comes to you and shares with you that one month ago she was raped by a member
+of her unit. She tells you that the incident has been reported and that the unit member is
+prosecuted but she still is having a hard time coping with the situation.",Your next course of action is to:,21,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-099,curriculum-f95c3e525005,99,Sex,Sexual Contact,"A female E4 asked a male E4 if he was a natural red head. When he replied yes, he said ""Do
+you want me to prove it?"" She said no, but he pushed her against a wall and said ""you know you
+want it"". Another male from the unit came into the room and the male E4 let the female go. She
+is frightened and comes to see you right away. She tells you that he has never acted like this
+before and she doesn't know what to do.","Of the following, the best course of action is to:",21,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-sex-100,curriculum-f95c3e525005,100,Sex,Sexual Contact,"A male officer's car is vandalized. Eggs were thrown all over the vehicle, and 'liar' was
+spray painted on the hood. He tells you that he suspects his ex-girlfriend, who is also in the
+military, has vandalized his car. He tells you he needs some advice since he doesn't want to get
+her into trouble.","Of the following, the best course of action is to:",21,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-001,curriculum-f95c3e525005,1,Race,Offensive Labels or Language - Use of Epithets and Slurs,"You are making an inquiry into a complaint made by a White male that a Black male called
+him a ""cracker"". You are interviewing the Black male who claims that he was just angry about
+failing the mission and he just took his anger out on the first person that stepped into his way. He
+says he didn't mean to offend the White male and he is willing to apologize to him.",Your next course of action would be to:,22,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-003,curriculum-f95c3e525005,3,Race,Offensive Labels or Language - Use of Epithets and Slurs,"After overhearing one of your unit members repeatedly call another member of the unit a
+""redneck hillbilly"", you decide to plan a training session on the use of inappropriate and
+offensive language.","Of the following, your first course of action is to:",22,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-004,curriculum-f95c3e525005,4,Race,Offensive Labels or Language - Use of Epithets and Slurs,"You are making an inquiry into a complaint from a White male that a Black male referred to
+him as ""Massa"" (master). In your interview with the Black male, he admits to calling the While
+male ""Massa"" because he acts like every one has to obey him.",Your next course of action would be to:,22,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-005,curriculum-f95c3e525005,5,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"A Native American service member comes to you because he is angry because his
+commanding officer frequently makes comments about his ethnicity. He tells you most recently
+the commanding officer stated, ""I am surprised you are not an alcoholic like the rest of those
+Indians. You should hurry back to your reservation and build another casino."" The Native
+American service member is fed up with the comments and is ready to file a formal complaint.",Your next course of action would be to:,22,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-007,curriculum-f95c3e525005,7,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"During a training session, you ask participants to share their honest opinions of cultures
+outside of the U.S. One unit member shares, ""Those Africans are barbarians! They are literally
+killing themselves! That is one culture that I will not be sad to see gone.""","Of the following, the best course of action is to:",23,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-008,curriculum-f95c3e525005,8,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"A Black male E3 claims a male officer in his unit called him a 'jungle bunny' after blaming
+him for the unit's failure during a field exercise. He approaches you and explains what has
+happened.",Your next course of action would be to:,23,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-009,curriculum-f95c3e525005,9,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"A White male officer comes to you for advice. He tells you Black male officer in his unit
+frequently calls him a ""dumb hick'. He tells you it started out as a joke, but now he says it all
+the time. He tells you, ""If I called him a name, I know he would file a complaint on me, and
+because I am a White I would be a considered a racist. It isn't fair that he can say whatever he
+wants because she is Black.""",Your next course of action would be to:,23,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-010,curriculum-f95c3e525005,10,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"You overhear an Asian male and a Black male arguing about the issue of reparations for
+slavery. You hear the Asian male comment, ""You could never give Black people reparations for
+slavery, you would waste it on boose, drugs, cars, and jewelry!""",Your next course of action would be to:,23,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-011,curriculum-f95c3e525005,11,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"An Asian man comes to see you. He tells you that he invited a few of the members of his
+over to his house for dinner. He tells you they declined his offer and commented that they don't
+want to eat dog or cat. He tells you he asked them what they meant by the comment and they
+responded that ""Asians are known for eating people's pets for dinner"".","Of the following, the most important question to ask the Asian male is:",24,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-013,curriculum-f95c3e525005,13,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"At a Black history month celebration, a black male commented that the only way black
+people can get rich in America is by playing basketball, rapping, or selling drugs. You approach
+the male about his comment and he defensively tells you that he is entitled to his opinion on the
+issue.",Your next course of action would be to:,24,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-014,curriculum-f95c3e525005,14,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"One of the remarks submitted on a climate assessment survey is that ""real soldiers should
+NOT have to waste their time filling out these pointless surveys. We should be focusing on
+fixing real problems, like getting affirmative action policies out of the military.""",Your next course of action would be to:,24,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-015,curriculum-f95c3e525005,15,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"A Hispanic officer comes to you and reports that there has been several new personnel added
+to his unit recently. He tells you that one of the new personnel, a White male, approached him
+and said, ""Your Mexican right? Can you give me some advice about taking care of my lawn?""
+The Hispanic officer tells you that the White male is a bigot and he suspects that the other new
+personnel may share his offensive views.","Of the following, the most important course of action would be to:",24,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-016,curriculum-f95c3e525005,16,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"During an Italian-American History celebration, a female officer states that it is a waste of
+time to have all of these cultural celebrations. She further states that she can learn all she needs
+to know about Italians by watching a Mafia movie and eating pizza.",Your next course of action would be to:,25,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-017,curriculum-f95c3e525005,17,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"During a German-American History celebration, a female officer states ""how can we
+celebrate the people responsible for the Holocaust. They are monsters.""",Your next course of action would be to:,25,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-018,curriculum-f95c3e525005,18,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"Two Black female officers come to see you. They tell you that they have been overhearing a
+lot of offensive comments around the installation lately about Blacks females. They say that
+comments have been stereotyping Black females as unmarried, with several kids, all by different
+fathers. The Black officers want this to be addressed.","Of the following, the best course of action would be to:",25,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-019,curriculum-f95c3e525005,19,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"A Black male tells you that he brought in pictures of his children at the playground. His
+supervising officer commented, ""How many baby mamas do you have? You have three kids, so
+I'm guessing you have three baby mamas."" He tells you that he informed the supervising officer
+that he is married and his wife is the mother of all of his children. It is a week later and the Black
+male tells you he is still angered by the comment but he doesn't know what he should do.",Your next course of action would be to:,25,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-020,curriculum-f95c3e525005,20,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"An Asian male brought his 5 year old son's class pictures in to work. After seeing the
+pictures, his male supervising officer said, ""Your son is getting big. I bet its time to get him
+trained in some kung fu!"" The supervising officer then pretended to do some kung fu moves. The
+Asian male is annoyed by the comment, but is afraid to say something since it is his supervising
+officer.",Your next course of action would be to:,25,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-021,curriculum-f95c3e525005,21,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"You receive an email nominating members of your unit for various awards. You realize the
+email is a hoax as your read the awards. Most of the awards are not offensive, and are clearly
+intended to be jokes. One award, however, nominated a Black male in the unit for 'Largest Penis
+in the office'.","Of the following, the best course of action is:",26,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-023,curriculum-f95c3e525005,23,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"After a league football game, one of the members of your unit remarks, ""I can run so fast!
+We won the game because of me and I'm not even Black!""",Your next course of action would be to:,26,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-024,curriculum-f95c3e525005,24,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"At the gym, a male officer is wearing a shirt that says ""It's all relative in West Virginia"". A
+West Virginian female tells you that she finds the shirt to be offensive and wants something to be
+done.","Of the following, the most important course of action is to:",26,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-025,curriculum-f95c3e525005,25,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"At the gym, a male officer is wearing a shirt which displays a confederate flag. A female
+officer tells you that she finds the shirt offensive and wants something to be done.","Of the following, the most important course of action is to:",26,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-027,curriculum-f95c3e525005,27,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"One day in the dining facility, a Hispanic male asked a White male ""So what is it like to be
+high on those club drugs like ecstasy, mushrooms, or acid?"" The White male responded that he
+never used drugs before and asked why he would ask him a question like that. The Hispanic male
+responded, ""You know you white boys are into all those crazy drugs."" The White male comes to
+you because he is offended by the insinuation of being a drug user.",Your next course of action would be to:,27,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-028,curriculum-f95c3e525005,28,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"A Jamaican-American officer comes to you and tells you that his supervising officer accused
+him of smoking weed while off duty. The Jamaican-American officer tells you that the
+accusation is because he is Jamaican and he is tired of the supervising officer's stereotypes.","Of the following, the best course of action is to:",27,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-029,curriculum-f95c3e525005,29,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"A Mexican-American officer comes to you and shares that recently while at the dining
+facility, another male officer asked him to clean his table. When the Mexican-American officer
+asked him to repeat himself, the male officer responded ""oh, I thought you were the bus boy."" He
+tells you then the male officer chuckled. The Mexican-American officer tells you that he knows
+the male officer was trying to embarrass him and he wants something to be done.",Your next course of action would be to:,27,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-030,curriculum-f95c3e525005,30,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"During a climate assessment focus group, a Black officer tells the group about a conversation
+he recently overheard in the dining facility. A group of White males were talking about a recent
+basketball game. One of the males at the table commented ""Blacks are taking over all sports! All
+Black guys should play a professional sport."" Another male at the table then commented, ""We
+sure don't need them here in the military"".","Of the following, the most important course of action is:",27,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-031,curriculum-f95c3e525005,31,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"You have administered a climate assessment survey to a unit. The following comment was
+written: The other members of my unit are always making comments about our commander
+because he is Black. They are always making comments like ""He is only the commander because
+of affirmative action.""","Of the following, the most important course of action is to:",28,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-032,curriculum-f95c3e525005,32,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"A Black officer frequently makes the comment that ""the white man's favorite past time is
+serial killing."" When confronted about the comments, he contends she is not being racist, and
+that his comments are statistically supported.",Your next course of action would be to:,28,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-033,curriculum-f95c3e525005,33,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"A Hispanic officer complains to you that members from his unit are always forwarding
+inappropriate emails to him. He tells you that the most recently he received an email joking
+about the extents Cuban and Haitian refugees use to try and enter the USA. He shares that his
+mother is a Cuban refugee and he is offended and wants the emails to stop",Your next course of action would be to:,28,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-034,curriculum-f95c3e525005,34,Race,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"You have administered a climate assessment survey to a unit. The following comment was
+written: ""I'm tired of these immigrants in the military complaining, if they don't like it here they
+should pack up their shit and go the hell back where you came from.""",Your next course of action would be to:,28,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-035,curriculum-f95c3e525005,35,Race,Inappropriate Message Content - Inappropriate Jokes or Comments,"While walking in the hallway, you see a Black male and a Hispanic male in the midst of a
+heated argument. As you approach the males, you hear the Hispanic male say ""Click your heels
+three times and go back to Africa, monkey.""",Your next course of action would be to:,29,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-036,curriculum-f95c3e525005,36,Race,military's EO policy,"A Hispanic female tells you that a member of unit commented that they are in favor of
+immigration because if we didn't let immigrants in the country, who would cut our grass, or
+clean our buildings, or make our food. She tells you that she feels this is offensive and that this
+viewpoint may be shared by other members of the unit.","Of the following, the most important question to ask the Hispanic female is:",29,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-037,curriculum-f95c3e525005,37,Race,military's EO policy,"Your unit is deployed to a very poor area in Eastern Europe. You overhear the following
+comment being made to a White member of your unit: ""You must be used to living around all
+this white trash!"" You immediately inform the unit member who made the joke that it was
+inappropriate and offensive.","Of the following, the most important course of action is:",29,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-038,curriculum-f95c3e525005,38,Race,military's EO policy,"You overhear a male officer say ""All those people need is a bucket of chicken, some malt
+liquor, and some watermelon,"" to a group of his colleagues in the dining facility. When you
+asked the male officer what he was talking about, he said he wasn't talking about anything and
+he left the room. The group of colleagues he was also talking with followed him out.","Of the following, the best course of action is to:",29,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-040,curriculum-f95c3e525005,40,Race,military's EO policy,"While deployed, a female officer in your unit shares that other personnel within the unit have
+been making offensive comments to her since the unit has arrived in Afghanistan. She tells you
+that the unit members keep insinuating that she must be comfortable in these conditions since she
+is from the mountains of West Virginia. She tells you they have been making other comments,
+for example, ""I can't believe you have all your teeth! Are you married to your cousin? Did you
+have sex with your brother growing up? What's it like to finally have running water?"" She tells
+you it is extremely stressful to be deployed and she doesn't know how much longer she can take
+their comments before she loses her cool.",Your next course of action would be to:,30,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-041,curriculum-f95c3e525005,41,Race,military's EO policy,"During a diversity awareness training session, a male E3 shares his opinions on AIDS in
+Africa. He comments that in his opinion, they are getting what they deserve. They are barbarians
+killing themselves--so let AIDs wipe out the continent. We have more important issues to focus
+on.""","Of the following, the most important course of action is to:",30,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-043,curriculum-f95c3e525005,43,Race,Anonymous Threats - Physical or Psychological Threats from Unknown Source,"An Asian officer calls you and asks for your help. He tells you that his girlfriend is a White
+officer who works at the installation. He tells you that for the past two weeks he and his
+girlfriend have received several anonymous notes. He tells you that the notes started after they
+started dating and are coming more frequently.",Your next course of action would be to:,30,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-044,curriculum-f95c3e525005,44,Race,Anonymous Threats - Physical or Psychological Threats from Unknown Source,"A Black E3 tells you that he has recently joined a new unit. He tells you that since he has
+joined the unit he has not had any problems with his fellow unit members. He also tells you that
+he received a note in his equipment bag that said ""You are not welcome here, get lost, or else.""
+He tells you that only the members of his unit had access to his equipment bag, but he does not
+know who would have put that note in his bag.","Of the following, the next question to ask the Black E3 is:",30,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-046,curriculum-f95c3e525005,46,Race,Direct Threats - Physical or Psychological Threats from Known Source,"An Irish-American man comes to your office and is very upset. He tells you that a member of
+his unit threatened to beat him up. He tells you that this unit member is always starting trouble
+with him. He tells you the unit member calls him a leprechaun and tells him to go find his lucky
+charms. He states that he is alerting you of the situation now in case anything happens in the
+future.","Your next course of action would be to:
+o. Ask the Irish-American man what he would like you to do",31,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-047,curriculum-f95c3e525005,47,Race,Direct Threats - Physical or Psychological Threats from Known Source,"An Italian-American male comes to your office and is very upset. He tells you that three
+Black males have threatened to beat him up. He tells you that these males have it out for him but
+he tells you that he doesn't know why. He tells you that he assumes it is because he is White and
+they are Black. He states that he is alerting you of the situation now in case anything happens in
+the future.",Your next course of action would be to:,31,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-048,curriculum-f95c3e525005,48,Race,Direct Threats - Physical or Psychological Threats from Known Source,"Two White females come to your office. They tell you that a group of Hispanic females are
+trying to intimidate them. They tell you the Hispanic females have called them ""White bitches""
+on numerous occasions. The White females tell you that these women are trying to scare them
+and they are not sure what the Hispanic females are capable of doing.",Your next course of action would be to:,31,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-049,curriculum-f95c3e525005,49,Race,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","Climate assessment results show that racial profiling may be a problem at your installation.
+Minority personnel report being frequently stopped by military security while driving on base,
+even when going below the speed limit.",Your next course of action would be to:,32,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-050,curriculum-f95c3e525005,50,Race,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","You have been investigating a complaint made by a White male that his Black supervising
+officer treats the White personnel differently from the minority personnel. Your interviews with
+different members of the unit do not support the White male's claim and your review of the
+assignment and punishment records don't indicate any preferential treatment.","Your next course of action would be to:
+Of the following, the assistance you would volunteer to provide the investigating officer",32,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-054,curriculum-f95c3e525005,54,Race,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","A Hispanic-American male claims that he is receiving unfair treatment because he has a thick
+accent. He tells you his commander repeatedly gets annoyed with him and states that he has
+trouble understanding what he is trying to say. He tells you the commander has stated that he
+does not have time to figure out what the Hispanic-American male is trying to say.",Your next course of action would be to:,32,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-055,curriculum-f95c3e525005,55,Race,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","Climate assessment results show that racial profiling is a problem at the installation. The
+comments state that service members that have a Middle Eastern appearance are frequently
+stopped or followed while walking, driving, or shopping at the installation. You","Of the following, the most important course of action is to:",33,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-056,curriculum-f95c3e525005,56,Race,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","An Irish-American officer approaches you after a Native American history month
+celebration. He tells you that he would like you to coordinate an event in celebration of Irish
+culture and history. He says there are many Irish personnel on the installation and they would
+really enjoy the celebration.",Your next course of action would be to:,33,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-057,curriculum-f95c3e525005,57,Race,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","A White male calls you and tells you that he wants to file a complaint. He tells you that he is
+qualified but he is being passed over for promotions time and time again. He tells you that he
+believes he is being overlooked because he is White and that all the quotas for minorities are
+keeping him from being successful. He asks you how to go about filing the complaint.",Your next course of action would be to:,33,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-058,curriculum-f95c3e525005,58,Race,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","You have administered a climate assessment survey to a unit. The following comment was
+written: ""Lately the military is creating way too many programs that cater to minorities and
+women. It's just not fair! We are wasting resources!""","Of the following, the most important course of action is to:",33,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-060,curriculum-f95c3e525005,60,Race,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","A Black officer comes to your office. He is very angry and frustrated. He explains to you
+that he believes that he was passed over for a promotion on the basis of race. He tells you that he
+and a White male officer were applying for the same position. The Black male tells you he has
+been in the military longer than the White male and has accomplished more in his time in the
+military than the White officer. He further tells you that the officers who played a role in the
+final decision making process were all white and the only reason the White male received the
+promotion over him is because he is White.","Of the following, your most important course of action is to:",33,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-062,curriculum-f95c3e525005,62,Race,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","You have administered a climate assessment survey to a unit. The following comment was
+written: ""What is the protocol for deciding which units are deployed? At this installation units
+with higher numbers of minority personnel, and units with minority commanding officers are
+deployed most often and for longest the periods of time"".",Your next course of action would be to:,34,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-063,curriculum-f95c3e525005,63,Race,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","You are conducting a unit inspection. After analyzing the unit's performance records, you
+notice that minority unit members, on average, have much lower performance ratings than the
+other unit members.","Of the following, the most important course of action is to:",34,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-064,curriculum-f95c3e525005,64,Race,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","A Native American male comes to your office. He tells you that he has observed that housing
+at the installation seems to be unfairly segregated. He tells you that it seems that minorities at the
+installation are always assigned to the older housing accommodations. He asks you to look into
+the situation.",Your next course of action would be to:,34,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-065,curriculum-f95c3e525005,65,Race,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","A White E4 comes to your office to see you. He tells you that he wants to take advantage of
+some of the development programs offered to minorities at the installation. He tells you that the
+special attention the minority personnel receive should also be available to the White personnel.","Of the following, the most important question to ask the White E4 is:",35,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-066,curriculum-f95c3e525005,66,Race,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","A Black E3 alleges that his supervisor reprimands him whenever he is late, but that the other
+service members in the unit are not reprimanded for being late. He tells you that he suspects he is
+reprimanded because he is Black and the other service members in his unit are White.",Your next course of action would be to:,35,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-067,curriculum-f95c3e525005,67,Race,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","An investigating officer is making an inquiry into a formal complaint brought by a group of
+Indian service members who claim that their performance ratings are unjustly lower than the
+other members of their unit. The Indian service members claim that they are being unfairly rated
+because of their ethnic background.","Of the following, the assistance you would volunteer to provide the investigating officer
+first is:",35,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-068,curriculum-f95c3e525005,68,Race,"Violation of Work Place Policy or Regulations - Posting Offensive Material, etc.","You are informed that a White male has posted a placard in his cubicle that says ""Proud son
+of a confederate soldier"" with the Confederate flag in the background. Some members of the
+White male's unit tell you that they are uncomfortable with the posting.",Your next course of action would be to:,35,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-069,curriculum-f95c3e525005,69,Race,"Violation of Work Place Policy or Regulations - Posting Offensive Material, etc.","You receive an anonymous tip that a White male in your unit writes an underground anti-
+immigration newsletter. The anonymous tip tells you that the newsletter is composed of
+derogatory articles that target several racial groups. You speak with the White male about the
+newsletter and he confirms that he is writing the newsletter and claims that he is entitled to free
+speech.",Your next course of action would be to:,35,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-071,curriculum-f95c3e525005,71,Race,"Violation of Work Place Policy or Regulations - Posting Offensive Material, etc.","You are following up on an issue where a Black male felt uncomfortable with a White male
+in his unit because the White male has a tattoo of the confederate flag on his upper arm. The
+Black tells you that normally he does not even see the tattoo, but he feels that the White male
+must be a racist to have the tattoo. The two men participated in an informal conflict resolution","which you mediated.
+OF the following, the most important course of action is:",36,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-072,curriculum-f95c3e525005,72,Race,Language Issues,"During a climate assessment focus group, you learn that one of the special operation units at
+the installation openly does not welcome Hispanic-Americans into their unit. The focus group
+reports that the special operations unit does not trust them, especially if they speak Spanish in
+front of them.","Of the following, the best course of action is to:",36,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-073,curriculum-f95c3e525005,73,Race,EO professional,"Two males of Middle Eastern descent were speaking with each other in Arabic and laughing
+when their supervising officer came along and told them to speak in English because they were
+on duty. The two officers are angered because the commanding officer never tells the Hispanic
+officers that they can not speak Spanish while on duty. The two male come to see you in your
+office.",Your next course of action would be to:,36,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-074,curriculum-f95c3e525005,74,Race,EO professional,"A Hispanic male has come to you to report that he and a Hispanic female were having a
+personal conversation in Spanish when their supervising officer ordered them to speak in
+English. The Hispanic male claims the supervising officer said: ""For the rest of the time you are
+in this unit you will speak English. I don't speak Spanish and I don't want you two talking about
+me behind my back"".",Your next course of action is to:,37,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-075,curriculum-f95c3e525005,75,Race,EO professional,"You are assisting with an investigation of a formal complaint regarding a supervising
+officer's order that two Hispanic-American officers not speak Spanish while on duty. You
+interview the supervising officer and he claims that the two Hispanic officers in question have a
+habit of speaking Spanish when discussing formal duties that affect the rest of the unit. The
+supervising officer claims he ordered the two Hispanic soldiers to not to speak Spanish while on
+duty because that was the only way he could be certain they would discuss formal duties in
+English.","Of the following, the most important course of action would be to:",37,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-077,curriculum-f95c3e525005,77,Race,Intimidation - Behaviors Intended to Embarrass or Intimidate,"A noose was found in a personnel break room. You are immediately notified of the incident.
+You email the personnel who work in the building and ask them to provide any information they
+can about the incident.","Of the following, the best course of action is to:",37,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-079,curriculum-f95c3e525005,79,Race,Intimidation - Behaviors Intended to Embarrass or Intimidate,"A noose was placed on a Black officer's office door knob. You are immediately notified of
+the incident.",Your next course of action is to:,37,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-080,curriculum-f95c3e525005,80,Race,Intimidation - Behaviors Intended to Embarrass or Intimidate,"A swastika is drawn on the front door of a Jewish officer's office door. You are immediately
+notified of the incident.","Of the following, the most important course of action is to:",38,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-081,curriculum-f95c3e525005,81,Race,Intimidation - Behaviors Intended to Embarrass or Intimidate,"A White E4's vehicle was badly vandalized. The vehicle was scratched with a key and eggs
+were smashed all over the windshield. The officer tells you that this is the third time his car has
+been vandalized this year. He suspects it is because of he has the confederate flag in his back
+window.","Of the following, your next question to the Jewish officer would be:",38,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-082,curriculum-f95c3e525005,82,Race,Intimidation - Behaviors Intended to Embarrass or Intimidate,"A Black E4's vehicle was badly vandalized. The vehicle was scratched with a key and eggs
+were smashed all over the windshield. The word ""nigger"" was spray painted on the hood.",Your next course of action would be to:,38,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-083,curriculum-f95c3e525005,83,Race,Intimidation - Behaviors Intended to Embarrass or Intimidate,"A display board you created to celebrate Martin Luther King Jr.'s Birthday has been defaced.
+You are concerned that this indicates a climate of intolerance towards Martin Luther King Jr's
+and the larger Civil Rights Movement.",Your next course of action is to:,38,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-084,curriculum-f95c3e525005,84,Race,Intimidation - Behaviors Intended to Embarrass or Intimidate,"After an incident where a White service member was intimidated by an Asian colleague, you
+decide a training seminar on respect and tolerance may be beneficial for the unit.",Your next course of action:,39,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-085,curriculum-f95c3e525005,85,Race,Intimidation - Behaviors Intended to Embarrass or Intimidate,"You would like to coordinate a training session that will deal with the military's racial and
+ethnic diversity tolerance and acceptance policies.",Of the following your first course of action is:,39,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-087,curriculum-f95c3e525005,87,Race,Physical Assault - Physically Harming Another,"A Jewish E3 fell asleep on a bench outdoors after a long night of drinking. When he arrived
+home he realized that a swastika was drawn on his forehead while he was sleeping. He is deeply
+offended and comes to you to share his story.",Your next course of action is to:,39,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-088,curriculum-f95c3e525005,88,Race,Physical Assault - Physically Harming Another,"A White male and a Black male got into an argument while on duty. During their argument
+the White male called the Black male ""another hot-headed nigger"". The Black male was so angry
+that he punched the White male in the mouth. The fight was quickly parted by several members
+of the unit. A week later the White male comes to see you to discuss the incident. He wants to
+apologize to the Black male but doesn't know how to go about it.",Your next course of action would be to:,39,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-race-089,curriculum-f95c3e525005,89,Race,Physical Assault - Physically Harming Another,"A White male comes to your office. He tells you he lives on the installation, and was
+attacked as he walked home the previous night. He reports that three men punched him
+repeatedly. He tells you that as he lay on the ground, one of the men spit on him and called him a
+""honky red neck"".",Of the following the most important course of action is to:,39,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-002,curriculum-f95c3e525005,2,Religion,Offensive Labels or Language - Use of Epithets and Slurs,"You are making an inquiry into a complaint from a Muslim male that a member of his unit
+called him a ""hate-monger"". In your interview with the unit member admits to calling the
+Muslim male a ""hate-monger"" and is not apologetic for his remarks.",Your next course of action would be to:,41,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-003,curriculum-f95c3e525005,3,Religion,Offensive Labels or Language - Use of Epithets and Slurs,"A Hindu service member comes to you because he is angry because his commanding officer
+frequently makes comments about his religion. The Hindu service member is fed up with the
+comments and is ready to file a formal complaint.",Your next course of action would be to:,41,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-004,curriculum-f95c3e525005,4,Religion,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"A female officer shares with you that she is a follower of scientology. She tells you that
+members of her unit have commented that Scientology is a fake religion made popular by
+ignorant famous people. She also tells you they stated, ""Only mindless sheep would follow that
+religion.""",Your next course of action would be to:,41,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-005,curriculum-f95c3e525005,5,Religion,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"You have administered a climate assessment survey to a unit. The following comment was
+written: ""The other members of my unit are always making comments about my religion. Iam a
+Seventh Day Adventist and they call my religion a cult and they don't respect my beliefs"".","Of the following, the most important course of action is to:",41,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-007,curriculum-f95c3e525005,7,Religion,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"A commanding officer frequently makes the comment that ""Followers of Islam are terrorists"".
+When confronted about the comments, the commanding officer contends that it is not a big deal
+and no one is being hurt because there are no followers of Islam in the unit.",Your next course of action would be to:,42,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-008,curriculum-f95c3e525005,8,Religion,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"A commanding officer frequently makes the comment that ""Mormons are a bunch of
+polygamist pedophiles"". When confronted about the comments, the commanding officer says
+that it is not a big deal and no one is being hurt because there are no followers of Islam in the
+unit.",Your next course of action would be to:,42,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-009,curriculum-f95c3e525005,9,Religion,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"You receive an email advertising a peaceful protest against treatment of women in Islam.
+Later in the day two female unit members come to you about the advertisement. They tell you
+that they are offended by the repeated negative portrayal of Islam and would like the unit to be
+properly informed about the religion",,42,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-010,curriculum-f95c3e525005,10,Religion,Inappropriate Message Content - Inappropriate Jokes or Comments,"A unit member complains to you that her commanding officer is always forwarding
+inappropriate emails to her and the other members of her unit. She tells you that the most recent
+forwarded email presented vulgar jokes about the Catholic religion and little boys.",Your next course of action would be to:,42,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-011,curriculum-f95c3e525005,11,Religion,Inappropriate Message Content - Inappropriate Jokes or Comments,"A male officer (labeled Male 1) comes to your office. Male 1 tells you that he was trying to
+raise money for his local mosque by selling bean pies to his co-workers. He tells you that when
+he offered one of the pies to a male member of his unit (labeled Male 2), Male 2 responded, ""Sell
+your bean pies somewhere else, Muhammad."" The male officer tells you his name is not
+Muhammad and he is insulted by Male 2's sarcasm.",Your next course of action would be to:,42,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-013,curriculum-f95c3e525005,13,Religion,Inappropriate Message Content - Inappropriate Jokes or Comments,"A Muslim service member tells you that other members from his unit refer to him as
+""Muhammad"", ""Bin Laden"", or ""Saddam Hussein."" He tells you that he has repeatedly asked
+them to stop. He doesn't know what else to do.",Your next course of action would be to:,43,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-014,curriculum-f95c3e525005,14,Religion,Anonymous Threats - Physical or Psychological Threats from Unknown Source,"After a celebration of Yom Kippur, a Jewish officer finds a note on his car. The note says
+""Jews are not welcome here--get lost--or else"". He comes back inside to the celebration and tells
+you about the note immediately.","Your next course of action would be to:
+Your next course of action would be to:",43,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-017,curriculum-f95c3e525005,17,Religion,Direct Threats - Physical or Psychological Threats from Known Source,"A female E4 comes to you for help. She tells you that one of the members of her unit is
+Wiccan. She tells you that after having an argument with this unit member, the Wiccan unit
+member threatened to cast a deadly spell on her. She tells you she is uncomfortable Wicca,
+witchcraft, and with the 'casting of spells'. She tells you she is afraid to work with this unit
+member anymore.",Your next course of action would be to:,43,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-018,curriculum-f95c3e525005,18,Religion,Direct Threats - Physical or Psychological Threats from Known Source,"A Jewish man comes to your office and is very upset. He tells you that a member of his unit
+threatened to beat him up. He tells you that this unit member is always starting trouble with him.
+He states he is not comfortable and he refuses to work with him anymore.",Your next course of action would be to:,44,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-019,curriculum-f95c3e525005,19,Religion,Equal Treatment - Ensure No Religion is Given Preference Over Other Religions,"An investigating officer is making an inquiry into a formal complaint brought by a group of
+Christian service members who claim that their performance ratings are unjustly lower than the
+other members of their unit. The Christian service members claim that they are being unfairly
+rated because of their religious beliefs.","Of the following, the assistance you would volunteer to provide the investigating officer
+first is to:",44,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-020,curriculum-f95c3e525005,20,Religion,Equal Treatment - Ensure No Religion is Given Preference Over Other Religions,"During a training seminar, a group of Muslim officers tell you that their commanding officer
+regularly goes to a Christian bible study with other members of the unit. The Muslim officers
+tell you that they feel they are at a disadvantage because the unit members who attend this bible
+study are getting additional time to build a bond with the commanding officer. They ask you for
+your advice.","Of the following, the most important course of action is to:",44,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-021,curriculum-f95c3e525005,21,Religion,Equal Treatment - Ensure No Religion is Given Preference Over Other Religions,"An investigating officer is making an inquiry into a formal complaint from a group of Hindu
+male service members who claim that their superior officer treats the other members in the unit
+better than he treats them. The Hindu males claim that they are always assigned undesirable
+work shifts, for example nights, weekends, and holidays.","Of the following, the assistance you would volunteer to provide the investigating officer
+first is:",44,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-023,curriculum-f95c3e525005,23,Religion,Religious Accommodation - Requests for Exception to Policy Based on Religious Affiliation,"You are deployed with your unit in Bagdad. Your commander will not allow anyone in the
+unit to wear any religious symbols or apparel, even under uniforms. He has further specified that
+the Jewish unit members are not authorized to wear their yarmulke (religious headgear) while on
+duty.",Your next course of action would be to:,45,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-024,curriculum-f95c3e525005,24,Religion,Religious Accommodation - Requests for Exception to Policy Based on Religious Affiliation,"An officer comes to you and informs you that he is a Sikh and that has requested to have off
+from work for an important religious holiday. He tells you that he made this request a month in
+advance and he was still denied. He tells you that his supervisor has no reason to deny his
+request and he suspects that his request was denied because of his religious beliefs.",Your next course of action would be to:,45,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-026,curriculum-f95c3e525005,26,Religion,Religious Accommodation - Requests for Exception to Policy Based on Religious Affiliation,"An Atheist service member sends you an email. He tells you he is tired of his commanding
+officer catering to the religious personnel in his unit. He tells you these ""religious nuts"" have
+such picky schedules, ""They receive time off for worship services, holy days, Sabbath
+observances, and whatever else they can think up."" He tells you it is not fair that he isn't allowed
+to be as demanding with his schedule.","Of the following, your next question to the Atheist service member would be:",45,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-028,curriculum-f95c3e525005,28,Religion,"Violation of Work Place Policy or Regulations - Posting Offensive Material, etc.","A female comes to you seeking your help. One of her unit members is advertising a program
+for her local church group. The woman tells you that unit member is constantly trying to gain
+support for the event and the church and it is distracting and annoying to hear about it while
+working.",Your next course of action would be to:,45,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-029,curriculum-f95c3e525005,29,Religion,"Violation of Work Place Policy or Regulations - Posting Offensive Material, etc.","You are investigating a complaint that a commander has made the local strip club 'off limits'
+to personnel in his unit. The complainants claim that the only reason the strip club is off limits is
+because the commander is a very religious and believes going to strip clubs is immoral.","Of the following, the best course of action is to:",46,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-030,curriculum-f95c3e525005,30,Religion,"Violation of Work Place Policy or Regulations - Posting Offensive Material, etc.","A male E3 comes to your office and tells you his commanding officer has banned all
+members of his unit from going to the local liquor store. He tells you the only reason the
+commanding officer is banning the liquor store is because he is a devout Christian and does not
+believe in drinking alcohol.","Of the following, the next question you would ask the Male E3 is:",46,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-031,curriculum-f95c3e525005,31,Religion,Intimidation - Behaviors Intended to Embarrass or Intimidate,"You have received word that there has been a series of incidents of religious intimidation at
+your installation. You would like to coordinate a training session that will deals with the
+military's religious diversity acceptance and tolerance policies.",Of the following your first course of action is:,46,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-032,curriculum-f95c3e525005,32,Religion,Intimidation - Behaviors Intended to Embarrass or Intimidate,"A Jewish officer calls you on Halloween and tells you that his supervisor is wearing a
+yarmulke and that the supervisor is mocking the Jewish officer. The Jewish officer tells you he
+is highly offended and embarrassed.",Your next course of action would be to:,46,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-034,curriculum-f95c3e525005,34,Religion,Physical Assault - Physically Harming Another,"A Muslim female (labeled Female 1) tells you that another female in her unit (labeled Female
+2) began yelling at her after work. She tells you that before she could even ask Female 2 why she
+was yelling, Female 2 spit in her face. She is frightened and comes to see you right away. She
+tells you that Female 2 has never acted like this before and she doesn't know why the incident
+happened. She tells you the only thing it can be is that she is Muslim.","Of the following, the best course of action is to:",47,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-035,curriculum-f95c3e525005,35,Religion,Physical Assault - Physically Harming Another,"A Muslim E3 comes to see you in your office. He tells you that while walking home last
+night a group of males surrounded him. He tells you the males began pushing him while calling
+him a traitor and telling him to go back to his own country. He tells you he isn't hurt but he is
+tired of being disrespected at this installation.","Of the following, the most important question to ask the female E3 is to:",47,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-036,curriculum-f95c3e525005,36,Religion,Physical Assault - Physically Harming Another,"A Jewish officer's vehicle was vandalized. The vehicle was badly scratched with a key. The
+officer tells you that this is the third time his car has been keyed this year. He suspects it is
+because of he is Jewish.","Of the following, your next question to the Jewish officer would be:",47,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-037,curriculum-f95c3e525005,37,Religion,Physical Assault - Physically Harming Another,"During a climate assessment focus group, you learn that one of the special operation units at
+the installation is intolerant of Jews. While following up on this information, you find out that
+members of this unit may be responsible for a spree of assaults happening around the installation
+against Jewish personnel.","Of the following, the best course of action is to:",47,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-religion-038,curriculum-f95c3e525005,38,Religion,EO professional,"Recently a Muslim male was badly assaulted at your installation. The installation commander
+has asked you to conduct a climate assessment of the entire installation to determine if religious
+intolerance is an issue at the installation.",Your next course of action is to:,48,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-disability-001,curriculum-f95c3e525005,1,Disability,Offensive Labels or Language - Use of Epithets and Slurs,"During a training session, you overhear a male unit member (labeled as Male 1) refer to
+another male (labeled as Male 2) as ""Stumpy"". You realize that Male 2 is in wheelchair, and he
+looks bothered by the comment.",Your next course of action would be to:,49,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-disability-002,curriculum-f95c3e525005,2,Disability,Offensive Labels or Language - Use of Epithets and Slurs,"A female service member shares with you that she is dyslexic. She also shares that the other
+members of her unit refer to her constantly as 'stupid' and 'dumb'. She tells you that one
+member has even stated that they should have never let someone with her disability in to the
+military. She is fed up with the comments.","Of the following, your next question to the male officer would be:",49,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-disability-003,curriculum-f95c3e525005,3,Disability,Offensive Labels or Language - Use of Epithets and Slurs,"After overhearing one of your unit members profusely use the word 'retarded' when referring
+to another member of the unit, you decide to plan a training session on diversity awareness and
+sensitivity.",Of the following your first course of action is:,49,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-disability-005,curriculum-f95c3e525005,5,Disability,Offensive Labels or Language - Use of Epithets and Slurs,"A female E4 comes to your office and tells you that she has Attention Deficiency
+Hyperactivity Disorder (ADHD). She tells you that her commanding officer is aware of her
+disorder and continually makes offensive comments about her ADHD in front of other unit
+members.",Your next course of action would be to:,49,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-disability-006,curriculum-f95c3e525005,6,Disability,Offensive Labels or Language - Use of Epithets and Slurs,"A male E3 claims a male officer in his unit called him a 'slow retard' after blaming him for
+the unit's failure during a field exercise. He approaches you and explains what has happened and
+that he is particularly offended by the comment because he has a learning disability.",Your next course of action would be to:,50,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-disability-007,curriculum-f95c3e525005,7,Disability,Offensive Labels or Language - Use of Epithets and Slurs,"After overhearing one of your unit members constantly use the word 'retard' when referring to
+another member of the unit, you decide to plan a training session on the use of inappropriate and
+offensive language.",Of the following your first course of action is:,50,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-disability-008,curriculum-f95c3e525005,8,Disability,Offensive Labels or Language - Use of Epithets and Slurs,"A disabled service member comes to you because he is angry because his commanding officer
+frequently makes comments about his disability. The disabled service member is fed up with the
+comments and is ready to file a formal complaint.",Your next course of action would be to:,50,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-disability-009,curriculum-f95c3e525005,9,Disability,Offensive Beliefs or Attitudes - Use of Stereotypical Beliefs,"At an event for Disability Awareness Month, you overhear a colleague say ""I'm tired of my
+tax dollars supporting those retards. It is unnatural for them to be here--evolution would get rid
+of them naturally if we would stop interfering and supporting them."" After talking more with
+this colleague, you decide that this belief might be felt by others at the installation.",Your next course of action would be to:,50,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-disability-011,curriculum-f95c3e525005,11,Disability,Inappropriate Message Content - Inappropriate Jokes or Comments,"A male E4 was recently deployed to Iraq. While he was there he sustained a permanent
+injury to his left leg and now walks with a cane. He comes to you and tells you that members of
+his new unit are constantly making jokes about his cane. For example, he tells you that they refer
+to him as ""hop-a-long Jones"" instead of by his title. He is annoyed at their lack of respect.","Of the following, your next question to the male E4 would be:",51,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-disability-012,curriculum-f95c3e525005,12,Disability,Anonymous Threats - Physical or Psychological Threats from Unknown Source,"You are advertising an upcoming event to celebrate Disability Awareness Month. When you
+return to your car, there is a note on the windshield. The note says, ""If you keep drawing
+attention to those with disabilities, you will be the one who needs the wheelchair.""","Of the following, the best course of action is to:",51,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-disability-013,curriculum-f95c3e525005,13,Disability,Anonymous Threats - Physical or Psychological Threats from Unknown Source,"You have received word that there have been a number of anonymous threats targeting
+disabled personnel at your installation. You would like to coordinate a training session that will
+deals with the military's attitude toward the disabled.",Of the following your first course of action is:,51,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-disability-014,curriculum-f95c3e525005,14,Disability,Direct Threats - Physical or Psychological Threats from Known Source,"While at an event celebrating Disability Awareness Month, one of your volunteers tells you
+they were just approached by an angry male service member. The volunteer tells you that the
+male told them, ""If you keep drawing attention to those with disabilities, you will be the one who
+needs the wheelchair."" The volunteer tells you that the angry male was in a wheelchair","Of the following, the most important course of action is to:",51,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-disability-015,curriculum-f95c3e525005,15,Disability,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","Rumors are flying that a member of your unit has contracted HIV. He comes to you because
+he feels that people are treating him differently because of the rumors and he needs some advice.",Your next course of action would be to:,52,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-disability-016,curriculum-f95c3e525005,16,Disability,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","A female service member was openly dating a man who was later reported on the news for
+infecting several women with HIV. There are now rumors that she has HIV since she dated this
+man. She comes to you because she feels that her commander has started treating her differently
+because of the rumors.",Your next course of action would be to:,52,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-disability-018,curriculum-f95c3e525005,18,Disability,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","After conducting an inspection of a subordinate unit, you find out that the unit's commanding
+officer will not give challenging assignments to service members who have been deployed to
+hostile areas in the past six months. The commanding officer explains that he has a lot of
+experience with returning personnel and most of them will have serious ""mental issues"" when
+they get back. He tells you that he just doesn't trust them to handle challenging tasks.","Of the following, the most important course of action is to:",52,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-disability-019,curriculum-f95c3e525005,19,Disability,"Violation of Work Place Policy or Regulations - Posting Offensive Material, etc.","You are looking into an incident where a service member (labeled Male 1) posted flyers that
+one of his fellow unit members (labeled Male 2) was HIV-positive. After interviewing Male 1,
+he explains he was looking out for the safety of the unit by sharing the member's HIV status. He
+tells you, ""The unit is entitled to know the dangers they will face, including dangers within our
+unit"".","Of the following, the best course of action is to:",52,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-disability-020,curriculum-f95c3e525005,20,Disability,"Violation of Work Place Policy or Regulations - Posting Offensive Material, etc.","A commanding officer sent an email to his unit regarding the details for an upcoming test. In
+the email the commanding officer states he will not be giving anyone special consideration on
+the test. A female member of the unit comes to you and tells you that she is supposed to receive
+extra time to complete the test because she suffers from test anxiety.",Your next course of action would be to:,52,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-disability-021,curriculum-f95c3e525005,21,Disability,"Violation of Work Place Policy or Regulations - Posting Offensive Material, etc.","A female E4 complains to you that her commanding officer is always forwarding
+inappropriate emails to her and the other members of her unit. She tells you that the most recent
+forwarded email included made fun of mentally and physically handicapped people.",Your next course of action would be to:,53,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-age-001,curriculum-f95c3e525005,1,Age,Inappropriate Message Content - Inappropriate Jokes or Comments,"A female officer tells you that she feels that older personnel are being disrespected at the
+installation. She tells you that she is constantly hearing jokes about older people and hearing that
+they should retire and get out of the military. She approaches you and explains that this way of
+thinking is dangerous for the installation and needs to be addressed.",Your next course of action would be to:,54,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-age-002,curriculum-f95c3e525005,2,Age,Inappropriate Message Content - Inappropriate Jokes or Comments,"During a training session, you overhear a Male (labeled Male 1) tell another male (labeled
+Male 2), ""Grow up! It's time to stop sucking on the tit and take stuff like a man"". You realize
+that Male 2 is the youngest personnel in the room and he looks bothered by the comment.",Your next course of action would be to:,54,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-age-003,curriculum-f95c3e525005,3,Age,Inappropriate Message Content - Inappropriate Jokes or Comments,"A male officer tells you that he feels that younger personnel are being disrespected at the
+installation. He tells you that he is constantly hearing negative comments about Generation X
+and Y and their poor work ethic. He approaches you and explains that this way of thinking is
+dangerous for the installation and needs to be addressed.",Your next course of action would be to:,54,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-age-004,curriculum-f95c3e525005,4,Age,Inappropriate Message Content - Inappropriate Jokes or Comments,"After a physical training exercise a male officer tells you that the members of his unit taunted
+him about his performance. He tells you they made comments calling him 'father time' and
+'grandpa'. He tells you they also made comments saying its time for him to retire, and that he is
+washed up and the military can not use him anymore. He approaches you and explains that he is
+hurt and offended by the situation and wants the unit members to be reprimanded.","Of the following, the best course of action is to:",54,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-age-005,curriculum-f95c3e525005,5,Age,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","You have been investigating a complaint made by a 21-year old female that her supervising
+officer treats the younger personnel differently from the older personnel in the unit. Your
+interviews with different members of the unit do not support the female's claim.",Your next course of action would be to:,55,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-age-006,curriculum-f95c3e525005,6,Age,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","A 21-year old male claims that his supervising officer treats the younger personnel differently
+from the older personnel in the unit. He tells you that the younger personnel are assigned more
+work and are assigned the worst work schedules. He tells you that at first he was willing to 'pay
+his dues' in the unit, but he now fears the situation will never change.",Your next course of action would be to:,55,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-age-007,curriculum-f95c3e525005,7,Age,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","An investigating officer is making an inquiry into a formal complaint brought by a group of
+senior service members who claim that their performance ratings are unjustly lower than the
+other members of their unit who are much younger. They tell you that they feel they are being
+unfairly rated because of their age and that this is an attempt to push them into retirement.","Of the following, the assistance you would volunteer to provide the investigating officer
+first is to:",55,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-age-008,curriculum-f95c3e525005,8,Age,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","You are conducting a unit inspection. After analyzing the unit's performance records, you
+notice that the younger unit members have much lower performance ratings than the other unit
+members, even on dimensions that should not be influenced by additional experience.","Of the following, the most important course of action is to:",56,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-age-009,curriculum-f95c3e525005,9,Age,"Work-Related Differential Treatment - Assignments, Rewards, or Punishment","A female E4 comes to you because she would like to take career development courses offered
+in her unit, but her commanding officer has denied her entry into the course on three occasions.
+When she asked why she was being denied, the commanding officer commented that she should
+have taken these career development courses when she was younger and that the course will not
+really benefit her. She tells you that other members of her unit have been given permission to
+take the career development course and they are all younger than her.",Your next course of action would be to:,56,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-age-012,curriculum-f95c3e525005,12,Age,Physical Assault - Physically Harming Another,"A male E2 comes to your office for help. He tells you that the members of his unit have been
+treating him poorly since he entered the unit. He tells you that they order him to complete non-
+work related tasks for them, such as washing their clothes and bringing them dinner. He shares
+that he is worried because the situation is getting more physical now. He tells you that they most
+recently forced his head into a toilet bowl which someone had just urinated. He doesn't want to
+get the unit members into trouble; he just doesn't want the situation to escalate further.",Your next course of action would be to:,56,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-002,curriculum-f95c3e525005,2,General EO,,"You are assigned to a new installation and your new commanding officer seems to be
+disinterested with EO issues and your role in the unit. You learn that the commanding officer has
+been reprimanded in the past because he violated EO policies.","Of the following, the best course of action would be to:",57,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-003,curriculum-f95c3e525005,3,General EO,,"After briefing the chain of command on unit climate assessment results, the chain of command
+requests to receive a briefing on minority mentorship and minority retention.","Of the following, the most important course of action is to:",57,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-004,curriculum-f95c3e525005,4,General EO,,"After briefing the chain of command on unit climate assessment results, it is determined that a
+training session on sexual harassment would be appropriate.",Your next course of action would be to:,57,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-005,curriculum-f95c3e525005,5,General EO,,"After briefing the chain of command on unit climate assessment results, it is determined that a
+training session on religious tolerance and diversity would be appropriate.","Of the following, the best course of action would be to:",57,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-006,curriculum-f95c3e525005,6,General EO,,"While analyzing survey results you learn there is moderate satisfaction within a unit but high
+levels of perceived sexism.",Your next course of action would be to:,57,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-008,curriculum-f95c3e525005,8,General EO,,"A commanding officer comes to you and informs you there may be a problem within his unit
+based on survey findings provided by the former EOA. He tells you that a high percentage of the
+minorities in the unit perceive there is racism or cultural insensitivity within the unit and that
+some of the minorities feel they have been the victim of direct racism.",Your next course of action would be to:,58,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-010,curriculum-f95c3e525005,10,General EO,,"You are assigned to a new installation and there is blatant hostility towards you as the new
+EOA. An acquaintance tells you the hostility is not personal but is based upon negative feelings
+toward the former EOA you have replaced.",Your next course of action would be to:,58,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-012,curriculum-f95c3e525005,12,General EO,,"The results of a climate assessment survey tell you that there may be some racial tension
+within a unit. While de-briefing the commanding officer, the commanding officer shares that he
+has noticed some issues but he is sure it will all blow over in due time.",Your next course of action would be to:,58,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-013,curriculum-f95c3e525005,13,General EO,,"The results of a climate assessment survey tell you that there may be some religious tension
+within a unit. While de-briefing the commanding officer, the commanding officer shares that he
+has noticed some issues but he is sure it will all blow over in due time.","Of the following, the best course of action would be to:",58,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-014,curriculum-f95c3e525005,14,General EO,,"You have been given an order by a commanding officer that makes you uncomfortable. The
+commanding officer has told you to stop passing out pamphlets about special minority programs
+to the unit. The commanding officer tells you it is causing more tension among the personnel in
+the unit than good, and that non-minority members of the unit resent the extra attention the
+minority personnel are receiving.",Your next course of action would be to:,59,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-015,curriculum-f95c3e525005,15,General EO,,"You recently interviewed several witnesses while working on a race discrimination
+complaint. One of the witnesses you interviewed comes to see you and is very angry. She claims
+that you did not keep information she shared with you during the interview confidential. She
+further claims to be receiving threats in retaliation for speaking with you.",Your next course of action would be to:,59,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-016,curriculum-f95c3e525005,16,General EO,,"You overhear talk around the installation that you are ""causing more trouble than good as an
+EO professional"" by making a big deal out of insignificant issues. You do not know who
+specifically feels this way, when personnel began to feel this way, or how many personnel share
+this opinion.","Of the following, the best course of action would be to:",59,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-017,curriculum-f95c3e525005,17,General EO,about EO issues,"A male comes to your office and is very angry. He told you about an incident that occurred at
+the installation, but he did not want anyone to get into trouble. He further claims that you did not
+keep the information he shared with you confidential.","Of the following, the most important course of action is to:",59,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-018,curriculum-f95c3e525005,18,General EO,about EO issues,"A female comes to you seeking your help. One of her unit members is raising funds for a
+local anti-abortion group by selling cookies. The woman tells you the fundraising is causing
+tension within the unit because the woman has pictures of aborted fetuses posted at her desk. She
+tells you the woman is constantly trying to gain support about the abortion issue and it is
+distracting and upsetting to hear that kind of talk while working.",Your next course of action would be to:,59,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-020,curriculum-f95c3e525005,20,General EO,about EO issues,"Recently your work load has been increased and your supervisor is requiring more from you
+in addition to your EO professional duties.",Your next course of action would be to:,60,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-021,curriculum-f95c3e525005,21,General EO,about EO issues,"You are informed that due to recent budget cuts, your funding for EO initiatives will be
+drastically cut.","Of the following, the best course of action is to:",60,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-022,curriculum-f95c3e525005,22,General EO,about EO issues,"You are assigned to a new installation and you are told there is no funding available for the
+EO initiatives such as special events, celebrations, or observances.",Your next course of action would be to:,60,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-023,curriculum-f95c3e525005,23,General EO,about EO issues,"After briefing commander on the results of a recent unit climate assessment, the commander
+shares with you that he does not understand why so much money is being spent on the EO
+program. He tells you that since you have arrived, the data shows the unit climate has gotten
+worse. He further shares that in these tough times, you are drain on funding and next fiscal year
+he is seriously thinking about cutting your budget.",Your next course of action would be to:,60,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-025,curriculum-f95c3e525005,25,General EO,about EO issues,"A commanding officer approaches you and expresses a desire to retain females and
+minorities in his unit. She shares with you that the unit has low retention numbers and she wants
+that to change.",Your next course of action would be to:,60,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-026,curriculum-f95c3e525005,26,General EO,about EO issues,"Over the past month you have coordinated four special observance events which have all had
+very low attendance.",Your next course of action would be to:,61,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-027,curriculum-f95c3e525005,27,General EO,about EO issues,"A formal mentorship program for women has been started at your installation. Several
+commanders have expressed an interest in assisting with the mentorship program.","Of the following, the most important course of action is to:",61,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-028,curriculum-f95c3e525005,28,General EO,about EO issues,"You have received word that there has been a series of incidents of intimidation towards
+personnel at your installation. You would like to coordinate a training session to address the
+incidents.",Of the following your first course of action is:,61,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-029,curriculum-f95c3e525005,29,General EO,about EO issues,"A supervising officer calls you and explains that one of her subordinates is a low performer.
+She tells you that this subordinate has filed a complaint against her in the past and that she does
+not want to have an issue with this subordinate again. She tells you that she cannot ignore the
+low productivity of the subordinate any longer and needs your help to address the situation.","Of the following, the most important course of action is:",61,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-030,curriculum-f95c3e525005,30,General EO,about EO issues,"You have been invited to speak at an EO conference, but your supervising officer will not let
+you take leave. The supervising officer tells you that you have participated in too many EO
+conferences and meetings this year.",Your next course of action would be to:,62,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-031,curriculum-f95c3e525005,31,General EO,about EO issues,"You suspect that several members of your unit are suffering from depression and may need
+to see a medical professional.",Your next course of action would be to:,62,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-032,curriculum-f95c3e525005,32,General EO,about EO issues,"After reviewing the feedback received from climate assessment surveys, you learn that many
+personnel at the installation are not aware of your role as an EO professional.","Of the following, the most important course of action is to:",62,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-033,curriculum-f95c3e525005,33,General EO,about EO issues,"You over hear talk around the installation that you are not an effective EO professional,
+especially in comparison to the former EO professional that recently was transferred to another
+installation.",Your next course of action would be to:,62,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-035,curriculum-f95c3e525005,35,General EO,about EO issues,"You are planning a Holocaust Remembrance Day event and want it to be as informative as
+possible.","Of the following, the best course of action is to:",62,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-037,curriculum-f95c3e525005,37,General EO,about EO issues,"You are attempt to brief a commander on the results of a unit climate assessment and you
+notice that the commander is showing negative body language and seems disinterested in what
+you are saying.",Your next course of action would be to:,63,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-038,curriculum-f95c3e525005,38,General EO,about EO issues,"A commander comes to you and admits that she has made an insensitive remark to one of
+her subordinates. She asks for you advice in how best to approach the subordinate.",Your next course of action would be to:,63,tesseract_ocr,2026-05-07T18:39:09.770Z
+sjt-general-eo-039,curriculum-f95c3e525005,39,General EO,about EO issues,"You receive anonymous reports that there is hazing of young personnel happening at your
+installation.",Your next course of action would be to:,63,tesseract_ocr,2026-05-07T18:39:09.770Z

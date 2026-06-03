@@ -1,20 +1,22 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# I2ST UI
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Focused React UI for selecting an I2ST roleplay scenario/persona and talking to the contained chatbot service.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## Run
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+Start the chatbot service first:
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+```bash
+cd /datadrive/luis/projects/I2ST/chatbot
+python3 app.py serve --host 0.0.0.0 --port 8787
+```
+
+Start the UI:
+
+```bash
+cd /datadrive/luis/projects/I2ST_UI
+npm install
+npm run dev -- --host 0.0.0.0 --port 5174
+```
+
+The Vite dev server proxies `/chatbot/*` to `http://127.0.0.1:8787`.
