@@ -1,3 +1,4 @@
+import { SelectControl } from "../../components/SelectControl.jsx";
 import { sourceLabel, sourceReference } from "../../lib/scenarioHelpers.js";
 
 export function SourceStep({ updateForm, catalog, source }) {
@@ -8,13 +9,13 @@ export function SourceStep({ updateForm, catalog, source }) {
 
       <div className="studioGroup sourceScenarioSection">
         <span className="studioLabel">Source Curriculum Scenario</span>
-        <select className="sourceScenarioSelect" value={source?.curriculum_scenario_id || ""} onChange={(event) => updateForm({ curriculumScenarioId: event.target.value })}>
+        <SelectControl className="sourceScenarioSelect" value={source?.curriculum_scenario_id || ""} onChange={(event) => updateForm({ curriculumScenarioId: event.target.value })}>
           {(catalog.curriculumScenarios || []).map((item) => (
             <option key={item.curriculum_scenario_id} value={item.curriculum_scenario_id}>
               {sourceLabel(item, catalog.curriculumScenarios || [])}
             </option>
           ))}
-        </select>
+        </SelectControl>
 
         <div className="sourceScenarioDetail">
           {source ? (

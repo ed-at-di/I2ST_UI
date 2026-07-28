@@ -1,4 +1,5 @@
 import { InfoNote } from "../../components/InfoNote.jsx";
+import { SelectControl } from "../../components/SelectControl.jsx";
 import { FIELD_INFO } from "../../data/fieldInfo.js";
 import {
   PERSONA_COMMUNICATION_STYLE_OPTIONS,
@@ -13,14 +14,14 @@ function PersonaSelect({ label, value, options, otherValue, onChange, onOtherCha
   return (
     <label className="personaSelect">
       <span>{label}</span>
-      <select value={value} onChange={(event) => onChange(event.target.value)}>
+      <SelectControl value={value} onChange={(event) => onChange(event.target.value)}>
         <option value="" disabled>
           Select {label.toLowerCase()}
         </option>
         {options.map((option) => (
           <option key={option}>{option}</option>
         ))}
-      </select>
+      </SelectControl>
       {isOther && <input value={otherValue} onChange={(event) => onOtherChange(event.target.value)} placeholder={placeholder} />}
       <InfoNote>{info}</InfoNote>
     </label>
