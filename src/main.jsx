@@ -168,6 +168,19 @@ function App() {
     }
   }
 
+  async function openChatSession(activeScenario) {
+    const result = await api("/sessions", {
+      method: "POST",
+      body: JSON.stringify({ scenario: activeScenario.isCatalogStub ? activeScenario.scenario_id : activeScenario }),
+    });
+    setSession(result);
+    setMessages([{ role: "avatar", text: result.avatar || "No response returned.", latencyMs: result.latency_ms }]);
+    const healthResult = await api("/health").catch(() => null);
+    if (healthResult) setHealth(healthResult);
+    setStatus(`Chat started · ${formatLatency(result.latency_ms)}`);
+    setView("runtime");
+  }
+
   async function startSession() {
     setBusy(true);
     setError("");
@@ -179,16 +192,7 @@ function App() {
         setScenario(result);
         activeScenario = result;
       }
-      const result = await api("/sessions", {
-        method: "POST",
-        body: JSON.stringify({ scenario: activeScenario.isCatalogStub ? activeScenario.scenario_id : activeScenario }),
-      });
-      setSession(result);
-      setMessages([{ role: "avatar", text: result.avatar || "No response returned.", latencyMs: result.latency_ms }]);
-      const healthResult = await api("/health").catch(() => null);
-      if (healthResult) setHealth(healthResult);
-      setStatus(`Chat started · ${formatLatency(result.latency_ms)}`);
-      setView("runtime");
+      await openChatSession(activeScenario);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -270,6 +274,22 @@ function App() {
     setDraftActive(true);
     setView("wizard");
     setStatus("");
+  }
+
+  async function openAssignedScenario(item) {
+    const activeScenario = scenarioFromCatalogItem(item);
+    setBusy(true);
+    setError("");
+    setMessages([]);
+    setScenario(activeScenario);
+    setDraftActive(false);
+    try {
+      await openChatSession(activeScenario);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setBusy(false);
+    }
   }
 
   function returnHome() {
@@ -361,6 +381,7 @@ function App() {
         loading={loading}
         onCreateNew={startNewScenario}
         onOpenScenario={openOldScenario}
+        onOpenAssignedScenario={openAssignedScenario}
         draft={draft}
         onResumeDraft={resumeDraft}
         onDeleteDraft={deleteDraft}

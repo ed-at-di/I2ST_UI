@@ -36,7 +36,7 @@ function ScenarioTable({ scenarios, loading, emptyText, activityHeading, activit
   );
 }
 
-export function HomeScreen({ scenarios, loading, onCreateNew, onOpenScenario, draft, onResumeDraft, onDeleteDraft }) {
+export function HomeScreen({ scenarios, loading, onCreateNew, onOpenScenario, onOpenAssignedScenario, draft, onResumeDraft, onDeleteDraft }) {
   const initial = DUMMY_USER.name.trim().slice(0, 1).toUpperCase();
   const recents = scenarios.slice(0, RECENTS_LIMIT);
   const assignedScenarios = assignedScenariosFromCatalog(scenarios);
@@ -122,7 +122,7 @@ export function HomeScreen({ scenarios, loading, onCreateNew, onOpenScenario, dr
             emptyText="No scenarios are currently assigned."
             activityHeading="Assigned"
             activityLabel={(item) => item.activityLabel}
-            onOpenScenario={onOpenScenario}
+            onOpenScenario={onOpenAssignedScenario}
           />
         </section>
 
