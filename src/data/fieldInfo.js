@@ -1,0 +1,28 @@
+export const FIELD_INFO = {
+  sourceScenarioMode:
+    "\"Choose from source library\" pulls the roleplay content verbatim from the SJT curriculum PDF. \"Create from selections\" asks the authoring model to write a new scenario from the role, competency, factors, and complexities you choose in the next steps.",
+  chatbotRole:
+    "Who the AI avatar plays in the conversation — the person filing the complaint, a witness, the subject of the complaint, etc. This is the perspective the trainee will be practicing against.",
+  competencyFocus:
+    "The skill area this scenario is built to exercise. Each focus expands into specific sub-competencies (shown once selected) that the conversation is designed to test.",
+  scenarioFactors:
+    "Protected-class or personal factors woven into the narrative so the scenario reflects real workplace complaint patterns. These only apply when creating a scenario from selections.",
+  scenarioComplexities:
+    "Extra narrative pressure layered on top of the base scenario — heightened emotion, systemic issues, or ethical ambiguity — to raise the difficulty for the trainee.",
+  chatbotBehaviorNotes:
+    "Free-form notes on how the avatar should speak or react that aren't covered by the persona controls in the next step — e.g. a specific phrase it should use or a topic it should avoid.",
+  otherDetails:
+    "Any additional context for the scenario itself (not the persona) that should be folded into the generated summary and title.",
+  personaStyle:
+    "The avatar's overall interpersonal posture during the conversation — how guarded, cooperative, or long-winded they'll be.",
+  personaEmotionalState:
+    "The avatar's emotional starting point when the chat opens. It can shift over the conversation, but this sets the tone at turn one.",
+  personaTrustLevel:
+    "How much the avatar trusts the trainee at the outset. Lower trust means they volunteer less unprompted and need more careful questioning.",
+  personaCommunicationStyle:
+    "How the avatar phrases things — short and clipped versus detailed and narrative. This shapes sentence length and structure in every reply.",
+  personaPrimaryConcern:
+    "The avatar's main underlying worry driving their responses, even when it isn't stated outright.",
+  personaNotes:
+    "Any additional persona details — speech habits, background, specific things they will or won't say — not covered by the selections above.",
+};

@@ -85,6 +85,7 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
+i2st-netlify-demo.zip
 
 # Gatsby files
 .cache/
