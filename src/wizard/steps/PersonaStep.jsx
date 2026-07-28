@@ -14,6 +14,9 @@ function PersonaSelect({ label, value, options, otherValue, onChange, onOtherCha
     <label className="personaSelect">
       <span>{label}</span>
       <select value={value} onChange={(event) => onChange(event.target.value)}>
+        <option value="" disabled>
+          Select {label.toLowerCase()}
+        </option>
         {options.map((option) => (
           <option key={option}>{option}</option>
         ))}

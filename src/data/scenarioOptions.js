@@ -88,3 +88,18 @@ export const DEFAULT_FORM = {
   personaNotes: "",
   difficulty: "Expert",
 };
+
+export const NEW_SCENARIO_FORM = {
+  ...DEFAULT_FORM,
+  sourceScenarioMode: "auto",
+  chatbotRole: "",
+  competencyFocus: "",
+  competencyFocuses: [],
+  scenarioFactors: [],
+  scenarioComplexities: [],
+  personaStyle: "",
+  personaEmotionalState: "",
+  personaTrustLevel: "",
+  personaCommunicationStyle: "",
+  personaPrimaryConcern: "",
+};

@@ -12,6 +12,9 @@ export function RoleFocusStep({ form, updateForm, competencies }) {
       <label className="studioField">
         <span className="studioLabel">Chatbot Role*</span>
         <select value={form.chatbotRole} onChange={(event) => updateForm({ chatbotRole: event.target.value })}>
+          <option value="" disabled>
+            Select a role
+          </option>
           {CHATBOT_ROLES.map((role) => (
             <option key={role}>{role}</option>
           ))}

@@ -34,18 +34,31 @@ export function ScenarioWizard({
   onExport,
   onStartChat,
   onExitToHome,
+  creationMode,
 }) {
   const roleFocusValid = Boolean(formValue(form, "chatbotRole", "chatbotRoleOther")) && competencies.length > 0;
-  const canAdvanceFrom = { 0: true, 1: roleFocusValid, 2: true, 3: true, 4: true };
-  const isLastStep = step === STEPS.length - 1;
+  const detailsValid = isManualSource || form.scenarioFactors.length > 0;
+  const personaValid = [
+    formValue(form, "personaStyle", "personaStyleOther"),
+    formValue(form, "personaEmotionalState", "personaEmotionalStateOther"),
+    formValue(form, "personaTrustLevel", "personaTrustLevelOther"),
+    formValue(form, "personaCommunicationStyle", "personaCommunicationStyleOther"),
+    formValue(form, "personaPrimaryConcern", "personaPrimaryConcernOther"),
+  ].every(Boolean);
+  const canAdvanceFrom = { 0: true, 1: roleFocusValid, 2: detailsValid, 3: personaValid, 4: true };
+  const visibleSteps = STEPS.map((item, index) => ({ ...item, index })).filter(
+    (item) => creationMode !== "new" || item.key !== "source"
+  );
+  const currentPosition = Math.max(0, visibleSteps.findIndex((item) => item.index === step));
+  const isLastStep = currentPosition === visibleSteps.length - 1;
 
   function goBack() {
-    setStep((current) => Math.max(0, current - 1));
+    setStep(visibleSteps[Math.max(0, currentPosition - 1)].index);
   }
 
   function goNext() {
     if (!canAdvanceFrom[step]) return;
-    setStep((current) => Math.min(STEPS.length - 1, current + 1));
+    setStep(visibleSteps[Math.min(visibleSteps.length - 1, currentPosition + 1)].index);
   }
 
   return (
@@ -57,13 +70,13 @@ export function ScenarioWizard({
               <Home size={16} />
             </button>
             <ol className="wizardStepper">
-              {STEPS.map((item, index) => (
+              {visibleSteps.map((item, position) => (
                 <li
                   key={item.key}
-                  className={`wizardStepperItem ${index === step ? "active" : ""} ${index < step ? "done" : ""}`}
-                  onClick={() => index < step && setStep(index)}
+                  className={`wizardStepperItem ${item.index === step ? "active" : ""} ${position < currentPosition ? "done" : ""}`}
+                  onClick={() => position < currentPosition && setStep(item.index)}
                 >
-                  <span className="wizardStepperDot">{index < step ? <Check size={12} /> : index + 1}</span>
+                  <span className="wizardStepperDot">{position < currentPosition ? <Check size={12} /> : position + 1}</span>
                   <span className="wizardStepperLabel">{item.label}</span>
                 </li>
               ))}
@@ -71,7 +84,7 @@ export function ScenarioWizard({
           </header>
 
           <div className="wizardCard">
-            {step === 0 && <SourceStep form={form} updateForm={updateForm} catalog={catalog} source={source} isManualSource={isManualSource} />}
+            {step === 0 && <SourceStep updateForm={updateForm} catalog={catalog} source={source} />}
             {step === 1 && <RoleFocusStep form={form} updateForm={updateForm} competencies={competencies} />}
             {step === 2 && <DetailsStep form={form} updateForm={updateForm} isManualSource={isManualSource} />}
             {step === 3 && <PersonaStep form={form} updateForm={updateForm} />}
@@ -91,7 +104,7 @@ export function ScenarioWizard({
 
             {!isLastStep && (
               <div className="wizardFooter">
-                <button className="secondaryButton" type="button" onClick={goBack} disabled={step === 0}>
+                <button className="secondaryButton" type="button" onClick={goBack} disabled={currentPosition === 0}>
                   <ChevronLeft size={16} />
                   <span>Back</span>
                 </button>

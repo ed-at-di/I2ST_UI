@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, Plus, Trash2 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Library, Plus, Trash2 } from "lucide-react";
 import { assignedScenariosFromCatalog } from "../data/dummyAssignedScenarioData.js";
 import { DUMMY_STATS, DUMMY_USER, dummyLastRun } from "../data/dummyHomeData.js";
 
@@ -36,7 +36,17 @@ function ScenarioTable({ scenarios, loading, emptyText, activityHeading, activit
   );
 }
 
-export function HomeScreen({ scenarios, loading, onCreateNew, onOpenScenario, onOpenAssignedScenario, draft, onResumeDraft, onDeleteDraft }) {
+export function HomeScreen({
+  scenarios,
+  loading,
+  onCreateNew,
+  onCreateFromExisting,
+  onOpenScenario,
+  onOpenAssignedScenario,
+  draft,
+  onResumeDraft,
+  onDeleteDraft,
+}) {
   const initial = DUMMY_USER.name.trim().slice(0, 1).toUpperCase();
   const recents = scenarios.slice(0, RECENTS_LIMIT);
   const assignedScenarios = assignedScenariosFromCatalog(scenarios);
@@ -70,12 +80,18 @@ export function HomeScreen({ scenarios, loading, onCreateNew, onOpenScenario, on
           <p className="eyebrow">I2ST Scenario Studio</p>
           <h1>Build and run roleplay training scenarios</h1>
           <p className="homeHeroSubtitle">
-            Start a brand-new scenario from scratch, or pick up one that's already been built below.
+            Start with a blank scenario or use an existing scenario as the foundation.
           </p>
-          <button className="primaryButton homeCreateButton" type="button" onClick={onCreateNew}>
-            <Plus size={18} />
-            <span>Create New Scenario</span>
-          </button>
+          <div className="homeCreateActions">
+            <button className="primaryButton homeCreateButton" type="button" onClick={onCreateNew}>
+              <Plus size={18} />
+              <span>Create New</span>
+            </button>
+            <button className="secondaryButton homeCreateButton" type="button" onClick={onCreateFromExisting}>
+              <Library size={18} />
+              <span>Create from Existing</span>
+            </button>
+          </div>
         </section>
 
         {draft && (

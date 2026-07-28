@@ -5,7 +5,7 @@ import { RuntimeChatScreen } from "./chatbot-ui/RuntimeChatScreen.jsx";
 import { AppHeader } from "./components/AppHeader.jsx";
 import { HomeScreen } from "./screens/HomeScreen.jsx";
 import { ScenarioWizard, STEPS } from "./wizard/ScenarioWizard.jsx";
-import { DEFAULT_FORM } from "./data/scenarioOptions.js";
+import { DEFAULT_FORM, NEW_SCENARIO_FORM } from "./data/scenarioOptions.js";
 import { demoApi, demoUiApi } from "./demo/demoApi.js";
 import {
   competencyDetails,
@@ -72,6 +72,7 @@ function App() {
   const [input, setInput] = useState("");
   const [view, setView] = useState("home"); // "home" | "wizard" | "runtime"
   const [wizardStep, setWizardStep] = useState(0);
+  const [creationMode, setCreationMode] = useState("new"); // "new" | "existing"
   const [draftActive, setDraftActive] = useState(false);
   const [busy, setBusy] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -248,10 +249,11 @@ function App() {
     }
   }
 
-  function resetForm() {
+  function resetForm(overrides = {}) {
     setForm({
       ...DEFAULT_FORM,
       curriculumScenarioId: catalog.curriculumScenarios?.[0]?.curriculum_scenario_id || "",
+      ...overrides,
     });
     setScenario(null);
     setSession(null);
@@ -261,7 +263,16 @@ function App() {
   }
 
   function startNewScenario() {
-    resetForm();
+    resetForm(NEW_SCENARIO_FORM);
+    setCreationMode("new");
+    setWizardStep(1);
+    setDraftActive(true);
+    setView("wizard");
+  }
+
+  function startFromExistingScenario() {
+    resetForm({ sourceScenarioMode: "manual" });
+    setCreationMode("existing");
     setWizardStep(0);
     setDraftActive(true);
     setView("wizard");
@@ -269,6 +280,7 @@ function App() {
 
   function openOldScenario(item) {
     resetForm();
+    setCreationMode("existing");
     setScenario(scenarioFromCatalogItem(item));
     setWizardStep(4);
     setDraftActive(true);
@@ -322,11 +334,13 @@ function App() {
   }
 
   const draftRoleLabel = (form.chatbotRole === "Other" ? form.chatbotRoleOther : form.chatbotRole) || "Scenario";
+  const draftSteps = creationMode === "new" ? STEPS.filter((item) => item.key !== "source") : STEPS;
+  const draftStepIndex = Math.max(0, draftSteps.findIndex((item) => item.key === STEPS[wizardStep]?.key));
   const draft = draftActive
     ? {
         title: scenario?.title || preview.scenarioTitle || `${draftRoleLabel}: Draft Scenario`,
         role: scenario?.role || draftRoleLabel,
-        stepLabel: session ? "In chat" : `Step ${wizardStep + 1} of ${STEPS.length} · ${STEPS[wizardStep]?.label}`,
+        stepLabel: session ? "In chat" : `Step ${draftStepIndex + 1} of ${draftSteps.length} · ${STEPS[wizardStep]?.label}`,
       }
     : null;
 
@@ -372,6 +386,7 @@ function App() {
         onExport={exportScenarioExcel}
         onStartChat={startSession}
         onExitToHome={returnHome}
+        creationMode={creationMode}
       />
     );
   } else {
@@ -380,6 +395,7 @@ function App() {
         scenarios={catalog.scenarios || []}
         loading={loading}
         onCreateNew={startNewScenario}
+        onCreateFromExisting={startFromExistingScenario}
         onOpenScenario={openOldScenario}
         onOpenAssignedScenario={openAssignedScenario}
         draft={draft}
