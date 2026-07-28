@@ -1,11 +1,45 @@
 import { ArrowRight, ArrowUpRight, Plus, Trash2 } from "lucide-react";
+import { assignedScenariosFromCatalog } from "../data/dummyAssignedScenarioData.js";
 import { DUMMY_STATS, DUMMY_USER, dummyLastRun } from "../data/dummyHomeData.js";
 
 const RECENTS_LIMIT = 8;
 
+function ScenarioTable({ scenarios, loading, emptyText, activityHeading, activityLabel, onOpenScenario }) {
+  if (loading) return <p className="homeEmptyState">Loading scenarios…</p>;
+  if (!scenarios.length) return <p className="homeEmptyState">{emptyText}</p>;
+
+  return (
+    <div className="recentsTableWrap">
+      <table className="recentsTable">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Role</th>
+            <th>{activityHeading}</th>
+            <th aria-hidden="true"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {scenarios.map((item, index) => (
+            <tr key={item.assignmentId || item.scenario_id} onClick={() => onOpenScenario(item)}>
+              <td className="recentsTitleCell">{item.title}</td>
+              <td>{item.role || "—"}</td>
+              <td className="recentsLastRun">{activityLabel(item, index)}</td>
+              <td className="recentsOpenCell">
+                <ArrowUpRight size={16} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 export function HomeScreen({ scenarios, loading, onCreateNew, onOpenScenario, draft, onResumeDraft, onDeleteDraft }) {
   const initial = DUMMY_USER.name.trim().slice(0, 1).toUpperCase();
   const recents = scenarios.slice(0, RECENTS_LIMIT);
+  const assignedScenarios = assignedScenariosFromCatalog(scenarios);
 
   return (
     <div className="homeScreen">
@@ -74,36 +108,34 @@ export function HomeScreen({ scenarios, loading, onCreateNew, onOpenScenario, dr
           </section>
         )}
 
+        <section className="homeScenarios assignedScenarios">
+          <div className="homeSectionHeading">
+            <div>
+              <h2>Assigned Scenarios</h2>
+              <p>Scenarios selected for your upcoming training.</p>
+            </div>
+            <span>{assignedScenarios.length} assigned</span>
+          </div>
+          <ScenarioTable
+            scenarios={assignedScenarios}
+            loading={loading}
+            emptyText="No scenarios are currently assigned."
+            activityHeading="Assigned"
+            activityLabel={(item) => item.activityLabel}
+            onOpenScenario={onOpenScenario}
+          />
+        </section>
+
         <section className="homeScenarios">
           <h2>Recent Scenarios</h2>
-          {loading && <p className="homeEmptyState">Loading scenarios…</p>}
-          {!loading && recents.length === 0 && <p className="homeEmptyState">No scenarios yet — create your first one above.</p>}
-          {!loading && recents.length > 0 && (
-            <div className="recentsTableWrap">
-              <table className="recentsTable">
-                <thead>
-                  <tr>
-                    <th>Scenario</th>
-                    <th>Role</th>
-                    <th>Last Run</th>
-                    <th aria-hidden="true"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {recents.map((item, index) => (
-                    <tr key={item.scenario_id} onClick={() => onOpenScenario(item)}>
-                      <td className="recentsTitleCell">{item.title}</td>
-                      <td>{item.role || "—"}</td>
-                      <td className="recentsLastRun">{dummyLastRun(index)}</td>
-                      <td className="recentsOpenCell">
-                        <ArrowUpRight size={16} />
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
+          <ScenarioTable
+            scenarios={recents}
+            loading={loading}
+            emptyText="No scenarios yet — create your first one above."
+            activityHeading="Last Run"
+            activityLabel={(_, index) => dummyLastRun(index)}
+            onOpenScenario={onOpenScenario}
+          />
         </section>
       </div>
     </div>
