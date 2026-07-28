@@ -1559,9 +1559,20 @@ textarea:focus {
 
 .wizardShell {
   width: 100%;
-  max-width: 940px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 28px 24px 48px;
+}
+
+.wizardWorkspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 410px);
+  align-items: start;
+  gap: 24px;
+}
+
+.wizardBuilderColumn {
+  min-width: 0;
   display: grid;
   gap: 22px;
 }
@@ -1668,6 +1679,170 @@ textarea:focus {
   overflow: hidden;
 }
 
+.livePreviewPanel {
+  position: sticky;
+  top: 70px;
+  max-height: calc(100vh - 94px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  border: 1px solid #cfdde2;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(35, 56, 70, 0.1);
+  overflow: hidden;
+}
+
+.livePreviewHeader {
+  padding: 20px 20px 18px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid #dce6e9;
+  background: linear-gradient(135deg, #f3fbfc 0%, #ffffff 72%);
+}
+
+.livePreviewHeader h2 {
+  margin: 8px 0 0;
+  color: #1f2b36;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.livePreviewEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #078da2;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.livePreviewState {
+  flex: none;
+  padding: 6px 9px;
+  border: 1px solid #bcdce2;
+  border-radius: 999px;
+  background: #eaf7f9;
+  color: #087f92;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.livePreviewState.generated {
+  border-color: #b9ddcd;
+  background: #edf9f3;
+  color: #167156;
+}
+
+.livePreviewBody {
+  min-height: 0;
+  padding: 16px;
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  overflow-y: auto;
+  background: #f5f8f9;
+}
+
+.livePreviewBlock {
+  padding: 14px;
+  display: grid;
+  gap: 9px;
+  border: 1px solid #dce5e9;
+  border-left: 4px solid #c6d2d7;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.livePreviewBlock.complete {
+  border-left-color: #0d94a9;
+}
+
+.livePreviewBlockHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.livePreviewBlockHeader > span:first-child {
+  color: #65727d;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.livePreviewBlockStatus {
+  width: 20px;
+  height: 20px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #edf1f3;
+  color: #8d9aa4;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.livePreviewBlock.complete .livePreviewBlockStatus {
+  background: #e3f4f6;
+  color: #078da2;
+}
+
+.livePreviewBlock strong {
+  color: #26333e;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.livePreviewBlock p {
+  margin: 0;
+  color: #66737f;
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.livePreviewBlock > p:not(.livePreviewNote) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+.livePreviewTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.livePreviewTags span {
+  padding: 5px 8px;
+  border: 1px solid #d9e4e8;
+  border-radius: 999px;
+  background: #f7fafb;
+  color: #53616c;
+  font-size: 11.5px;
+  font-weight: 800;
+}
+
+.livePreviewBlock .livePreviewEmpty {
+  color: #929da6;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.livePreviewBlock .livePreviewNote {
+  padding-top: 8px;
+  border-top: 1px solid #edf1f3;
+}
+
 .wizardStepBody {
   padding: 30px 32px 10px;
   display: grid;
@@ -1693,17 +1868,48 @@ textarea:focus {
 }
 
 .reviewStepBody {
-  padding: 26px 0 0;
+  padding: 30px 32px 10px;
 }
 
-.reviewStepBody .previewHeading,
-.reviewStepBody .wizardStepIntro {
-  padding-left: 32px;
-  padding-right: 32px;
+.reviewReadiness {
+  margin-top: 12px;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+  border: 1px solid #dce5e9;
+  border-radius: 8px;
+  background: #f8fafb;
+  color: #85919a;
 }
 
-.reviewStepBody .previewScroll {
-  max-height: 520px;
+.reviewReadiness.ready {
+  border-color: #b9ddcd;
+  background: #f1faf6;
+  color: #167156;
+}
+
+.reviewReadiness strong {
+  display: block;
+  color: #26333e;
+  font-size: 15px;
+}
+
+.reviewReadiness p {
+  margin: 4px 0 0;
+  color: #65727d;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.reviewReadiness span {
+  display: block;
+  margin-top: 9px;
+  color: #078da2;
+  font-size: 12.5px;
+  font-weight: 900;
 }
 
 .wizardFooter {
@@ -1718,13 +1924,27 @@ textarea:focus {
 
 .reviewActions {
   justify-content: flex-start;
-  padding: 20px 32px;
+  margin-top: 18px;
+  padding: 20px 0 8px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
 }
 
 @media (max-width: 960px) {
+  .wizardWorkspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .livePreviewPanel {
+    position: static;
+    max-height: none;
+  }
+
+  .livePreviewBody {
+    overflow: visible;
+  }
+
   .homeScreen {
     grid-template-columns: minmax(0, 1fr);
   }

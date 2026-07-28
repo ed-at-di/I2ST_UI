@@ -4,6 +4,7 @@ import { RoleFocusStep } from "./steps/RoleFocusStep.jsx";
 import { DetailsStep } from "./steps/DetailsStep.jsx";
 import { PersonaStep } from "./steps/PersonaStep.jsx";
 import { ReviewStep } from "./steps/ReviewStep.jsx";
+import { ScenarioPreviewPanel } from "./ScenarioPreviewPanel.jsx";
 import { formValue } from "../lib/scenarioHelpers.js";
 
 export const STEPS = [
@@ -49,65 +50,78 @@ export function ScenarioWizard({
 
   return (
     <div className="wizardShell">
-      <header className="wizardHeader">
-        <button className="wizardHomeButton" type="button" onClick={onExitToHome} title="Back to Home" aria-label="Back to Home">
-          <Home size={16} />
-        </button>
-        <ol className="wizardStepper">
-          {STEPS.map((item, index) => (
-            <li
-              key={item.key}
-              className={`wizardStepperItem ${index === step ? "active" : ""} ${index < step ? "done" : ""}`}
-              onClick={() => index < step && setStep(index)}
-            >
-              <span className="wizardStepperDot">{index < step ? <Check size={12} /> : index + 1}</span>
-              <span className="wizardStepperLabel">{item.label}</span>
-            </li>
-          ))}
-        </ol>
-      </header>
+      <main className="wizardWorkspace">
+        <section className="wizardBuilderColumn">
+          <header className="wizardHeader">
+            <button className="wizardHomeButton" type="button" onClick={onExitToHome} title="Back to Home" aria-label="Back to Home">
+              <Home size={16} />
+            </button>
+            <ol className="wizardStepper">
+              {STEPS.map((item, index) => (
+                <li
+                  key={item.key}
+                  className={`wizardStepperItem ${index === step ? "active" : ""} ${index < step ? "done" : ""}`}
+                  onClick={() => index < step && setStep(index)}
+                >
+                  <span className="wizardStepperDot">{index < step ? <Check size={12} /> : index + 1}</span>
+                  <span className="wizardStepperLabel">{item.label}</span>
+                </li>
+              ))}
+            </ol>
+          </header>
 
-      <div className="wizardCard">
-        {step === 0 && <SourceStep form={form} updateForm={updateForm} catalog={catalog} source={source} isManualSource={isManualSource} />}
-        {step === 1 && <RoleFocusStep form={form} updateForm={updateForm} competencies={competencies} />}
-        {step === 2 && <DetailsStep form={form} updateForm={updateForm} isManualSource={isManualSource} />}
-        {step === 3 && <PersonaStep form={form} updateForm={updateForm} />}
-        {step === 4 && (
-          <ReviewStep
-            scenario={scenario}
-            preview={preview}
-            isManualSource={isManualSource}
-            status={status}
-            error={error}
-            busy={busy}
-            loading={loading}
-            onRegenerate={onRegenerate}
-            onExport={onExport}
-            onStartChat={onStartChat}
-          />
-        )}
+          <div className="wizardCard">
+            {step === 0 && <SourceStep form={form} updateForm={updateForm} catalog={catalog} source={source} isManualSource={isManualSource} />}
+            {step === 1 && <RoleFocusStep form={form} updateForm={updateForm} competencies={competencies} />}
+            {step === 2 && <DetailsStep form={form} updateForm={updateForm} isManualSource={isManualSource} />}
+            {step === 3 && <PersonaStep form={form} updateForm={updateForm} />}
+            {step === 4 && (
+              <ReviewStep
+                scenario={scenario}
+                isManualSource={isManualSource}
+                status={status}
+                error={error}
+                busy={busy}
+                loading={loading}
+                onRegenerate={onRegenerate}
+                onExport={onExport}
+                onStartChat={onStartChat}
+              />
+            )}
 
-        {!isLastStep && (
-          <div className="wizardFooter">
-            <button className="secondaryButton" type="button" onClick={goBack} disabled={step === 0}>
-              <ChevronLeft size={16} />
-              <span>Back</span>
-            </button>
-            <button className="primaryButton" type="button" onClick={goNext} disabled={!canAdvanceFrom[step]}>
-              <span>Next</span>
-              <ChevronRight size={16} />
-            </button>
+            {!isLastStep && (
+              <div className="wizardFooter">
+                <button className="secondaryButton" type="button" onClick={goBack} disabled={step === 0}>
+                  <ChevronLeft size={16} />
+                  <span>Back</span>
+                </button>
+                <button className="primaryButton" type="button" onClick={goNext} disabled={!canAdvanceFrom[step]}>
+                  <span>Next</span>
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+            )}
+            {isLastStep && (
+              <div className="wizardFooter">
+                <button className="secondaryButton" type="button" onClick={goBack}>
+                  <ChevronLeft size={16} />
+                  <span>Back</span>
+                </button>
+              </div>
+            )}
           </div>
-        )}
-        {isLastStep && (
-          <div className="wizardFooter">
-            <button className="secondaryButton" type="button" onClick={goBack}>
-              <ChevronLeft size={16} />
-              <span>Back</span>
-            </button>
-          </div>
-        )}
-      </div>
+        </section>
+
+        <ScenarioPreviewPanel
+          form={form}
+          catalog={catalog}
+          source={source}
+          isManualSource={isManualSource}
+          competencies={competencies}
+          scenario={scenario}
+          preview={preview}
+        />
+      </main>
     </div>
   );
 }
