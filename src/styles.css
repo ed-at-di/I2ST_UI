@@ -1874,6 +1874,18 @@ textarea:focus {
   color: #167156;
 }
 
+.livePreviewState.copy {
+  border-color: #e5c78c;
+  background: #fff7e6;
+  color: #8a6313;
+}
+
+.livePreviewState.copy.generated {
+  border-color: #b9ddcd;
+  background: #edf9f3;
+  color: #167156;
+}
+
 .livePreviewBody {
   min-height: 0;
   padding: 16px;
@@ -1882,6 +1894,38 @@ textarea:focus {
   gap: 12px;
   overflow-y: auto;
   background: #f5f8f9;
+}
+
+.livePreviewCopyNotice {
+  padding: 12px 13px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 9px;
+  border: 1px solid #ead6a9;
+  border-radius: 8px;
+  background: #fffaf0;
+  color: #8a6313;
+}
+
+.livePreviewCopyNotice.saved {
+  border-color: #b9ddcd;
+  background: #f1faf6;
+  color: #167156;
+}
+
+.livePreviewCopyNotice strong {
+  display: block;
+  color: #3d454c;
+  font-size: 12.5px;
+}
+
+.livePreviewCopyNotice p {
+  margin: 3px 0 0;
+  color: #707a83;
+  font-size: 11.8px;
+  font-weight: 650;
+  line-height: 1.45;
 }
 
 .livePreviewBlock {
@@ -1999,6 +2043,10 @@ textarea:focus {
 
 .reviewStepBody {
   padding: 30px 32px 10px;
+}
+
+.reviewStepBody .existingCopyBanner {
+  margin: 6px 0 12px;
 }
 
 .reviewReadiness {

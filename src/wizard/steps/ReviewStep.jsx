@@ -1,16 +1,39 @@
 import { CheckCircle2, CircleAlert, FileSpreadsheet, Play, RefreshCcw } from "lucide-react";
+import { ExistingCopyBanner } from "../ExistingCopyBanner.jsx";
 
-export function ReviewStep({ scenario, isManualSource, status, error, busy, loading, onRegenerate, onExport, onStartChat, copyMustBeSaved }) {
+export function ReviewStep({
+  scenario,
+  isManualSource,
+  status,
+  error,
+  busy,
+  loading,
+  onRegenerate,
+  onExport,
+  onStartChat,
+  copyMustBeSaved,
+  isExistingCopy,
+  copyName,
+  originalName,
+  copySaved,
+  copyDirty,
+  onCopyNameChange,
+  onSaveCopy,
+}) {
   return (
     <div className="wizardStepBody reviewStepBody">
       <h2>Review &amp; Launch</h2>
       <p className="wizardStepIntro">Review the assembled scenario on the right, then generate the final scenario packet and start the chat.</p>
 
-      {copyMustBeSaved && (
-        <div className="errorBanner copySaveReminder" role="status">
-          <CircleAlert size={17} />
-          <span>Save the renamed scenario copy above before generating or starting the chat.</span>
-        </div>
+      {isExistingCopy && (
+        <ExistingCopyBanner
+          copyName={copyName}
+          originalName={originalName}
+          saved={copySaved}
+          dirty={copyDirty}
+          onNameChange={onCopyNameChange}
+          onSave={onSaveCopy}
+        />
       )}
 
       {error && (

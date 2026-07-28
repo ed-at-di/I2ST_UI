@@ -1,4 +1,4 @@
-import { Check, Layers3 } from "lucide-react";
+import { Check, Copy, Layers3 } from "lucide-react";
 import { formValue, selectedList, sourceLabel } from "../lib/scenarioHelpers.js";
 
 function PreviewBlock({ label, complete, children }) {
@@ -26,7 +26,19 @@ function TagList({ values, emptyText }) {
   );
 }
 
-export function ScenarioPreviewPanel({ form, catalog, source, isManualSource, competencies, scenario, preview, scenarioName }) {
+export function ScenarioPreviewPanel({
+  form,
+  catalog,
+  source,
+  isManualSource,
+  competencies,
+  scenario,
+  preview,
+  scenarioName,
+  isExistingCopy,
+  copySaved,
+  originalName,
+}) {
   const role = formValue(form, "chatbotRole", "chatbotRoleOther");
   const factors = selectedList(form.scenarioFactors || [], form.otherFactor);
   const complexities = selectedList(form.scenarioComplexities || [], form.otherComplexity);
@@ -46,6 +58,7 @@ export function ScenarioPreviewPanel({ form, catalog, source, isManualSource, co
     (isManualSource
       ? source?.scenario_text
       : "The generated title, character, and scenario summary will appear here after the building blocks are reviewed.");
+  const stateLabel = scenario ? "Generated" : isExistingCopy ? (copySaved ? "Saved copy" : "Unsaved copy") : "Draft";
 
   return (
     <aside className="livePreviewPanel" aria-label="Live scenario preview">
@@ -57,10 +70,24 @@ export function ScenarioPreviewPanel({ form, catalog, source, isManualSource, co
           </span>
           <h2>{draftTitle}</h2>
         </div>
-        <span className={`livePreviewState ${scenario ? "generated" : ""}`}>{scenario ? "Generated" : "Draft"}</span>
+        <span className={`livePreviewState ${scenario ? "generated" : ""} ${isExistingCopy ? "copy" : ""}`}>{stateLabel}</span>
       </header>
 
       <div className="livePreviewBody">
+        {isExistingCopy && (
+          <div className={`livePreviewCopyNotice ${copySaved ? "saved" : ""}`}>
+            <Copy size={16} />
+            <div>
+              <strong>{copySaved ? "New copy saved" : "Changes will create a new copy"}</strong>
+              <p>
+                {copySaved
+                  ? "Continue to generate the final scenario packet."
+                  : `The original “${originalName || "library scenario"}” stays unchanged. Rename and save this copy in Review & Launch.`}
+              </p>
+            </div>
+          </div>
+        )}
+
         <PreviewBlock label="Source" complete={Boolean(sourceTitle)}>
           <strong>{sourceTitle}</strong>
           <p>

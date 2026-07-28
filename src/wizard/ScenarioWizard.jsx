@@ -5,7 +5,6 @@ import { DetailsStep } from "./steps/DetailsStep.jsx";
 import { PersonaStep } from "./steps/PersonaStep.jsx";
 import { ReviewStep } from "./steps/ReviewStep.jsx";
 import { ScenarioPreviewPanel } from "./ScenarioPreviewPanel.jsx";
-import { ExistingCopyBanner } from "./ExistingCopyBanner.jsx";
 import { formValue } from "../lib/scenarioHelpers.js";
 
 export const STEPS = [
@@ -90,17 +89,6 @@ export function ScenarioWizard({
             </ol>
           </header>
 
-          {creationMode === "existing" && (
-            <ExistingCopyBanner
-              copyName={existingCopyName}
-              originalName={existingOriginalName}
-              saved={existingCopySaved}
-              dirty={existingCopyDirty}
-              onNameChange={onExistingCopyNameChange}
-              onSave={onSaveExistingCopy}
-            />
-          )}
-
           <div className="wizardCard">
             {step === 0 && <SourceStep updateForm={updateForm} catalog={catalog} source={source} />}
             {step === 1 && <RoleFocusStep form={form} updateForm={updateForm} competencies={competencies} />}
@@ -117,7 +105,14 @@ export function ScenarioWizard({
                 onRegenerate={onRegenerate}
                 onExport={onExport}
                 onStartChat={onStartChat}
-                copyMustBeSaved={!existingCopySaved}
+                copyMustBeSaved={creationMode === "existing" && !existingCopySaved}
+                isExistingCopy={creationMode === "existing"}
+                copyName={existingCopyName}
+                originalName={existingOriginalName}
+                copySaved={existingCopySaved}
+                copyDirty={existingCopyDirty}
+                onCopyNameChange={onExistingCopyNameChange}
+                onSaveCopy={onSaveExistingCopy}
               />
             )}
 
@@ -153,6 +148,9 @@ export function ScenarioWizard({
           scenario={scenario}
           preview={preview}
           scenarioName={creationMode === "existing" ? existingCopyName : ""}
+          isExistingCopy={creationMode === "existing"}
+          copySaved={existingCopySaved}
+          originalName={existingOriginalName}
         />
       </main>
     </div>
