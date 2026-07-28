@@ -1,32 +1,43 @@
-import { ArrowRight, ArrowUpRight, Library, Plus, Trash2 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Library, Play, Plus, Trash2 } from "lucide-react";
 import { assignedScenariosFromCatalog } from "../data/dummyAssignedScenarioData.js";
 import { DUMMY_STATS, DUMMY_USER, dummyLastRun } from "../data/dummyHomeData.js";
 
 const RECENTS_LIMIT = 8;
 
-function ScenarioTable({ scenarios, loading, emptyText, activityHeading, activityLabel, onOpenScenario }) {
+function ScenarioTable({ scenarios, loading, emptyText, activityHeading, activityLabel, onOpenScenario, launchAction = false }) {
   if (loading) return <p className="homeEmptyState">Loading scenarios…</p>;
   if (!scenarios.length) return <p className="homeEmptyState">{emptyText}</p>;
 
   return (
     <div className="recentsTableWrap">
-      <table className="recentsTable">
+      <table className={`recentsTable ${launchAction ? "assignedScenarioTable" : ""}`}>
         <thead>
           <tr>
             <th>Scenario</th>
             <th>Role</th>
-            <th>{activityHeading}</th>
-            <th aria-hidden="true"></th>
+            {!launchAction && <th>{activityHeading}</th>}
+            <th aria-label="Action"></th>
           </tr>
         </thead>
         <tbody>
           {scenarios.map((item, index) => (
-            <tr key={item.assignmentId || item.scenario_id} onClick={() => onOpenScenario(item)}>
+            <tr
+              key={item.assignmentId || item.scenario_id}
+              className={launchAction ? "assignedScenarioRow" : ""}
+              onClick={launchAction ? undefined : () => onOpenScenario(item)}
+            >
               <td className="recentsTitleCell">{item.title}</td>
               <td>{item.role || "—"}</td>
-              <td className="recentsLastRun">{activityLabel(item, index)}</td>
-              <td className="recentsOpenCell">
-                <ArrowUpRight size={16} />
+              {!launchAction && <td className="recentsLastRun">{activityLabel(item, index)}</td>}
+              <td className={launchAction ? "assignedLaunchCell" : "recentsOpenCell"}>
+                {launchAction ? (
+                  <button className="assignedLaunchButton" type="button" onClick={() => onOpenScenario(item)}>
+                    <Play size={14} />
+                    <span>Launch Scenario</span>
+                  </button>
+                ) : (
+                  <ArrowUpRight size={16} />
+                )}
               </td>
             </tr>
           ))}
@@ -136,9 +147,8 @@ export function HomeScreen({
             scenarios={assignedScenarios}
             loading={loading}
             emptyText="No scenarios are currently assigned."
-            activityHeading="Assigned"
-            activityLabel={(item) => item.activityLabel}
             onOpenScenario={onOpenAssignedScenario}
+            launchAction
           />
         </section>
 
