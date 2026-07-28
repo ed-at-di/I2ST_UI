@@ -321,17 +321,6 @@ function App() {
     setView("wizard");
   }
 
-  function openOldScenario(item) {
-    resetForm();
-    setCreationMode("existing");
-    prepareExistingCopy(item.title || "Scenario");
-    setScenario(scenarioFromCatalogItem(item));
-    setWizardStep(4);
-    setDraftActive(true);
-    setView("wizard");
-    setStatus("");
-  }
-
   async function openAssignedScenario(item) {
     const activeScenario = scenarioFromCatalogItem(item);
     setBusy(true);
@@ -469,7 +458,6 @@ function App() {
         loading={loading}
         onCreateNew={startNewScenario}
         onCreateFromExisting={startFromExistingScenario}
-        onOpenScenario={openOldScenario}
         onOpenAssignedScenario={openAssignedScenario}
         draft={draft}
         onResumeDraft={resumeDraft}
