@@ -127,9 +127,10 @@ function buildScenario(payload, generatedRows, curriculumRows) {
     clean(seed.scenario_summary) ||
     `${role} reports a workplace concern involving ${factors.join(", ") || "professional conduct"} and wants a clear, fair response.`;
   const title =
-    source && clean(source.subcategory || source.category)
+    clean(payload.scenarioName) ||
+    (source && clean(source.subcategory || source.category)
       ? `${role} Response: ${clean(source.subcategory || source.category)}`
-      : clean(seed.title) || `${role}: Workplace Concern`;
+      : clean(seed.title) || `${role}: Workplace Concern`);
   const persona = {
     style: formValue(payload, "personaStyle", "personaStyleOther") || clean(seed.persona_style),
     emotional_state:

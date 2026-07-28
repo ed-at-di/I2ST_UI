@@ -15,6 +15,7 @@ import {
   previewFromFormOrScenario,
   scenarioFromCatalogItem,
   selectedCompetencies,
+  sourceLabel,
   writeScenarioWorkbook,
 } from "./lib/scenarioHelpers.js";
 import "./styles.css";
@@ -73,6 +74,10 @@ function App() {
   const [view, setView] = useState("home"); // "home" | "wizard" | "runtime"
   const [wizardStep, setWizardStep] = useState(0);
   const [creationMode, setCreationMode] = useState("new"); // "new" | "existing"
+  const [existingOriginalName, setExistingOriginalName] = useState("");
+  const [existingCopyName, setExistingCopyName] = useState("");
+  const [existingCopySaved, setExistingCopySaved] = useState(false);
+  const [existingCopyDirty, setExistingCopyDirty] = useState(false);
   const [draftActive, setDraftActive] = useState(false);
   const [busy, setBusy] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -85,7 +90,29 @@ function App() {
   const isManualSource = form.sourceScenarioMode === "manual";
   const competencies = selectedCompetencies(form);
 
+  function suggestedCopyName(originalName) {
+    return `${originalName || "Scenario"} 02`;
+  }
+
+  function prepareExistingCopy(originalName) {
+    setExistingOriginalName(originalName);
+    setExistingCopyName(suggestedCopyName(originalName));
+    setExistingCopySaved(false);
+    setExistingCopyDirty(false);
+  }
+
   function updateForm(patch) {
+    if (creationMode === "existing" && view === "wizard") {
+      if (patch.curriculumScenarioId) {
+        const selectedSource = catalog.curriculumScenarios.find(
+          (item) => item.curriculum_scenario_id === patch.curriculumScenarioId
+        );
+        prepareExistingCopy(sourceLabel(selectedSource, catalog.curriculumScenarios));
+      } else {
+        setExistingCopySaved(false);
+        setExistingCopyDirty(true);
+      }
+    }
     setForm((current) => ({ ...current, ...patch }));
     setScenario(null);
     setSession(null);
@@ -140,14 +167,24 @@ function App() {
       competencyFocuses: focusTitles,
       competencyFocusDetails: competencyDetails(focusTitles),
       curriculumScenarioId: isManualSource ? form.curriculumScenarioId || source?.curriculum_scenario_id || "" : "",
+      scenarioName: creationMode === "existing" ? existingCopyName.trim() : "",
     };
   }
 
   async function requestScenarioPacket() {
-    return uiApi("/scenarios/generate", {
+    const result = await uiApi("/scenarios/generate", {
       method: "POST",
       body: JSON.stringify(payloadFromForm()),
     });
+    if (creationMode !== "existing" || !existingCopyName.trim()) return result;
+    return {
+      ...result,
+      title: existingCopyName.trim(),
+      preview: {
+        ...(result.preview || {}),
+        scenarioTitle: existingCopyName.trim(),
+      },
+    };
   }
 
   async function generateScenario() {
@@ -265,14 +302,20 @@ function App() {
   function startNewScenario() {
     resetForm(NEW_SCENARIO_FORM);
     setCreationMode("new");
+    setExistingOriginalName("");
+    setExistingCopyName("");
+    setExistingCopySaved(false);
+    setExistingCopyDirty(false);
     setWizardStep(1);
     setDraftActive(true);
     setView("wizard");
   }
 
   function startFromExistingScenario() {
+    const initialSource = catalog.curriculumScenarios[0];
     resetForm({ sourceScenarioMode: "manual" });
     setCreationMode("existing");
+    prepareExistingCopy(sourceLabel(initialSource, catalog.curriculumScenarios));
     setWizardStep(0);
     setDraftActive(true);
     setView("wizard");
@@ -281,6 +324,7 @@ function App() {
   function openOldScenario(item) {
     resetForm();
     setCreationMode("existing");
+    prepareExistingCopy(item.title || "Scenario");
     setScenario(scenarioFromCatalogItem(item));
     setWizardStep(4);
     setDraftActive(true);
@@ -302,6 +346,25 @@ function App() {
     } finally {
       setBusy(false);
     }
+  }
+
+  function updateExistingCopyName(value) {
+    setExistingCopyName(value);
+    setExistingCopySaved(false);
+    setExistingCopyDirty(true);
+    setScenario(null);
+    setSession(null);
+    setMessages([]);
+    setStatus("");
+  }
+
+  function saveExistingCopy() {
+    const name = existingCopyName.trim();
+    if (!name || name === existingOriginalName.trim()) return;
+    setExistingCopyName(name);
+    setExistingCopySaved(true);
+    setExistingCopyDirty(false);
+    setStatus(`Saved as “${name}”`);
   }
 
   function returnHome() {
@@ -338,7 +401,11 @@ function App() {
   const draftStepIndex = Math.max(0, draftSteps.findIndex((item) => item.key === STEPS[wizardStep]?.key));
   const draft = draftActive
     ? {
-        title: scenario?.title || preview.scenarioTitle || `${draftRoleLabel}: Draft Scenario`,
+        title:
+          scenario?.title ||
+          (creationMode === "existing" ? existingCopyName : "") ||
+          preview.scenarioTitle ||
+          `${draftRoleLabel}: Draft Scenario`,
         role: scenario?.role || draftRoleLabel,
         stepLabel: session ? "In chat" : `Step ${draftStepIndex + 1} of ${draftSteps.length} · ${STEPS[wizardStep]?.label}`,
       }
@@ -387,6 +454,12 @@ function App() {
         onStartChat={startSession}
         onExitToHome={returnHome}
         creationMode={creationMode}
+        existingCopyName={existingCopyName}
+        existingOriginalName={existingOriginalName}
+        existingCopySaved={existingCopySaved}
+        existingCopyDirty={existingCopyDirty}
+        onExistingCopyNameChange={updateExistingCopyName}
+        onSaveExistingCopy={saveExistingCopy}
       />
     );
   } else {

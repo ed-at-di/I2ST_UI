@@ -26,7 +26,7 @@ function TagList({ values, emptyText }) {
   );
 }
 
-export function ScenarioPreviewPanel({ form, catalog, source, isManualSource, competencies, scenario, preview }) {
+export function ScenarioPreviewPanel({ form, catalog, source, isManualSource, competencies, scenario, preview, scenarioName }) {
   const role = formValue(form, "chatbotRole", "chatbotRoleOther");
   const factors = selectedList(form.scenarioFactors || [], form.otherFactor);
   const complexities = selectedList(form.scenarioComplexities || [], form.otherComplexity);
@@ -40,7 +40,7 @@ export function ScenarioPreviewPanel({ form, catalog, source, isManualSource, co
   const sourceTitle = isManualSource
     ? sourceLabel(source, catalog.curriculumScenarios || [])
     : "Create from selected building blocks";
-  const draftTitle = scenario?.title || (role ? `${role}: Workplace Concern` : "Untitled Scenario");
+  const draftTitle = scenario?.title || scenarioName || (role ? `${role}: Workplace Concern` : "Untitled Scenario");
   const draftSummary =
     scenario?.summary ||
     (isManualSource

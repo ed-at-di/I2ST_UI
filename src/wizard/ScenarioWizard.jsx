@@ -5,6 +5,7 @@ import { DetailsStep } from "./steps/DetailsStep.jsx";
 import { PersonaStep } from "./steps/PersonaStep.jsx";
 import { ReviewStep } from "./steps/ReviewStep.jsx";
 import { ScenarioPreviewPanel } from "./ScenarioPreviewPanel.jsx";
+import { ExistingCopyBanner } from "./ExistingCopyBanner.jsx";
 import { formValue } from "../lib/scenarioHelpers.js";
 
 export const STEPS = [
@@ -35,6 +36,12 @@ export function ScenarioWizard({
   onStartChat,
   onExitToHome,
   creationMode,
+  existingCopyName,
+  existingOriginalName,
+  existingCopySaved,
+  existingCopyDirty,
+  onExistingCopyNameChange,
+  onSaveExistingCopy,
 }) {
   const roleFocusValid = Boolean(formValue(form, "chatbotRole", "chatbotRoleOther")) && competencies.length > 0;
   const detailsValid = isManualSource || form.scenarioFactors.length > 0;
@@ -83,6 +90,17 @@ export function ScenarioWizard({
             </ol>
           </header>
 
+          {creationMode === "existing" && (
+            <ExistingCopyBanner
+              copyName={existingCopyName}
+              originalName={existingOriginalName}
+              saved={existingCopySaved}
+              dirty={existingCopyDirty}
+              onNameChange={onExistingCopyNameChange}
+              onSave={onSaveExistingCopy}
+            />
+          )}
+
           <div className="wizardCard">
             {step === 0 && <SourceStep updateForm={updateForm} catalog={catalog} source={source} />}
             {step === 1 && <RoleFocusStep form={form} updateForm={updateForm} competencies={competencies} />}
@@ -99,6 +117,7 @@ export function ScenarioWizard({
                 onRegenerate={onRegenerate}
                 onExport={onExport}
                 onStartChat={onStartChat}
+                copyMustBeSaved={!existingCopySaved}
               />
             )}
 
@@ -133,6 +152,7 @@ export function ScenarioWizard({
           competencies={competencies}
           scenario={scenario}
           preview={preview}
+          scenarioName={creationMode === "existing" ? existingCopyName : ""}
         />
       </main>
     </div>

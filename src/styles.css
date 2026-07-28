@@ -1620,6 +1620,104 @@ textarea:focus {
   gap: 14px;
 }
 
+.existingCopyBanner {
+  padding: 18px 20px;
+  display: grid;
+  gap: 14px;
+  border: 1px solid #e5c78c;
+  border-radius: 9px;
+  background: #fffaf0;
+  box-shadow: 0 1px 6px rgba(78, 61, 30, 0.06);
+}
+
+.existingCopyBanner.saved {
+  border-color: #acd8c5;
+  background: #f2faf6;
+}
+
+.existingCopyMessage {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 11px;
+}
+
+.existingCopyIcon {
+  width: 34px;
+  height: 34px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #f5e5bd;
+  color: #8a6313;
+}
+
+.existingCopyBanner.saved .existingCopyIcon {
+  background: #dcefe6;
+  color: #167156;
+}
+
+.existingCopyMessage strong {
+  color: #28343e;
+  font-size: 15px;
+}
+
+.existingCopyMessage p {
+  margin: 3px 0 0;
+  color: #69757f;
+  font-size: 13.5px;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.existingCopyControls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 12px;
+}
+
+.existingCopyControls label {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.existingCopyControls label > span {
+  color: #596672;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.existingCopyControls input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid #cfd9de;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #25313c;
+  font: inherit;
+  font-weight: 700;
+}
+
+.existingCopyControls input:focus {
+  border-color: #078da2;
+  outline: 3px solid rgba(7, 141, 162, 0.12);
+}
+
+.existingCopyControls .primaryButton {
+  min-height: 44px;
+  padding: 0 16px;
+}
+
+.existingCopyValidation {
+  margin: -4px 0 0 45px;
+  color: #a36124;
+  font-size: 12px;
+  font-weight: 800;
+}
+
 .wizardHomeButton {
   width: 38px;
   height: 38px;
@@ -2029,6 +2127,18 @@ textarea:focus {
   .otherRow,
   .complexityOtherRow {
     grid-template-columns: 1fr;
+  }
+
+  .existingCopyControls {
+    grid-template-columns: 1fr;
+  }
+
+  .existingCopyControls .primaryButton {
+    width: 100%;
+  }
+
+  .existingCopyValidation {
+    margin-left: 0;
   }
 
   .reviewActions,
