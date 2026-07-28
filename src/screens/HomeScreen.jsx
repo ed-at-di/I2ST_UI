@@ -1,5 +1,4 @@
 import { ArrowRight, ArrowUpRight, Plus, Trash2 } from "lucide-react";
-import { personaFromLabel } from "../lib/scenarioHelpers.js";
 import { DUMMY_STATS, DUMMY_USER, dummyLastRun } from "../data/dummyHomeData.js";
 
 const RECENTS_LIMIT = 8;
@@ -86,26 +85,21 @@ export function HomeScreen({ scenarios, loading, onCreateNew, onOpenScenario, dr
                   <tr>
                     <th>Scenario</th>
                     <th>Role</th>
-                    <th>Persona</th>
                     <th>Last Run</th>
                     <th aria-hidden="true"></th>
                   </tr>
                 </thead>
                 <tbody>
-                  {recents.map((item, index) => {
-                    const persona = personaFromLabel(item.persona);
-                    return (
-                      <tr key={item.scenario_id} onClick={() => onOpenScenario(item)}>
-                        <td className="recentsTitleCell">{item.title}</td>
-                        <td>{item.role || "—"}</td>
-                        <td>{[persona.style, persona.emotional_state].filter(Boolean).join(" · ") || "—"}</td>
-                        <td className="recentsLastRun">{dummyLastRun(index)}</td>
-                        <td className="recentsOpenCell">
-                          <ArrowUpRight size={16} />
-                        </td>
-                      </tr>
-                    );
-                  })}
+                  {recents.map((item, index) => (
+                    <tr key={item.scenario_id} onClick={() => onOpenScenario(item)}>
+                      <td className="recentsTitleCell">{item.title}</td>
+                      <td>{item.role || "—"}</td>
+                      <td className="recentsLastRun">{dummyLastRun(index)}</td>
+                      <td className="recentsOpenCell">
+                        <ArrowUpRight size={16} />
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

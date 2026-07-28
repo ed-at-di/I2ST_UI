@@ -1484,26 +1484,21 @@ textarea:focus {
 
 .recentsTable th:nth-child(1),
 .recentsTable td:nth-child(1) {
-  width: 38%;
+  width: 60%;
 }
 
 .recentsTable th:nth-child(2),
 .recentsTable td:nth-child(2) {
-  width: 14%;
+  width: 18%;
 }
 
 .recentsTable th:nth-child(3),
 .recentsTable td:nth-child(3) {
-  width: 30%;
+  width: 18%;
 }
 
 .recentsTable th:nth-child(4),
 .recentsTable td:nth-child(4) {
-  width: 14%;
-}
-
-.recentsTable th:nth-child(5),
-.recentsTable td:nth-child(5) {
   width: 4%;
 }
 
@@ -2038,11 +2033,6 @@ textarea:focus {
     min-width: 0;
   }
 
-  .recentsTable th:nth-child(3),
-  .recentsTable td:nth-child(3) {
-    display: none;
-  }
-
   .recentsTable th:nth-child(1),
   .recentsTable td:nth-child(1) {
     width: 51%;
@@ -2055,7 +2045,7 @@ textarea:focus {
 
   .recentsTable th:nth-child(4),
   .recentsTable td:nth-child(4) {
-    width: 20%;
+    width: 4%;
   }
 
   .recentsTable th,
@@ -2138,8 +2128,8 @@ textarea:focus {
     grid-template-columns: 1fr 1fr;
   }
 
-  .recentsTable th:nth-child(4),
-  .recentsTable td:nth-child(4) {
+  .recentsTable th:nth-child(3),
+  .recentsTable td:nth-child(3) {
     display: none;
   }
 
@@ -2151,5 +2141,10 @@ textarea:focus {
   .recentsTable th:nth-child(2),
   .recentsTable td:nth-child(2) {
     width: 26%;
+  }
+
+  .recentsTable th:nth-child(4),
+  .recentsTable td:nth-child(4) {
+    width: 4%;
   }
 }
