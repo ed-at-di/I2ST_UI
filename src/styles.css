@@ -1754,13 +1754,8 @@ textarea:focus {
   display: grid;
   gap: 9px;
   border: 1px solid #dce5e9;
-  border-left: 4px solid #c6d2d7;
   border-radius: 8px;
   background: #ffffff;
-}
-
-.livePreviewBlock.complete {
-  border-left-color: #0d94a9;
 }
 
 .livePreviewBlockHeader {
