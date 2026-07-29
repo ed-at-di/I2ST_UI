@@ -1,8 +1,7 @@
 export const FIELD_INFO = {
   sourceScenarioMode:
     "\"Choose from source library\" pulls the roleplay content verbatim from the SJT curriculum PDF. \"Create from selections\" asks the authoring model to write a new scenario from the role, competency, factors, and complexities you choose in the next steps.",
-  chatbotRole:
-    "Who the AI avatar plays in the conversation — the person filing the complaint, a witness, the subject of the complaint, etc. This is the perspective the trainee will be practicing against.",
+  chatbotRole: "Select the role the avatar will play in the conversation.",
   competencyFocus:
     "The skill area this scenario is built to exercise. Each focus expands into specific sub-competencies (shown once selected) that the conversation is designed to test.",
   scenarioFactors:
