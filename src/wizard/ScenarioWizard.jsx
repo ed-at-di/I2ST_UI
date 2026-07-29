@@ -9,7 +9,7 @@ import { formValue } from "../lib/scenarioHelpers.js";
 
 export const STEPS = [
   { key: "source", label: "Source" },
-  { key: "role-focus", label: "Role & Focus" },
+  { key: "role-focus", label: "Role & KPA Focus" },
   { key: "details", label: "Details" },
   { key: "persona", label: "Persona" },
   { key: "review", label: "Review" },

@@ -320,7 +320,7 @@ export function writeScenarioWorkbook(XLSX, scenario) {
   const rows = [
     { kind: "title", cells: ["Scenario Record", ""] },
     { group: "scenario", cells: ["Chatbot Role", scenario.role || ""] },
-    { group: "scenario", cells: ["Competency Focus", primaryFocus] },
+    { group: "scenario", cells: ["Key Performance Areas Focus", primaryFocus] },
     { group: "scenario", cells: ["Scenario Factors", factorText] },
     { group: "scenario", cells: ["Scenario Complexities", complexityText] },
     ...(isSourceLibraryScenario ? [{ group: "scenario", cells: ["Source Curriculum Scenario", sourceText] }] : []),

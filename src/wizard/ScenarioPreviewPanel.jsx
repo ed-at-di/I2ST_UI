@@ -97,9 +97,9 @@ export function ScenarioPreviewPanel({
           </p>
         </PreviewBlock>
 
-        <PreviewBlock label="Role & Focus" complete={Boolean(role && competencies.length)}>
+        <PreviewBlock label="Role & Key Performance Areas Focus" complete={Boolean(role && competencies.length)}>
           <strong>{role || "Choose a chatbot role"}</strong>
-          <TagList values={competencies} emptyText="Add at least one competency focus." />
+          <TagList values={competencies} emptyText="Add at least one Key Performance Area." />
         </PreviewBlock>
 
         <PreviewBlock label="Scenario Details" complete={isManualSource || Boolean(factors.length || complexities.length)}>

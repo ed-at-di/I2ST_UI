@@ -7,7 +7,7 @@ import { arrayToggle } from "../../lib/scenarioHelpers.js";
 export function RoleFocusStep({ form, updateForm, competencies }) {
   return (
     <div className="wizardStepBody">
-      <h2>Role &amp; Competency Focus</h2>
+      <h2>Role &amp; Key Performance Areas Focus</h2>
       <p className="wizardStepIntro">Set who the avatar plays and what skill this scenario is meant to exercise.</p>
 
       <label className="studioField">
@@ -30,7 +30,7 @@ export function RoleFocusStep({ form, updateForm, competencies }) {
       )}
 
       <div className="studioGroup innerStudioGroup competencyGroup">
-        <span className="studioLabel">Competency Focus*</span>
+        <span className="studioLabel">Key Performance Areas Focus*</span>
         <div className="checkboxGrid">
           {COMPETENCY_OPTIONS.map((focus) => (
             <label className="checkRow" key={focus.title}>
