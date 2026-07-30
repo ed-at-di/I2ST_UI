@@ -363,11 +363,6 @@ function App() {
     loadCatalog();
   }
 
-  function returnToScenarioBuilder() {
-    setView("wizard");
-    setStatus("Scenario ready to edit");
-  }
-
   function endTrainingSession() {
     setSession(null);
     setMessages([]);
@@ -419,7 +414,6 @@ function App() {
         session={session}
         setInput={setInput}
         status={status}
-        returnToStudio={returnToScenarioBuilder}
         endSession={endTrainingSession}
       />
     );

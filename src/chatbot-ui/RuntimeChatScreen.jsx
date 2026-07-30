@@ -3,7 +3,6 @@ import {
   Bot,
   CheckCircle2,
   Clock3,
-  FilePenLine,
   FileSpreadsheet,
   Gauge,
   PanelTopOpen,
@@ -32,10 +31,9 @@ export function RuntimeChatScreen({
   session,
   setInput,
   status,
-  returnToStudio,
   endSession,
 }) {
-  const [showTranscript, setShowTranscript] = useState(true);
+  const showTranscript = true;
   const [showControls, setShowControls] = useState(false);
   const [listening, setListening] = useState(false);
   const avatarName = scenario?.avatar_name || "Avatar";
@@ -73,6 +71,7 @@ export function RuntimeChatScreen({
 
   return (
     <main className="runtimeScreen">
+      <div className="runtimeToolbarMask" aria-hidden="true" />
       <header className={showControls ? "runtimeToolbar open" : "runtimeToolbar"}>
         <button
           className="runtimeToolbarHandle"
@@ -85,14 +84,6 @@ export function RuntimeChatScreen({
           <PanelTopOpen size={16} />
           <span>Controls</span>
         </button>
-        <button className="secondaryButton" type="button" onClick={returnToStudio}>
-          <FilePenLine size={16} />
-          <span>Scenario Builder</span>
-        </button>
-        <div className="runtimeToolbarStatus">
-          {status && <span>{status}</span>}
-          <span>{health.sessions || 0} active sessions</span>
-        </div>
         <div className="runtimeStageProgress" aria-label="Scenario progress">
           <div className="runtimeScenarioTitle">
             <span>Active stage</span>
@@ -108,26 +99,22 @@ export function RuntimeChatScreen({
             ))}
           </ol>
         </div>
-        <div className="runtimeToolbarToggles" aria-label="Roleplay display controls">
-          <button
-            className={showTranscript ? "iconToggle active" : "iconToggle"}
-            type="button"
-            onClick={() => setShowTranscript((current) => !current)}
-            aria-pressed={showTranscript}
-            aria-label="Toggle transcript"
-            title="Toggle transcript"
-          >
-            <MessageSquareText size={17} />
-          </button>
+        <div className="runtimeToolbarFooter">
+          <div className="runtimeToolbarStatus">
+            {status && <span>{status}</span>}
+            <span>{health.sessions || 0} active sessions</span>
+          </div>
+          <div className="runtimeToolbarActions">
+            <button className="secondaryButton" type="button" onClick={exportScenario} disabled={busy || !scenario}>
+              <FileSpreadsheet size={16} />
+              <span>Export Scenario</span>
+            </button>
+            <button className="dangerButton" type="button" onClick={endSession}>
+              <PhoneOff size={16} />
+              <span>End Session</span>
+            </button>
+          </div>
         </div>
-        <button className="secondaryButton" type="button" onClick={exportScenario} disabled={busy || !scenario}>
-          <FileSpreadsheet size={16} />
-          <span>Export Scenario</span>
-        </button>
-        <button className="dangerButton" type="button" onClick={endSession}>
-          <PhoneOff size={16} />
-          <span>End Session</span>
-        </button>
       </header>
 
       {error && (
