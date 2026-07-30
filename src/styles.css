@@ -1250,9 +1250,9 @@ textarea:focus {
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;
-  padding: 48px 24px 70px;
+  padding: 28px 24px 70px;
   display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
+  grid-template-columns: 250px minmax(0, 1fr);
   gap: 32px;
   align-items: start;
 }
@@ -1442,46 +1442,40 @@ textarea:focus {
 }
 
 .homeUserCard {
-  padding: 26px 22px;
+  padding: 6px 0 0;
   display: grid;
-  gap: 24px;
-  border: 1px solid #d9e1e5;
-  border-radius: 12px;
-  background: #ffffff;
+  gap: 30px;
 }
 
 .homeUserIdentity {
   display: grid;
-  justify-items: center;
-  gap: 12px;
-  text-align: center;
+  justify-items: start;
+  gap: 2px;
+  text-align: left;
 }
 
-.homeUserAvatar {
-  width: 64px;
-  height: 64px;
-  flex: none;
-  display: inline-grid;
-  place-items: center;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #078da2, #0d6f5d);
-  color: #ffffff;
-  font-size: 24px;
-  font-weight: 800;
+.homeUserWelcome {
+  margin: 0;
+  color: #66737f;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
 }
 
-.homeUserGreeting {
+.homeUserName {
   margin: 0;
   color: #1f2b36;
-  font-size: 17px;
-  font-weight: 800;
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.05;
 }
 
 .homeUserMeta {
-  margin: 4px 0 0;
+  margin: 8px 0 0;
   color: #66737f;
   font-size: 13.5px;
-  font-weight: 600;
+  font-weight: 400;
+  line-height: 1.4;
 }
 
 .homeStatsRow {
@@ -1498,7 +1492,7 @@ textarea:focus {
   border: 1px solid #e3e9ed;
   border-radius: 9px;
   background: #fbfcfd;
-  text-align: center;
+  text-align: left;
 }
 
 .homeStatValue {
@@ -2178,17 +2172,7 @@ textarea:focus {
   }
 
   .homeUserCard {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-  }
-
-  .homeUserIdentity {
-    display: flex;
-    justify-items: normal;
-    text-align: left;
+    padding-top: 0;
   }
 
   .homeStatsRow {

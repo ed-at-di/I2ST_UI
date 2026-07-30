@@ -45,7 +45,7 @@ export function HomeScreen({
   onResumeDraft,
   onDeleteDraft,
 }) {
-  const initial = DUMMY_USER.name.trim().slice(0, 1).toUpperCase();
+  const firstName = DUMMY_USER.name.split(" ")[0];
   const assignedScenarios = assignedScenariosFromCatalog(scenarios);
 
   return (
@@ -53,13 +53,11 @@ export function HomeScreen({
       <aside className="homeSidebar">
         <div className="homeUserCard">
           <div className="homeUserIdentity">
-            <span className="homeUserAvatar">{initial}</span>
-            <div>
-              <p className="homeUserGreeting">Welcome back, {DUMMY_USER.name.split(" ")[0]}</p>
-              <p className="homeUserMeta">
-                {DUMMY_USER.role} · {DUMMY_USER.team}
-              </p>
-            </div>
+            <p className="homeUserWelcome">Welcome back</p>
+            <p className="homeUserName">{firstName}</p>
+            <p className="homeUserMeta">
+              {DUMMY_USER.role} · {DUMMY_USER.team}
+            </p>
           </div>
           <div className="homeStatsRow">
             {DUMMY_STATS.map((stat) => (
