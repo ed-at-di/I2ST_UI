@@ -49,7 +49,9 @@ export function parseCsv(text) {
 
 export async function loadLocalCurriculumRows() {
   try {
-    const response = await fetch("/data/curriculum_scenarios.csv", { cache: "no-store" });
+    const response = await fetch(`${import.meta.env.BASE_URL}data/curriculum_scenarios.csv`, {
+      cache: "no-store",
+    });
     if (!response.ok) return [];
     return parseCsv(await response.text());
   } catch {

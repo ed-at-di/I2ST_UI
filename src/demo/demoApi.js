@@ -9,6 +9,7 @@ import {
 
 const sessions = new Map();
 let dataPromise;
+const demoDataPath = (filename) => `${import.meta.env.BASE_URL}data/${filename}`;
 
 const splitPipe = (value) =>
   String(value || "")
@@ -37,8 +38,8 @@ async function loadCsv(path) {
 async function loadData() {
   if (!dataPromise) {
     dataPromise = Promise.all([
-      loadCsv("/data/generated_scenarios.csv"),
-      loadCsv("/data/curriculum_scenarios.csv"),
+      loadCsv(demoDataPath("generated_scenarios.csv")),
+      loadCsv(demoDataPath("curriculum_scenarios.csv")),
     ]).then(([generated, curriculum]) => ({ generated, curriculum }));
   }
   return dataPromise;
