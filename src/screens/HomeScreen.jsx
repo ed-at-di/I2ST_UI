@@ -55,9 +55,10 @@ export function HomeScreen({
           <div className="homeUserIdentity">
             <p className="homeUserWelcome">Welcome back</p>
             <p className="homeUserName">{firstName}</p>
-            <p className="homeUserMeta">
-              {DUMMY_USER.role} · {DUMMY_USER.team}
-            </p>
+            <div className="homeUserMeta">
+              <span className="homeUserRole">{DUMMY_USER.role}</span>
+              <span className="homeUserTeam">{DUMMY_USER.team}</span>
+            </div>
           </div>
           <div className="homeStatsRow">
             {DUMMY_STATS.map((stat) => (
