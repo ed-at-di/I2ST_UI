@@ -1248,11 +1248,10 @@ textarea:focus {
 
 .homeScreen {
   width: 100%;
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 28px 24px 70px;
+  margin: 0;
+  padding: 28px 16px 70px;
   display: grid;
-  grid-template-columns: 250px minmax(0, 1fr);
+  grid-template-columns: 280px minmax(0, 1fr);
   gap: 32px;
   align-items: start;
 }
@@ -1442,9 +1441,12 @@ textarea:focus {
 }
 
 .homeUserCard {
-  padding: 6px 0 0;
+  padding: 26px 24px;
   display: grid;
   gap: 30px;
+  border: 1px solid #d9e1e5;
+  border-radius: 14px;
+  background: #ffffff;
 }
 
 .homeUserIdentity {
