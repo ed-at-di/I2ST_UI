@@ -1,5 +1,5 @@
 import { LogOut } from "lucide-react";
-import logo from "../images/IIST-logo.png";
+import logo from "../images/EOCo-logo-black.png";
 import { DUMMY_USER } from "../data/dummyHomeData.js";
 
 export function AppHeader() {
@@ -9,7 +9,7 @@ export function AppHeader() {
     <header className="appHeader">
       <div className="appHeaderLogo">
         <span className="appHeaderMark">
-          <img src={logo} alt="I2ST" />
+          <img src={logo} alt="EOCo" />
         </span>
       </div>
 
