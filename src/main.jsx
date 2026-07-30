@@ -18,6 +18,8 @@ import {
   sourceLabel,
   writeScenarioWorkbook,
 } from "./lib/scenarioHelpers.js";
+import "@fontsource-variable/atkinson-hyperlegible-next/wght.css";
+import "@fontsource-variable/atkinson-hyperlegible-next/wght-italic.css";
 import "./styles.css";
 
 const API_BASE = "/chatbot";
