@@ -1441,16 +1441,19 @@ textarea:focus {
 }
 
 .homeUserCard {
-  padding: 26px 24px;
   display: grid;
-  gap: 30px;
+  gap: 0;
   border: 1px solid #d9e1e5;
   border-radius: 14px;
   background: #ffffff;
+  overflow: hidden;
 }
 
 .homeUserIdentity {
+  min-height: 300px;
+  padding: 30px 26px;
   display: grid;
+  align-content: start;
   justify-items: start;
   gap: 2px;
   text-align: left;
@@ -1492,30 +1495,32 @@ textarea:focus {
 .homeStatsRow {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
 }
 
 .homeStatTile {
   min-width: 0;
-  padding: 14px 16px;
+  min-height: 70px;
+  padding: 12px 28px;
   display: grid;
-  gap: 4px;
-  border: 1px solid #e3e9ed;
-  border-radius: 9px;
-  background: #fbfcfd;
+  align-content: center;
+  gap: 2px;
+  border-top: 1px solid #d9e1e5;
+  background: #ffffff;
   text-align: left;
 }
 
 .homeStatValue {
-  color: #078da2;
-  font-size: 22px;
-  font-weight: 900;
+  color: #1f2b36;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .homeStatLabel {
   color: #72808a;
-  font-size: 12.5px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.25;
 }
 
 .recentsTableWrap {
@@ -2187,8 +2192,7 @@ textarea:focus {
   }
 
   .homeStatsRow {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    flex: 1;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -2265,9 +2269,7 @@ textarea:focus {
   }
 
   .homeStatsRow {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    grid-template-columns: 1fr;
   }
 
   .homeStatTile {
