@@ -73,7 +73,6 @@ export function HomeScreen({
 
       <div className="homeMain">
         <section className="homeHero">
-          <p className="eyebrow">I2ST Scenario Studio</p>
           <h1>Build and run roleplay training scenarios</h1>
           <p className="homeHeroSubtitle">
             Start with a blank scenario or use an existing scenario as the foundation.

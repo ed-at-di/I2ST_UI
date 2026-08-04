@@ -1665,28 +1665,32 @@ textarea:focus {
 
 .wizardShell {
   width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 28px 24px 48px;
+  margin: 0;
+  padding: var(--layout-gap) 16px 70px;
 }
 
 .wizardWorkspace {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(340px, 410px);
   align-items: start;
-  gap: 24px;
+  gap: var(--layout-gap);
 }
 
 .wizardBuilderColumn {
   min-width: 0;
   display: grid;
-  gap: 22px;
+  gap: var(--layout-gap);
 }
 
 .wizardHeader {
+  min-height: 72px;
+  padding: 16px 20px;
   display: flex;
   align-items: center;
   gap: 14px;
+  border: 1px solid #d9e1e5;
+  border-radius: var(--surface-radius);
+  background: #ffffff;
 }
 
 .existingCopyBanner {
@@ -1876,7 +1880,7 @@ textarea:focus {
 
 .wizardCard {
   border: 1px solid #d9e1e5;
-  border-radius: 8px;
+  border-radius: var(--surface-radius);
   background: #ffffff;
   overflow: hidden;
 }
@@ -1888,7 +1892,7 @@ textarea:focus {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
   border: 1px solid #cfdde2;
-  border-radius: 10px;
+  border-radius: var(--surface-radius);
   background: #ffffff;
   overflow: hidden;
 }
@@ -2023,6 +2027,7 @@ textarea:focus {
   height: 20px;
   display: inline-grid;
   place-items: center;
+  border: 1px solid transparent;
   border-radius: 50%;
   background: #edf1f3;
   color: #8d9aa4;
@@ -2031,8 +2036,9 @@ textarea:focus {
 }
 
 .livePreviewBlock.complete .livePreviewBlockStatus {
-  background: #e3f4f6;
-  color: #078da2;
+  border-color: #1f2b36;
+  background: #f1f3f4;
+  color: #1f2b36;
 }
 
 .livePreviewBlock strong {
@@ -2346,10 +2352,6 @@ textarea:focus {
   .recentsTable th,
   .recentsTable td {
     padding: 12px 12px;
-  }
-
-  .wizardShell {
-    padding: 14px 14px 30px;
   }
 
   .wizardStepperLabel {
