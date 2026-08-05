@@ -66,12 +66,6 @@ export function DetailsStep({ form, updateForm, isManualSource }) {
       )}
 
       <label className="studioField">
-        <span className="studioLabel">Chatbot Behavior Notes <em>(optional)</em></span>
-        <textarea value={form.chatbotBehaviorNotes} onChange={(event) => updateForm({ chatbotBehaviorNotes: event.target.value })} placeholder="Optional behavior notes for how the chatbot should speak or react in this scenario" />
-        <InfoNote>{FIELD_INFO.chatbotBehaviorNotes}</InfoNote>
-      </label>
-
-      <label className="studioField">
         <span className="studioLabel">Describe Other Details <em>(optional)</em></span>
         <textarea value={form.otherDetails} onChange={(event) => updateForm({ otherDetails: event.target.value })} placeholder="Other details related to the scenario" />
         <InfoNote>{FIELD_INFO.otherDetails}</InfoNote>

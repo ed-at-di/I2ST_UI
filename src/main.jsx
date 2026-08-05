@@ -4,7 +4,7 @@ import XLSX from "xlsx-js-style";
 import { RuntimeChatScreen } from "./chatbot-ui/RuntimeChatScreen.jsx";
 import { AppHeader } from "./components/AppHeader.jsx";
 import { HomeScreen } from "./screens/HomeScreen.jsx";
-import { ScenarioWizard, STEPS } from "./wizard/ScenarioWizard.jsx";
+import { ScenarioWizard, STEPS, wizardStepsForMode } from "./wizard/ScenarioWizard.jsx";
 import { DEFAULT_FORM, NEW_SCENARIO_FORM } from "./data/scenarioOptions.js";
 import { demoApi, demoUiApi } from "./demo/demoApi.js";
 import {
@@ -18,6 +18,7 @@ import {
   sourceLabel,
   writeScenarioWorkbook,
 } from "./lib/scenarioHelpers.js";
+import { activeScenarioStages, stageCountFromForm } from "./lib/stageHelpers.js";
 import "@fontsource-variable/atkinson-hyperlegible-next/wght.css";
 import "@fontsource-variable/atkinson-hyperlegible-next/wght-italic.css";
 import "./styles.css";
@@ -163,8 +164,11 @@ function App() {
 
   function payloadFromForm() {
     const focusTitles = selectedCompetencies(form);
+    const stages = activeScenarioStages(form);
     return {
       ...form,
+      stageCount: stageCountFromForm(form),
+      stages,
       competencyFocus: focusTitles.join(", "),
       competencyFocuses: focusTitles,
       competencyFocusDetails: competencyDetails(focusTitles),
@@ -403,9 +407,7 @@ function App() {
       <RuntimeChatScreen
         busy={busy}
         error={error}
-        exportScenario={exportScenarioExcel}
         formatLatency={formatLatency}
-        health={health}
         input={input}
         messages={messages}
         scenario={scenario}
@@ -413,8 +415,6 @@ function App() {
         sendTurn={sendTurn}
         session={session}
         setInput={setInput}
-        status={status}
-        endSession={endTrainingSession}
       />
     );
   } else if (view === "wizard") {
@@ -437,7 +437,6 @@ function App() {
         onRegenerate={generateScenario}
         onExport={exportScenarioExcel}
         onStartChat={startSession}
-        onExitToHome={returnHome}
         creationMode={creationMode}
         existingCopyName={existingCopyName}
         existingOriginalName={existingOriginalName}
@@ -464,7 +463,28 @@ function App() {
 
   return (
     <div className="appShell">
-      <AppHeader />
+      <AppHeader
+        runtimeSession={
+          view === "runtime" && session
+            ? {
+                title: scenario?.title || scenario?.preview?.scenarioTitle || "Scenario session",
+                onExport: exportScenarioExcel,
+                exportDisabled: busy || !scenario,
+                onEndSession: endTrainingSession,
+              }
+            : undefined
+        }
+        wizardNavigation={
+          view === "wizard"
+            ? {
+                steps: wizardStepsForMode(creationMode),
+                step: wizardStep,
+                onStepChange: setWizardStep,
+                onExitToHome: returnHome,
+              }
+            : undefined
+        }
+      />
       {body}
     </div>
   );

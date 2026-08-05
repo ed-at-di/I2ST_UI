@@ -1,15 +1,11 @@
 import { useMemo, useState } from "react";
 import {
   Bot,
-  CheckCircle2,
   Clock3,
-  FileSpreadsheet,
   Gauge,
-  PanelTopOpen,
   MessageSquareText,
   Mic,
   MicOff,
-  PhoneOff,
   Send,
 } from "lucide-react";
 
@@ -20,9 +16,7 @@ function formatTime(value = new Date()) {
 export function RuntimeChatScreen({
   busy,
   error,
-  exportScenario,
   formatLatency,
-  health,
   input,
   messages,
   scenario,
@@ -30,21 +24,14 @@ export function RuntimeChatScreen({
   sendTurn,
   session,
   setInput,
-  status,
-  endSession,
 }) {
   const showTranscript = true;
-  const [showControls, setShowControls] = useState(false);
   const [listening, setListening] = useState(false);
   const avatarName = scenario?.avatar_name || "Avatar";
   const avatarTurns = messages.filter((item) => item.role === "avatar").length;
   const traineeTurns = messages.filter((item) => item.role === "trainee").length;
-  const stageIndex = Math.min(3, Math.max(0, Math.floor(messages.length / 3)));
-  const stages = ["Opening", "Discovery", "Practice", "Wrap-up"];
   const latestAvatar = [...messages].reverse().find((item) => item.role === "avatar");
-  const scenarioTitle = scenario?.title || scenario?.preview?.scenarioTitle || "Scenario session";
   const roleLabel = scenario?.role || scenario?.preview?.chatbotRole || "Roleplay Avatar";
-  const activeStage = stages[stageIndex];
   const panelClassName = [
     "runtimeExperience",
     showTranscript ? "showTranscript" : "hideTranscript",
@@ -69,54 +56,14 @@ export function RuntimeChatScreen({
     }
   }
 
-  return (
-    <main className="runtimeScreen">
-      <div className="runtimeToolbarMask" aria-hidden="true" />
-      <header className={showControls ? "runtimeToolbar open" : "runtimeToolbar"}>
-        <button
-          className="runtimeToolbarHandle"
-          type="button"
-          onClick={() => setShowControls((current) => !current)}
-          aria-expanded={showControls}
-          aria-label="Toggle session controls"
-          title="Toggle session controls"
-        >
-          <PanelTopOpen size={16} />
-          <span>Controls</span>
-        </button>
-        <div className="runtimeStageProgress" aria-label="Scenario progress">
-          <div className="runtimeScenarioTitle">
-            <span>Active stage</span>
-            <strong>{activeStage}</strong>
-            <em>{scenarioTitle}</em>
-          </div>
-          <ol>
-            {stages.map((stage, index) => (
-              <li className={index < stageIndex ? "done" : index === stageIndex ? "active" : ""} key={stage}>
-                <span>{index < stageIndex ? <CheckCircle2 size={14} /> : index + 1}</span>
-                <p>{stage}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-        <div className="runtimeToolbarFooter">
-          <div className="runtimeToolbarStatus">
-            {status && <span>{status}</span>}
-            <span>{health.sessions || 0} active sessions</span>
-          </div>
-          <div className="runtimeToolbarActions">
-            <button className="secondaryButton" type="button" onClick={exportScenario} disabled={busy || !scenario}>
-              <FileSpreadsheet size={16} />
-              <span>Export Scenario</span>
-            </button>
-            <button className="dangerButton" type="button" onClick={endSession}>
-              <PhoneOff size={16} />
-              <span>End Session</span>
-            </button>
-          </div>
-        </div>
-      </header>
+  function sendOnEnter(event) {
+    if (event.key !== "Enter" || event.shiftKey || event.nativeEvent.isComposing) return;
+    event.preventDefault();
+    event.currentTarget.form?.requestSubmit();
+  }
 
+  return (
+    <main className={`runtimeScreen ${error ? "hasError" : ""}`}>
       {error && (
         <div className="runtimeError" role="alert">
           {error}
@@ -209,13 +156,17 @@ export function RuntimeChatScreen({
             </div>
             <form className="runtimeComposer" onSubmit={sendTurn}>
               <div className="runtimeDraftField">
-                <label htmlFor="runtime-response">
-                  {listening ? "Listening — edit the transcript before sending" : "Your response"}
-                </label>
+                <div className="runtimeDraftLabelRow">
+                  <label htmlFor="runtime-response">
+                    {listening ? "Listening — edit the transcript before sending" : "Your response"}
+                  </label>
+                  <span>Enter to send · Shift+Enter for a new line</span>
+                </div>
                 <textarea
                   id="runtime-response"
                   value={input}
                   onChange={(event) => setInput(event.target.value)}
+                  onKeyDown={sendOnEnter}
                   placeholder={listening ? "Listening… recognized speech will appear here." : "Type your trainee response or use the microphone…"}
                   disabled={busy || !session?.session_id}
                   rows={2}

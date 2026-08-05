@@ -1,9 +1,12 @@
+import { useEffect, useRef } from "react";
 import { Check, Copy, Layers3 } from "lucide-react";
+import { StageTabs } from "../components/StageTabs.jsx";
 import { formValue, selectedList, sourceLabel } from "../lib/scenarioHelpers.js";
+import { activeScenarioStages, personaValuesForStage, stagePersonaComplete } from "../lib/stageHelpers.js";
 
-function PreviewBlock({ label, complete, children }) {
+function PreviewBlock({ label, complete, children, sectionRef }) {
   return (
-    <section className={`livePreviewBlock ${complete ? "complete" : ""}`}>
+    <section ref={sectionRef} className={`livePreviewBlock ${complete ? "complete" : ""}`}>
       <div className="livePreviewBlockHeader">
         <span>{label}</span>
         <span className="livePreviewBlockStatus" aria-label={complete ? "Selection added" : "Not yet completed"}>
@@ -38,21 +41,47 @@ export function ScenarioPreviewPanel({
   isExistingCopy,
   copySaved,
   originalName,
+  wizardStep,
+  activeStageIndex,
+  setActiveStageIndex,
 }) {
-  const role = formValue(form, "chatbotRole", "chatbotRoleOther");
   const factors = selectedList(form.scenarioFactors || [], form.otherFactor);
   const complexities = selectedList(form.scenarioComplexities || [], form.otherComplexity);
-  const persona = [
-    formValue(form, "personaStyle", "personaStyleOther"),
-    formValue(form, "personaEmotionalState", "personaEmotionalStateOther"),
-    formValue(form, "personaTrustLevel", "personaTrustLevelOther"),
-    formValue(form, "personaCommunicationStyle", "personaCommunicationStyleOther"),
-    formValue(form, "personaPrimaryConcern", "personaPrimaryConcernOther"),
-  ].filter(Boolean);
+  const stages = activeScenarioStages(form);
+  const previewBodyRef = useRef(null);
+  const sourceSectionRef = useRef(null);
+  const kpaSectionRef = useRef(null);
+  const detailsSectionRef = useRef(null);
+  const chatbotSectionRef = useRef(null);
+  const outputSectionRef = useRef(null);
+
+  useEffect(() => {
+    const previewBody = previewBodyRef.current;
+    const sectionByStep = {
+      0: sourceSectionRef.current,
+      1: kpaSectionRef.current,
+      2: detailsSectionRef.current,
+      3: chatbotSectionRef.current,
+      4: outputSectionRef.current,
+    };
+    const activeSection = sectionByStep[wizardStep];
+    if (!previewBody || !activeSection || previewBody.scrollHeight <= previewBody.clientHeight) return;
+
+    const bodyTop = previewBody.getBoundingClientRect().top;
+    const sectionTop = activeSection.getBoundingClientRect().top;
+    const nextScrollTop = previewBody.scrollTop + sectionTop - bodyTop;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    previewBody.scrollTo({ top: nextScrollTop, behavior: reduceMotion ? "auto" : "smooth" });
+  }, [wizardStep, activeStageIndex]);
+
+  const activeStage = stages[activeStageIndex];
+  const activeRole = formValue(activeStage, "chatbotRole", "chatbotRoleOther");
+  const primaryRole = formValue(stages[0], "chatbotRole", "chatbotRoleOther") || formValue(form, "chatbotRole", "chatbotRoleOther");
+  const activePersona = personaValuesForStage(activeStage);
   const sourceTitle = isManualSource
     ? sourceLabel(source, catalog.curriculumScenarios || [])
     : "Create from selected building blocks";
-  const draftTitle = scenario?.title || scenarioName || (role ? `${role}: Workplace Concern` : "Untitled Scenario");
+  const draftTitle = scenario?.title || scenarioName || (primaryRole ? `${primaryRole}: Workplace Concern` : "Untitled Scenario");
   const draftSummary =
     scenario?.summary ||
     (isManualSource
@@ -73,61 +102,73 @@ export function ScenarioPreviewPanel({
         <span className={`livePreviewState ${scenario ? "generated" : ""} ${isExistingCopy ? "copy" : ""}`}>{stateLabel}</span>
       </header>
 
-      <div className="livePreviewBody">
-        {isExistingCopy && (
-          <div className={`livePreviewCopyNotice ${copySaved ? "saved" : ""}`}>
-            <Copy size={16} />
-            <div>
-              <strong>{copySaved ? "New copy saved" : "Changes will create a new copy"}</strong>
-              <p>
-                {copySaved
-                  ? "Continue to generate the final scenario packet."
-                  : `The original “${originalName || "library scenario"}” stays unchanged. Rename and save this copy in Review & Launch.`}
-              </p>
+      <div className="livePreviewBody" ref={previewBodyRef}>
+        <div className="livePreviewSharedContent">
+          {isExistingCopy && (
+            <div className={`livePreviewCopyNotice ${copySaved ? "saved" : ""}`}>
+              <Copy size={16} />
+              <div>
+                <strong>{copySaved ? "New copy saved" : "Changes will create a new copy"}</strong>
+                <p>
+                  {copySaved
+                    ? "Continue to generate the final scenario packet."
+                    : `The original “${originalName || "library scenario"}” stays unchanged. Rename and save this copy in Review & Launch.`}
+                </p>
+              </div>
             </div>
-          </div>
-        )}
-
-        <PreviewBlock label="Source" complete={Boolean(sourceTitle)}>
-          <strong>{sourceTitle}</strong>
-          <p>
-            {isManualSource
-              ? source?.scenario_text || "Select a curriculum scenario."
-              : "The scenario will be assembled from the role, training focus, details, and persona below."}
-          </p>
-        </PreviewBlock>
-
-        <PreviewBlock label="Role & Key Performance Areas Focus" complete={Boolean(role && competencies.length)}>
-          <strong>{role || "Choose a chatbot role"}</strong>
-          <TagList values={competencies} emptyText="Add at least one Key Performance Area." />
-        </PreviewBlock>
-
-        <PreviewBlock label="Scenario Details" complete={isManualSource || Boolean(factors.length || complexities.length)}>
-          {isManualSource ? (
-            <p>Details are inherited from the selected curriculum scenario.</p>
-          ) : (
-            <>
-              <TagList values={factors} emptyText="No scenario factors selected." />
-              <TagList values={complexities} emptyText="No additional complexities selected." />
-            </>
           )}
-          {(form.chatbotBehaviorNotes || form.otherDetails) && (
-            <p className="livePreviewNote">{form.chatbotBehaviorNotes || form.otherDetails}</p>
-          )}
-        </PreviewBlock>
 
-        <PreviewBlock label="Persona" complete={persona.length >= 5}>
-          <TagList values={persona} emptyText="Persona selections will appear here." />
-          {form.personaNotes && <p className="livePreviewNote">{form.personaNotes}</p>}
-        </PreviewBlock>
+          <PreviewBlock label="Source" complete={Boolean(sourceTitle)} sectionRef={sourceSectionRef}>
+            <strong>{sourceTitle}</strong>
+            <p>
+              {isManualSource
+                ? source?.scenario_text || "Select a curriculum scenario."
+                : "The scenario will be assembled from the training focus, shared details, and stage personas below."}
+            </p>
+          </PreviewBlock>
 
-        <PreviewBlock label="Scenario Output" complete={Boolean(scenario)}>
-          {scenario?.avatar_name && <strong>Character: {scenario.avatar_name}</strong>}
-          <p className={!scenario ? "livePreviewEmpty" : ""}>{draftSummary}</p>
-          {scenario && preview.inContextPersonaSummary && (
-            <p className="livePreviewNote">{preview.inContextPersonaSummary}</p>
-          )}
-        </PreviewBlock>
+          <PreviewBlock label="KPA Focus" complete={Boolean(competencies.length)} sectionRef={kpaSectionRef}>
+            <TagList values={competencies} emptyText="Add at least one Key Performance Area." />
+          </PreviewBlock>
+
+          <PreviewBlock label="Scenario Details" complete={isManualSource || Boolean(factors.length || complexities.length)} sectionRef={detailsSectionRef}>
+            {isManualSource ? (
+              <p>Details are inherited from the selected curriculum scenario.</p>
+            ) : (
+              <>
+                <TagList values={factors} emptyText="No scenario factors selected." />
+                <TagList values={complexities} emptyText="No additional complexities selected." />
+              </>
+            )}
+            {form.otherDetails && <p className="livePreviewNote">{form.otherDetails}</p>}
+          </PreviewBlock>
+
+          <PreviewBlock label="Scenario Output" complete={Boolean(scenario)} sectionRef={outputSectionRef}>
+            {scenario?.avatar_name && <strong>Character: {scenario.avatar_name}</strong>}
+            <p className={!scenario ? "livePreviewEmpty" : ""}>{draftSummary}</p>
+            {scenario && preview.inContextPersonaSummary && (
+              <p className="livePreviewNote">{preview.inContextPersonaSummary}</p>
+            )}
+          </PreviewBlock>
+        </div>
+
+        <section ref={chatbotSectionRef} className="livePreviewChatbotSection" aria-labelledby="live-preview-chatbot-heading">
+          <h3 id="live-preview-chatbot-heading">Chatbot</h3>
+          <StageTabs
+            stages={stages}
+            activeStageIndex={activeStageIndex}
+            onSelectStage={setActiveStageIndex}
+            label="Preview chatbot stage"
+            variant="preview"
+          />
+
+          <PreviewBlock label={`Stage ${activeStageIndex + 1} Persona`} complete={stagePersonaComplete(activeStage)}>
+            <strong>{activeRole || `Choose a role for Stage ${activeStageIndex + 1}`}</strong>
+            <TagList values={activePersona} emptyText={`Stage ${activeStageIndex + 1} persona selections will appear here.`} />
+            {activeStage.chatbotBehaviorNotes && <p className="livePreviewNote">{activeStage.chatbotBehaviorNotes}</p>}
+            {activeStage.personaNotes && <p className="livePreviewNote">{activeStage.personaNotes}</p>}
+          </PreviewBlock>
+        </section>
       </div>
     </aside>
   );

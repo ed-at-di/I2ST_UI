@@ -158,6 +158,7 @@ function buildScenario(payload, generatedRows, curriculumRows) {
     opening_line: clean(seed.opening_line) || "Hi, I wanted to talk about something that happened at work.",
     public_facts: publicFacts.length ? publicFacts : [summary],
     persona,
+    stages: Array.isArray(payload.stages) ? payload.stages.slice(0, Number(payload.stageCount) || 1) : [],
     authoring: {
       payload,
       generatedBy: "dataset-demo",
