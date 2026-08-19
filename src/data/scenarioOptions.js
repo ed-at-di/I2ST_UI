@@ -62,15 +62,6 @@ export const PERSONA_PRIMARY_CONCERN_OPTIONS = [
   "Other",
 ];
 
-export const EVIDENCE_OPTIONS = [
-  "System-recorded transcript",
-  "Observation checklist / rubric",
-  "Recorded learner decision",
-  "Written or verbal reflection",
-  "Discussion response",
-  "Other",
-];
-
 export const DEFAULT_FORM = {
   sourceScenarioMode: "auto",
   curriculumScenarioId: "",
@@ -78,26 +69,12 @@ export const DEFAULT_FORM = {
   chatbotRoleOther: "",
   competencyFocus: "Empathy & Support",
   competencyFocuses: ["Empathy & Support"],
-  performanceObjective: "",
   scenarioFactors: ["Sexual Orientation", "Pregnancy/Parental Issue"],
   scenarioComplexities: ["Maximized Emotional Intensity"],
   otherFactor: "",
   otherComplexity: "",
-  scenarioSetting: "",
-  scenarioBackground: "",
-  scenarioTrigger: "",
-  scenarioChallenge: "",
   chatbotBehaviorNotes: "",
   otherDetails: "",
-  decisionPoints: [{ cue: "", learnerBehavior: "", consequence: "" }],
-  successCriteria: [
-    { description: "", kpa: "" },
-    { description: "", kpa: "" },
-  ],
-  evidenceMethods: ["System-recorded transcript"],
-  evidenceOther: "",
-  criticalErrors: [""],
-  debriefQuestions: ["", ""],
   stageCount: 1,
   stages: [
     {
@@ -139,7 +116,6 @@ export const NEW_SCENARIO_FORM = {
   chatbotRole: "",
   competencyFocus: "",
   competencyFocuses: [],
-  performanceObjective: "",
   scenarioFactors: [],
   scenarioComplexities: [],
   stageCount: 1,
