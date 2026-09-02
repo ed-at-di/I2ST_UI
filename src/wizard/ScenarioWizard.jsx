@@ -57,6 +57,10 @@ export function ScenarioWizard({
     setActiveStageIndex((current) => Math.min(current, stages.length - 1));
   }, [stages.length]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [step]);
+
   const kpaFocusValid = competencies.length > 0 && Boolean(form.performanceObjective.trim());
   const detailsValid = isManualSource || (
     form.scenarioFactors.length > 0 &&

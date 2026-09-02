@@ -53,6 +53,231 @@ input[type="radio"] {
   min-height: 100vh;
 }
 
+.loginScreen {
+  position: relative;
+  min-height: 100vh;
+  padding: clamp(24px, 4vw, 64px);
+  display: flex;
+  align-items: center;
+  background: #f4f7f8;
+  overflow: hidden;
+}
+
+.loginPanel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 560px);
+  min-height: min(700px, calc(100vh - 48px));
+  padding: clamp(32px, 4vw, 56px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  border: 1px solid rgba(185, 207, 214, 0.9);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 24px 70px rgba(31, 64, 76, 0.14);
+  backdrop-filter: blur(10px);
+}
+
+.loginBrand img {
+  width: auto;
+  height: 34px;
+  display: block;
+}
+
+.loginFormShell {
+  width: min(100%, 430px);
+  margin-block: 20px;
+  align-self: center;
+}
+
+.loginEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #5f6d78;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.loginEyebrow i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffad15;
+}
+
+.loginFormShell h1 {
+  margin: 16px 0 8px;
+  color: #1f2b36;
+  font-size: clamp(30px, 3vw, 32px);
+  font-weight: 650;
+  line-height: 1.05;
+}
+
+.loginIntro {
+  margin: 0;
+  max-width: 390px;
+  color: #66737f;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.loginForm {
+  margin-top: 32px;
+  display: grid;
+  gap: 18px;
+}
+
+.loginField {
+  display: grid;
+  gap: 7px;
+}
+
+.loginField > span {
+  color: #4f5c67;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.loginField input {
+  min-height: 52px;
+  padding-inline: 15px;
+  border: 1px solid #cdd7dc;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(31, 43, 54, 0.04);
+}
+
+.loginField input:focus {
+  border-color: #078da2;
+  outline: 3px solid rgba(7, 141, 162, 0.14);
+  outline-offset: 0;
+}
+
+.loginOptions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: #65727d;
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.loginOptions label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.loginOptions input {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  accent-color: #078da2;
+}
+
+.loginOptions button {
+  padding: 2px 0;
+  background: transparent;
+  color: #078da2;
+  font: inherit;
+}
+
+.loginSubmit {
+  min-height: 52px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-radius: 8px;
+  background: #078da2;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 850;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.loginSubmit:hover {
+  background: #066e7e;
+  transform: translateY(-1px);
+}
+
+.loginSubmit:focus-visible {
+  outline: 3px solid rgba(7, 141, 162, 0.25);
+  outline-offset: 3px;
+}
+
+.loginPrototypeNote {
+  margin: 16px 0 0;
+  color: #87929b;
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+.loginFooter {
+  margin: 0;
+  color: #8a969f;
+  font-size: 12.5px;
+  font-weight: 650;
+}
+
+.loginArtwork {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #f4f7f8;
+  overflow: hidden;
+}
+
+.loginArtwork img {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+}
+
+@media (max-width: 820px) {
+  .loginScreen {
+    padding: 24px;
+  }
+
+  .loginPanel {
+    width: min(100%, 520px);
+    min-height: min(700px, calc(100vh - 48px));
+  }
+}
+
+@media (max-width: 520px) {
+  .loginScreen {
+    padding: 14px;
+  }
+
+  .loginPanel {
+    width: 100%;
+    min-height: calc(100vh - 28px);
+    padding: 24px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 16px 44px rgba(31, 64, 76, 0.12);
+  }
+
+  .loginFormShell {
+    margin-block: 20px;
+  }
+
+  .loginOptions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
 .appHeader {
   position: sticky;
   top: 12px;
@@ -87,6 +312,31 @@ input[type="radio"] {
   height: 24px;
   width: auto;
   display: block;
+}
+
+.appHeaderThemeToggle {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid #d2dce1;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #52606c;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.appHeaderThemeToggle:hover {
+  border-color: #078da2;
+  background: #eef8fa;
+  color: #078da2;
+  transform: translateY(-1px);
+}
+
+.appHeaderThemeToggle:focus-visible {
+  outline: 3px solid rgba(7, 141, 162, 0.22);
+  outline-offset: 2px;
 }
 
 .appHeaderWizard {
@@ -125,7 +375,7 @@ input[type="radio"] {
 .appHeaderRuntime {
   height: 66px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 14px;
 }
 
@@ -354,7 +604,7 @@ input[type="radio"] {
 
 @media (max-width: 1000px) {
   .appHeaderWizard {
-    grid-template-columns: 54px minmax(0, 1fr) minmax(120px, auto);
+    grid-template-columns: 54px minmax(0, 1fr);
     gap: 14px;
   }
 
@@ -375,7 +625,7 @@ input[type="radio"] {
   }
 
   .appHeaderWizard {
-    grid-template-columns: 44px minmax(0, 1fr) 36px;
+    grid-template-columns: 44px minmax(0, 1fr);
     gap: 10px;
   }
 
@@ -402,7 +652,7 @@ input[type="radio"] {
   }
 
   .appHeaderRuntime {
-    grid-template-columns: minmax(0, 1fr) auto 36px;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 8px;
   }
 
@@ -497,7 +747,7 @@ input[type="radio"] {
   justify-items: start;
   gap: 2px;
   border: 1px solid #cfd9de;
-  border-radius: var(--surface-radius);
+  border-radius: 7px;
   background: #ffffff;
   color: #66737f;
   transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
@@ -1636,12 +1886,32 @@ textarea:focus {
 }
 
 .homeHero {
+  position: relative;
+  isolation: isolate;
+  min-height: 226px;
   padding: 32px;
   display: grid;
   gap: 14px;
   border: 1px solid #d9e1e5;
   border-radius: var(--surface-radius);
-  background: linear-gradient(135deg, #ffffff, #eef8fa);
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.homeHero::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0 0 0 auto;
+  width: min(56%, 720px);
+  background: url("./images/lines-dots-art.png") right center / auto 100% no-repeat;
+  pointer-events: none;
+}
+
+.homeHero > * {
+  position: relative;
+  z-index: 1;
+  max-width: 60%;
 }
 
 .homeHero h1 {
@@ -1862,6 +2132,37 @@ textarea:focus {
 .homeStatsRow {
   display: grid;
   grid-template-columns: 1fr;
+}
+
+.homeSignOutSection {
+  padding: 12px;
+  border-top: 1px solid #d9e1e5;
+  background: #ffffff;
+}
+
+.homeSignOutButton {
+  width: 100%;
+  min-height: 42px;
+  padding: 0 11px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 8px;
+  background: transparent;
+  color: #66737f;
+  font-size: 13.5px;
+  font-weight: 800;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.homeSignOutButton:hover {
+  background: #fff2f0;
+  color: #a63d47;
+}
+
+.homeSignOutButton:focus-visible {
+  outline: 3px solid rgba(7, 141, 162, 0.22);
+  outline-offset: 2px;
 }
 
 .homeStatTile {
@@ -2273,7 +2574,7 @@ textarea:focus {
   justify-content: space-between;
   gap: 16px;
   border-bottom: 1px solid #dce6e9;
-  background: linear-gradient(135deg, #f3fbfc 0%, #ffffff 72%);
+  background: #ffffff;
 }
 
 .livePreviewHeader h2 {
@@ -2680,6 +2981,16 @@ textarea:focus {
     padding: 24px;
   }
 
+  .homeHero::after {
+    right: -18%;
+    width: 82%;
+    opacity: 0.35;
+  }
+
+  .homeHero > * {
+    max-width: 100%;
+  }
+
   .homeUserIdentity {
     padding: 24px;
   }
@@ -2833,5 +3144,336 @@ textarea:focus {
   .assignedScenarioTable td:nth-child(3) {
     width: 36%;
     display: table-cell;
+  }
+}
+
+/* Dark theme */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  color: #dce7eb;
+  background: #071820;
+}
+
+.appShell[data-theme="dark"] {
+  min-height: 100vh;
+  background: #071820;
+  color: #dce7eb;
+}
+
+.appShell[data-theme="dark"] .loginScreen,
+.appShell[data-theme="dark"] .homeScreen,
+.appShell[data-theme="dark"] .wizardShell,
+.appShell[data-theme="dark"] .runtimeScreen {
+  background: #071820;
+}
+
+.appShell[data-theme="dark"] .loginPanel {
+  border-color: rgba(92, 139, 153, 0.5);
+  background: rgba(8, 29, 39, 0.94);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.38);
+}
+
+.appShell[data-theme="dark"] .loginBrand img,
+.appShell[data-theme="dark"] .appHeaderMark img {
+  filter: invert(1) grayscale(1) brightness(1.8);
+}
+
+.appShell[data-theme="dark"] .loginFormShell h1,
+.appShell[data-theme="dark"] .homeHero h1,
+.appShell[data-theme="dark"] .homeUserName,
+.appShell[data-theme="dark"] .homeStatValue,
+.appShell[data-theme="dark"] .currentCardInfo h3,
+.appShell[data-theme="dark"] .recentsTitleCell,
+.appShell[data-theme="dark"] .wizardStepBody h2,
+.appShell[data-theme="dark"] .stagePersonaBuilderHeader h3,
+.appShell[data-theme="dark"] .livePreviewHeader h2,
+.appShell[data-theme="dark"] .livePreviewChatbotSection > h3,
+.appShell[data-theme="dark"] .livePreviewBlock strong,
+.appShell[data-theme="dark"] .reviewReadiness strong,
+.appShell[data-theme="dark"] .runtimePanelHeader p,
+.appShell[data-theme="dark"] .runtimeStageHeader h1,
+.appShell[data-theme="dark"] .runtimeLiveResponse p,
+.appShell[data-theme="dark"] .appHeaderRuntimeTitle strong {
+  color: #edf5f7;
+}
+
+.appShell[data-theme="dark"] .loginEyebrow,
+.appShell[data-theme="dark"] .loginIntro,
+.appShell[data-theme="dark"] .loginField > span,
+.appShell[data-theme="dark"] .loginOptions,
+.appShell[data-theme="dark"] .loginPrototypeNote,
+.appShell[data-theme="dark"] .loginFooter,
+.appShell[data-theme="dark"] .homeHeroSubtitle,
+.appShell[data-theme="dark"] .homeSectionHeading p,
+.appShell[data-theme="dark"] .homeUserWelcome,
+.appShell[data-theme="dark"] .homeUserMeta,
+.appShell[data-theme="dark"] .homeStatLabel,
+.appShell[data-theme="dark"] .currentCardRole,
+.appShell[data-theme="dark"] .homeEmptyState,
+.appShell[data-theme="dark"] .recentsTable td,
+.appShell[data-theme="dark"] .wizardStepIntro,
+.appShell[data-theme="dark"] .studioLabel,
+.appShell[data-theme="dark"] .studioLabel em,
+.appShell[data-theme="dark"] .checkRow,
+.appShell[data-theme="dark"] .otherToggle,
+.appShell[data-theme="dark"] .personaSelect span,
+.appShell[data-theme="dark"] .compactField span,
+.appShell[data-theme="dark"] .stagePersonaBuilderHeader span,
+.appShell[data-theme="dark"] .decisionPointCard label > span,
+.appShell[data-theme="dark"] .livePreviewBlock p,
+.appShell[data-theme="dark"] .livePreviewBlockHeader > span:first-child,
+.appShell[data-theme="dark"] .livePreviewLabeledItem strong,
+.appShell[data-theme="dark"] .reviewReadiness p,
+.appShell[data-theme="dark"] .runtimePanelHeader span,
+.appShell[data-theme="dark"] .runtimeStageHeader p,
+.appShell[data-theme="dark"] .runtimeMessageRow time,
+.appShell[data-theme="dark"] .runtimeDraftLabelRow label,
+.appShell[data-theme="dark"] .runtimeDraftLabelRow span,
+.appShell[data-theme="dark"] .runtimeSessionStrip {
+  color: #9eb0b8;
+}
+
+.appShell[data-theme="dark"] .appHeader,
+.appShell[data-theme="dark"] .homeHero,
+.appShell[data-theme="dark"] .homeUserCard,
+.appShell[data-theme="dark"] .homeSignOutSection,
+.appShell[data-theme="dark"] .homeStatTile,
+.appShell[data-theme="dark"] .recentsTableWrap,
+.appShell[data-theme="dark"] .wizardCard,
+.appShell[data-theme="dark"] .livePreviewPanel,
+.appShell[data-theme="dark"] .livePreviewHeader,
+.appShell[data-theme="dark"] .livePreviewBlock,
+.appShell[data-theme="dark"] .decisionPointCard,
+.appShell[data-theme="dark"] .sourceScenarioDetail,
+.appShell[data-theme="dark"] .runtimeTranscriptPanel,
+.appShell[data-theme="dark"] .runtimeAvatarFocus,
+.appShell[data-theme="dark"] .runtimeMindPanel,
+.appShell[data-theme="dark"] .runtimeLiveResponse,
+.appShell[data-theme="dark"] .runtimeTypingLine {
+  border-color: #294753;
+  background: #102b36;
+}
+
+.appShell[data-theme="dark"] .appHeader {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+.appShell[data-theme="dark"] .homeSignOutSection,
+.appShell[data-theme="dark"] .homeStatTile,
+.appShell[data-theme="dark"] .recentsTable th,
+.appShell[data-theme="dark"] .recentsTable td,
+.appShell[data-theme="dark"] .wizardFooter,
+.appShell[data-theme="dark"] .stagePersonaBuilderHeader,
+.appShell[data-theme="dark"] .previewHeading,
+.appShell[data-theme="dark"] .previewField,
+.appShell[data-theme="dark"] .livePreviewHeader,
+.appShell[data-theme="dark"] .livePreviewChatbotSection,
+.appShell[data-theme="dark"] .runtimePanelHeader,
+.appShell[data-theme="dark"] .runtimeStageHeader,
+.appShell[data-theme="dark"] .runtimeLiveResponse {
+  border-color: #294753;
+}
+
+.appShell[data-theme="dark"] .homeScenarios h2,
+.appShell[data-theme="dark"] .homeCurrentSection h2,
+.appShell[data-theme="dark"] .recentsTable td,
+.appShell[data-theme="dark"] .sourceScenarioDetail,
+.appShell[data-theme="dark"] .sourceScenarioDetail strong,
+.appShell[data-theme="dark"] .existingCopyMessage strong,
+.appShell[data-theme="dark"] .decisionPointCard legend,
+.appShell[data-theme="dark"] .livePreviewCopyNotice strong {
+  color: #c8d6dc;
+}
+
+.appShell[data-theme="dark"] .recentsTable th,
+.appShell[data-theme="dark"] .homeSectionHeading > span,
+.appShell[data-theme="dark"] .previewField span,
+.appShell[data-theme="dark"] .evaluationSectionHeader > span:last-child {
+  color: #8fa4ad;
+}
+
+.appShell[data-theme="dark"] .recentsTable tbody tr:hover {
+  background: #153641;
+}
+
+.appShell[data-theme="dark"] .currentCard {
+  border-color: #2c7280;
+  background: linear-gradient(135deg, #12343f, #102731);
+}
+
+.appShell[data-theme="dark"] .currentCardDelete,
+.appShell[data-theme="dark"] .secondaryButton,
+.appShell[data-theme="dark"] .iconButton,
+.appShell[data-theme="dark"] .appHeaderBack,
+.appShell[data-theme="dark"] .appHeaderRuntimeActions button,
+.appShell[data-theme="dark"] .appHeaderThemeToggle {
+  border-color: #355661;
+  background: #16323d;
+  color: #a9c2cb;
+}
+
+.appShell[data-theme="dark"] .appHeaderThemeToggle:hover,
+.appShell[data-theme="dark"] .appHeaderBack:hover,
+.appShell[data-theme="dark"] .appHeaderRuntimeActions button:hover {
+  border-color: #36a9ba;
+  background: #193f4b;
+  color: #7ed9e7;
+}
+
+.appShell[data-theme="dark"] .appHeaderRuntimeActions button.danger,
+.appShell[data-theme="dark"] .currentCardDelete:hover {
+  border-color: #7b4c50;
+  background: #3a2429;
+  color: #f0a5aa;
+}
+
+.appShell[data-theme="dark"] .homeSignOutButton {
+  color: #9eb0b8;
+}
+
+.appShell[data-theme="dark"] .homeSignOutButton:hover {
+  background: #3a2429;
+  color: #f0a5aa;
+}
+
+.appShell[data-theme="dark"] :is(select, input[type="text"], input[type="email"], input[type="password"], input:not([type]), textarea),
+.appShell[data-theme="dark"] .existingCopyControls input {
+  border-color: #36545f;
+  background: #0b222c;
+  color: #e5eef1;
+  caret-color: #7ed9e7;
+}
+
+.appShell[data-theme="dark"] :is(select, input, textarea)::placeholder {
+  color: #728891;
+}
+
+.appShell[data-theme="dark"] .sourceScenarioSection,
+.appShell[data-theme="dark"] .generatedInputsSection,
+.appShell[data-theme="dark"] .personaConfig,
+.appShell[data-theme="dark"] .scenarioStructureSection,
+.appShell[data-theme="dark"] .evaluationSection,
+.appShell[data-theme="dark"] .stageTabs-preview,
+.appShell[data-theme="dark"] .livePreviewBody,
+.appShell[data-theme="dark"] .reviewReadiness,
+.appShell[data-theme="dark"] .previewField.boxed p {
+  border-color: #294753;
+  background: #0c222b;
+  color: #b7c7cd;
+}
+
+.appShell[data-theme="dark"] .infoNote,
+.appShell[data-theme="dark"] .addRowButton {
+  border-color: #2f7180;
+  background: #12343f;
+  color: #8bcbd5;
+}
+
+.appShell[data-theme="dark"] .stageTabs button {
+  border-color: #36545f;
+  background: #102b36;
+  color: #9eb0b8;
+}
+
+.appShell[data-theme="dark"] .stageTabs button.complete {
+  border-color: #347785;
+  background: #143844;
+  color: #93d5df;
+}
+
+.appShell[data-theme="dark"] .stageTabs button.complete.active {
+  border-color: #36a9ba;
+  background: rgba(54, 169, 186, 0.2);
+}
+
+.appShell[data-theme="dark"] .stageTabs button.unfinished {
+  border-color: rgba(255, 173, 21, 0.58);
+  background: rgba(255, 173, 21, 0.12);
+  color: #ffd17b;
+}
+
+.appShell[data-theme="dark"] .stageTabs button.stageTabsAdd {
+  border-color: #516873;
+  background: rgba(16, 43, 54, 0.5);
+  color: #93a7af;
+}
+
+.appShell[data-theme="dark"] .stagePersonaBuilderHeader > strong,
+.appShell[data-theme="dark"] .livePreviewTags span,
+.appShell[data-theme="dark"] .runtimeStageHeader > span,
+.appShell[data-theme="dark"] .livePreviewBlockStatus {
+  border-color: #36545f;
+  background: #17323d;
+  color: #a8bac1;
+}
+
+.appShell[data-theme="dark"] .wizardStepperItem::after {
+  background: #36505a;
+}
+
+.appShell[data-theme="dark"] .wizardStepperDot {
+  border-color: #49616a;
+  background: #102b36;
+  color: #8fa4ad;
+}
+
+.appShell[data-theme="dark"] .wizardStepperItem.active .wizardStepperLabel {
+  color: #edf5f7;
+}
+
+.appShell[data-theme="dark"] .livePreviewBody {
+  background: #091d26;
+}
+
+.appShell[data-theme="dark"] .livePreviewCopyNotice,
+.appShell[data-theme="dark"] .existingCopyBanner {
+  border-color: #745f36;
+  background: #2a251c;
+  color: #e4bc6e;
+}
+
+.appShell[data-theme="dark"] .existingCopyBanner.saved,
+.appShell[data-theme="dark"] .livePreviewCopyNotice.saved,
+.appShell[data-theme="dark"] .reviewReadiness.ready {
+  border-color: #376c5a;
+  background: #142f28;
+  color: #8ed0b7;
+}
+
+.appShell[data-theme="dark"] .runtimeAvatarFocus {
+  background: linear-gradient(180deg, #102b36 0%, #0a2029 100%);
+}
+
+.appShell[data-theme="dark"] .runtimeAvatarStage {
+  border-color: #294753;
+  background: #06151c;
+}
+
+.appShell[data-theme="dark"] .runtimeBubble.avatar,
+.appShell[data-theme="dark"] .voiceButton {
+  background: #18343f;
+  color: #dce7eb;
+}
+
+.appShell[data-theme="dark"] .runtimeComposerShell {
+  border-color: #294753;
+  background: rgba(8, 27, 36, 0.96);
+}
+
+.appShell[data-theme="dark"] .emotionGuideRing,
+.appShell[data-theme="dark"] .emotionGuideSpoke {
+  stroke: #38515b;
+}
+
+.appShell[data-theme="dark"] .emotionPetalLabel,
+.appShell[data-theme="dark"] .emotionWheelCaption,
+.appShell[data-theme="dark"] .emotionWheelCaption strong {
+  color: #c8d6dc;
+  fill: #c8d6dc;
+}
+
+@media (max-width: 520px) {
+  .appShell[data-theme="dark"] .loginPanel {
+    background: rgba(8, 29, 39, 0.96);
   }
 }

@@ -4,6 +4,7 @@ import XLSX from "xlsx-js-style";
 import { RuntimeChatScreen } from "./chatbot-ui/RuntimeChatScreen.jsx";
 import { AppHeader } from "./components/AppHeader.jsx";
 import { HomeScreen } from "./screens/HomeScreen.jsx";
+import { LoginScreen } from "./screens/LoginScreen.jsx";
 import { ScenarioWizard, STEPS, wizardStepsForMode } from "./wizard/ScenarioWizard.jsx";
 import { DEFAULT_FORM, NEW_SCENARIO_FORM } from "./data/scenarioOptions.js";
 import { demoApi, demoUiApi } from "./demo/demoApi.js";
@@ -67,6 +68,7 @@ async function uiApi(path, options = {}) {
 }
 
 function App() {
+  const [theme, setTheme] = useState(() => window.localStorage.getItem("i2st-theme") || "light");
   const [catalog, setCatalog] = useState({ curriculumScenarios: [], scenarios: [], personas: [], counts: {} });
   const [health, setHealth] = useState({ ok: false, sessions: 0 });
   const [form, setForm] = useState(DEFAULT_FORM);
@@ -74,7 +76,7 @@ function App() {
   const [session, setSession] = useState(null);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-  const [view, setView] = useState("home"); // "home" | "wizard" | "runtime"
+  const [view, setView] = useState("login"); // "login" | "home" | "wizard" | "runtime"
   const [wizardStep, setWizardStep] = useState(0);
   const [creationMode, setCreationMode] = useState("new"); // "new" | "existing"
   const [existingOriginalName, setExistingOriginalName] = useState("");
@@ -156,6 +158,11 @@ function App() {
   useEffect(() => {
     loadCatalog();
   }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem("i2st-theme", theme);
+  }, [theme]);
 
   useEffect(() => {
     if (!messages.length) return;
@@ -386,6 +393,23 @@ function App() {
     setDraftActive(false);
   }
 
+  function signOut() {
+    resetForm();
+    setSession(null);
+    setMessages([]);
+    setInput("");
+    setDraftActive(false);
+    setView("login");
+  }
+
+  function signIn() {
+    setView("home");
+  }
+
+  function toggleTheme() {
+    setTheme((current) => (current === "dark" ? "light" : "dark"));
+  }
+
   const draftRoleLabel = (form.chatbotRole === "Other" ? form.chatbotRoleOther : form.chatbotRole) || "Scenario";
   const draftSteps = creationMode === "new" ? STEPS.filter((item) => item.key !== "source") : STEPS;
   const draftStepIndex = Math.max(0, draftSteps.findIndex((item) => item.key === STEPS[wizardStep]?.key));
@@ -402,7 +426,9 @@ function App() {
     : null;
 
   let body;
-  if (view === "runtime" && session) {
+  if (view === "login") {
+    body = <LoginScreen onLogin={signIn} theme={theme} />;
+  } else if (view === "runtime" && session) {
     body = (
       <RuntimeChatScreen
         busy={busy}
@@ -457,34 +483,38 @@ function App() {
         draft={draft}
         onResumeDraft={resumeDraft}
         onDeleteDraft={deleteDraft}
+        onSignOut={signOut}
       />
     );
   }
 
   return (
-    <div className="appShell">
-      <AppHeader
-        runtimeSession={
-          view === "runtime" && session
-            ? {
-                title: scenario?.title || scenario?.preview?.scenarioTitle || "Scenario session",
-                onExport: exportScenarioExcel,
-                exportDisabled: busy || !scenario,
-                onEndSession: endTrainingSession,
-              }
-            : undefined
-        }
-        wizardNavigation={
-          view === "wizard"
-            ? {
-                steps: wizardStepsForMode(creationMode),
-                step: wizardStep,
-                onStepChange: setWizardStep,
-                onExitToHome: returnHome,
-              }
-            : undefined
-        }
-      />
+    <div className="appShell" data-theme={theme}>
+      {view !== "login" && (
+        <AppHeader
+          themeToggle={view === "home" ? { theme, onToggle: toggleTheme } : undefined}
+          runtimeSession={
+            view === "runtime" && session
+              ? {
+                  title: scenario?.title || scenario?.preview?.scenarioTitle || "Scenario session",
+                  onExport: exportScenarioExcel,
+                  exportDisabled: busy || !scenario,
+                  onEndSession: endTrainingSession,
+                }
+              : undefined
+          }
+          wizardNavigation={
+            view === "wizard"
+              ? {
+                  steps: wizardStepsForMode(creationMode),
+                  step: wizardStep,
+                  onStepChange: setWizardStep,
+                  onExitToHome: returnHome,
+                }
+              : undefined
+          }
+        />
+      )}
       {body}
     </div>
   );
