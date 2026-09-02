@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import logo from "../images/EOCo-logo-black.png";
-import loginArtwork from "../images/login-background-art.png";
-import loginArtworkDark from "../images/login-background-art-dark.png";
+import loginArtwork from "../images/login-background-art.jpg";
+import loginArtworkDark from "../images/login-background-art-dark.jpg";
 
 export function LoginScreen({ onLogin, theme }) {
   function submitLogin(event) {
