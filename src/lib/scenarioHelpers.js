@@ -97,6 +97,10 @@ export function selectedCompetencies(form) {
   return Array.isArray(form.competencyFocuses) ? form.competencyFocuses : form.competencyFocus ? [form.competencyFocus] : [];
 }
 
+export function selectedCompetencyBehaviors(form) {
+  return Array.isArray(form.competencyBehaviorFocuses) ? form.competencyBehaviorFocuses : [];
+}
+
 export function competencyDetails(titles) {
   const out = [];
   titles.forEach((title) => {
@@ -145,12 +149,14 @@ export function previewFromFormOrScenario(scenario, form, source) {
     return {
       chatbotRole: "",
       competencyFocus: "",
+      performanceObjective: "",
       scenarioFactors: "",
       scenarioComplexities: "",
       sourceScenario: "",
       avatarName: "",
       personaDetails: "",
       otherDetails: "",
+      evaluationSummary: "",
       scenarioTitle: "",
       scenarioSummary: "",
       inContextPersonaSummary: "",
@@ -174,12 +180,14 @@ export function previewFromFormOrScenario(scenario, form, source) {
     return {
       chatbotRole: scenario.role || "",
       competencyFocus: "",
+      performanceObjective: "",
       scenarioFactors: "",
       scenarioComplexities: "",
       sourceScenario: "",
       avatarName: scenario.avatar_name || "Avatar",
       personaDetails,
       otherDetails: "",
+      evaluationSummary: "",
       scenarioTitle: scenario.title || "",
       scenarioSummary: "",
       inContextPersonaSummary: [scenario.role, persona.style, persona.emotional_state, persona.trust_level, persona.communication_style, persona.primary_concern]
@@ -188,6 +196,7 @@ export function previewFromFormOrScenario(scenario, form, source) {
     };
   }
   const competencies = selectedCompetencies(form);
+  const focusedBehaviors = selectedCompetencyBehaviors(form);
   const factorList = selectedList(form.scenarioFactors, form.otherFactor);
   const complexityList = selectedList(form.scenarioComplexities, form.otherComplexity);
   const authoring = scenario?.authoring || {};
@@ -222,20 +231,29 @@ export function previewFromFormOrScenario(scenario, form, source) {
 
   return {
     chatbotRole: scenario.role || formValue(form, "chatbotRole", "chatbotRoleOther"),
-    competencyFocus: `${competencies.join(", ") || "None"}\n(${competencyDetails(competencies).join(", ") || "No details"})`,
+    competencyFocus: `KPA: ${form.selectedKpa || "None"}\nFocus areas: ${competencies.join(", ") || "None"}\nFocused behaviors: ${focusedBehaviors.join(", ") || "All associated behaviors"}`,
+    performanceObjective: form.performanceObjective || "None",
     scenarioFactors: factorList.join(", ") || "None",
     scenarioComplexities: complexityList.join(", ") || "None",
     sourceScenario: sourceText,
     avatarName: scenario.avatar_name || "Avatar",
     personaDetails,
     otherDetails: form.otherDetails || "None",
+    evaluationSummary: `${form.decisionPoints.filter((point) => clean(point.cue) && clean(point.learnerBehavior) && clean(point.consequence)).length} decision points`,
     scenarioTitle: scenario.title || `${formValue(form, "chatbotRole", "chatbotRoleOther")}: Workplace Concern`,
     scenarioSummary:
       scenario.summary ||
       [
         clean(source?.scenario_text),
+        form.scenarioSetting ? `Setting: ${clean(form.scenarioSetting)}.` : "",
+        form.scenarioBackground ? `Background: ${clean(form.scenarioBackground)}.` : "",
+        form.scenarioTrigger ? `Trigger: ${clean(form.scenarioTrigger)}.` : "",
+        form.scenarioChallenge ? `Challenge: ${clean(form.scenarioChallenge)}.` : "",
         `Role: ${formValue(form, "chatbotRole", "chatbotRoleOther")}.`,
-        `Training focus: ${competencies.join(", ") || "workplace conversation"}.`,
+        form.selectedKpa ? `KPA: ${form.selectedKpa}.` : "",
+        `Focus areas: ${competencies.join(", ") || "workplace conversation"}.`,
+        focusedBehaviors.length ? `Behavior focus: ${focusedBehaviors.join(", ")}.` : "",
+        form.domainType ? `Domain: ${form.domainType}${form.militaryBranch ? ` — ${form.militaryBranch}` : ""}.` : "",
         `Factors: ${factorList.join(", ") || "not specified"}.`,
         `Complexities: ${complexityList.join(", ") || "none selected"}.`,
         form.otherDetails,
@@ -283,7 +301,8 @@ export function writeScenarioWorkbook(XLSX, scenario) {
   const sourceScenario = isSourceLibraryScenario ? sourceContext.scenario || {} : {};
   const persona = scenario.persona || {};
   const focusTitles = selectedList(payload.competencyFocuses || [], "");
-  const primaryFocus = focusTitles[0] || clean(payload.competencyFocus).split(",")[0] || "None";
+  const primaryFocus = focusTitles.join(", ") || clean(payload.competencyFocus) || "None";
+  const behaviorFocus = selectedList(payload.competencyBehaviorFocuses || [], "").join(", ") || "None";
   const factorText = selectedList(payload.scenarioFactors || [], payload.otherFactor).join(", ") || "None";
   const complexityText = selectedList(payload.scenarioComplexities || [], payload.otherComplexity).join(", ") || "None";
   const personaDetails = [
@@ -322,11 +341,27 @@ export function writeScenarioWorkbook(XLSX, scenario) {
   const rows = [
     { kind: "title", cells: ["Scenario Record", ""] },
     { group: "scenario", cells: ["Chatbot Role", scenario.role || ""] },
-    { group: "scenario", cells: ["Key Performance Areas Focus", primaryFocus] },
+    { group: "scenario", cells: ["KPA", payload.selectedKpa || "None"] },
+    { group: "scenario", cells: ["Focus Areas", primaryFocus] },
+    { group: "scenario", cells: ["Focused Behaviors", behaviorFocus] },
+    { group: "scenario", cells: ["Evaluation Scope", "Selected KPA rubric and all three focus areas"] },
+    { group: "scenario", cells: ["Performance Objective", payload.performanceObjective || "None"] },
+    { group: "scenario", cells: ["Domain", [payload.domainType, payload.militaryBranch].filter(Boolean).join(" — ") || "None"] },
     { group: "scenario", cells: ["Scenario Factors", factorText] },
     { group: "scenario", cells: ["Scenario Complexities", complexityText] },
+    { group: "scenario", cells: ["Setting", payload.scenarioSetting || "None"] },
+    { group: "scenario", cells: ["Background", payload.scenarioBackground || "None"] },
+    { group: "scenario", cells: ["Trigger", payload.scenarioTrigger || "None"] },
+    { group: "scenario", cells: ["Challenge", payload.scenarioChallenge || "None"] },
     ...(isSourceLibraryScenario ? [{ group: "scenario", cells: ["Source Curriculum Scenario", sourceText] }] : []),
     { group: "scenario", cells: ["Other Details", payload.otherDetails || "None"] },
+    {
+      group: "evaluation",
+      cells: [
+        "Decision & Evidence Map",
+        (payload.decisionPoints || []).map((point, index) => `${index + 1}. Cue: ${clean(point.cue)}\nLearner behavior: ${clean(point.learnerBehavior)}\nConsequence/evidence: ${clean(point.consequence)}`).join("\n\n") || "None",
+      ],
+    },
     { group: "persona", cells: ["Chatbot Character", scenario.avatar_name || ""] },
     { group: "persona", cells: ["Persona Inputs", personaDetails] },
     { group: "summary", kind: "boxed", cells: ["Scenario Title", scenario.title || ""] },
@@ -345,6 +380,7 @@ export function writeScenarioWorkbook(XLSX, scenario) {
       const groupColors = {
         scenario: { label: "EAF7FB", value: "F6FCFE" },
         persona: { label: "FCEAEA", value: "FFF7F7" },
+        evaluation: { label: "FFF0D2", value: "FFFAF0" },
         summary: { label: "EAF7EC", value: "F7FFF8" },
       };
       const colors = groupColors[row.group] || groupColors.scenario;

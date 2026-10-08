@@ -1,6 +1,7 @@
 :root {
   --layout-gap: 32px;
   --surface-radius: 14px;
+  --site-max-width: 1920px;
   color-scheme: light;
   color: #18202a;
   background: #f4f6f8;
@@ -53,6 +54,259 @@ input[type="radio"] {
   min-height: 100vh;
 }
 
+@media (min-width: 2080px) {
+  .appShell:not(.appShell-login) {
+    position: relative;
+    width: var(--site-max-width);
+    max-width: var(--site-max-width);
+  }
+
+  .appShell:not(.appShell-login)::after {
+    content: "";
+    position: fixed;
+    z-index: 0;
+    inset: 0 0 0 var(--site-max-width);
+    border-left: 1px solid rgba(185, 207, 214, 0.75);
+    background: #f4f7f8 url("./images/login-background-art.jpg") right center / cover no-repeat;
+    pointer-events: none;
+  }
+
+  .appShell:not(.appShell-login)[data-theme="dark"]::after {
+    border-left-color: rgba(58, 83, 94, 0.8);
+    background-color: #071c25;
+    background-image: url("./images/login-background-art-dark.jpg");
+  }
+
+  .appShell-runtime .runtimeScreen {
+    right: calc(100vw - var(--site-max-width));
+  }
+}
+
+.loginScreen {
+  position: relative;
+  min-height: 100vh;
+  padding: clamp(24px, 4vw, 64px);
+  display: flex;
+  align-items: center;
+  background: #f4f7f8;
+  overflow: hidden;
+}
+
+.loginPanel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 560px);
+  min-height: min(700px, calc(100vh - 48px));
+  padding: clamp(32px, 4vw, 56px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  border: 1px solid rgba(185, 207, 214, 0.9);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 24px 70px rgba(31, 64, 76, 0.14);
+  backdrop-filter: blur(10px);
+}
+
+.loginBrand img {
+  width: auto;
+  height: 34px;
+  display: block;
+}
+
+.loginFormShell {
+  width: min(100%, 430px);
+  margin-block: 20px;
+  align-self: center;
+}
+
+.loginEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #5f6d78;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.loginEyebrow i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffad15;
+}
+
+.loginFormShell h1 {
+  margin: 16px 0 8px;
+  color: #1f2b36;
+  font-size: clamp(30px, 3vw, 32px);
+  font-weight: 650;
+  line-height: 1.05;
+}
+
+.loginIntro {
+  margin: 0;
+  max-width: 390px;
+  color: #66737f;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.loginForm {
+  margin-top: 32px;
+  display: grid;
+  gap: 18px;
+}
+
+.loginField {
+  display: grid;
+  gap: 7px;
+}
+
+.loginField > span {
+  color: #4f5c67;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.loginField input {
+  min-height: 52px;
+  padding-inline: 15px;
+  border: 1px solid #cdd7dc;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(31, 43, 54, 0.04);
+}
+
+.loginField input:focus {
+  border-color: #078da2;
+  outline: 3px solid rgba(7, 141, 162, 0.14);
+  outline-offset: 0;
+}
+
+.loginOptions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: #65727d;
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.loginOptions label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.loginOptions input {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  accent-color: #078da2;
+}
+
+.loginOptions button {
+  padding: 2px 0;
+  background: transparent;
+  color: #078da2;
+  font: inherit;
+}
+
+.loginSubmit {
+  min-height: 52px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-radius: 8px;
+  background: #078da2;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 850;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.loginSubmit:hover {
+  background: #066e7e;
+  transform: translateY(-1px);
+}
+
+.loginSubmit:focus-visible {
+  outline: 3px solid rgba(7, 141, 162, 0.25);
+  outline-offset: 3px;
+}
+
+.loginPrototypeNote {
+  margin: 16px 0 0;
+  color: #87929b;
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+.loginFooter {
+  margin: 0;
+  color: #8a969f;
+  font-size: 12.5px;
+  font-weight: 650;
+}
+
+.loginArtwork {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #f4f7f8;
+  overflow: hidden;
+}
+
+.loginArtwork img {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+}
+
+@media (max-width: 820px) {
+  .loginScreen {
+    padding: 24px;
+  }
+
+  .loginPanel {
+    width: min(100%, 520px);
+    min-height: min(700px, calc(100vh - 48px));
+  }
+}
+
+@media (max-width: 520px) {
+  .loginScreen {
+    padding: 14px;
+  }
+
+  .loginPanel {
+    width: 100%;
+    min-height: calc(100vh - 28px);
+    padding: 24px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 16px 44px rgba(31, 64, 76, 0.12);
+  }
+
+  .loginFormShell {
+    margin-block: 20px;
+  }
+
+  .loginOptions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
 .appHeader {
   position: sticky;
   top: 12px;
@@ -87,6 +341,48 @@ input[type="radio"] {
   height: 24px;
   width: auto;
   display: block;
+}
+
+.appHeaderHomeLogo {
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: transparent;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.appHeaderHomeLogo:hover {
+  background: #eef5f6;
+  transform: translateY(-1px);
+}
+
+.appHeaderHomeLogo:focus-visible {
+  outline: 3px solid rgba(7, 141, 162, 0.22);
+  outline-offset: 2px;
+}
+
+.appHeaderThemeToggle {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid #d2dce1;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #52606c;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.appHeaderThemeToggle:hover {
+  border-color: #078da2;
+  background: #eef8fa;
+  color: #078da2;
+  transform: translateY(-1px);
+}
+
+.appHeaderThemeToggle:focus-visible {
+  outline: 3px solid rgba(7, 141, 162, 0.22);
+  outline-offset: 2px;
 }
 
 .appHeaderWizard {
@@ -125,7 +421,7 @@ input[type="radio"] {
 .appHeaderRuntime {
   height: 66px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 14px;
 }
 
@@ -354,7 +650,7 @@ input[type="radio"] {
 
 @media (max-width: 1000px) {
   .appHeaderWizard {
-    grid-template-columns: 54px minmax(0, 1fr) minmax(120px, auto);
+    grid-template-columns: 54px minmax(0, 1fr);
     gap: 14px;
   }
 
@@ -375,7 +671,7 @@ input[type="radio"] {
   }
 
   .appHeaderWizard {
-    grid-template-columns: 44px minmax(0, 1fr) 36px;
+    grid-template-columns: 44px minmax(0, 1fr);
     gap: 10px;
   }
 
@@ -402,7 +698,7 @@ input[type="radio"] {
   }
 
   .appHeaderRuntime {
-    grid-template-columns: minmax(0, 1fr) auto 36px;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 8px;
   }
 
@@ -497,7 +793,7 @@ input[type="radio"] {
   justify-items: start;
   gap: 2px;
   border: 1px solid #cfd9de;
-  border-radius: var(--surface-radius);
+  border-radius: 7px;
   background: #ffffff;
   color: #66737f;
   transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
@@ -633,6 +929,37 @@ input[type="radio"] {
   max-width: none;
 }
 
+.performanceObjectiveField {
+  margin: 0 0 18px;
+}
+
+.performanceObjectiveField textarea {
+  min-height: 92px;
+}
+
+.scenarioStructureSection,
+.evaluationSection {
+  padding: 18px;
+  border: 1px solid #d9e1e5;
+  border-radius: 8px;
+  background: #fbfcfd;
+}
+
+.scenarioStructureGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 16px 20px;
+}
+
+.scenarioStructureGrid .studioField {
+  margin-top: 0;
+  align-content: start;
+}
+
+.scenarioStructureGrid textarea {
+  min-height: 94px;
+}
+
 .factorGroup .checkboxGrid {
   grid-template-columns: repeat(2, minmax(170px, 1fr));
   max-width: none;
@@ -665,25 +992,52 @@ input[type="radio"] {
   line-height: 1;
 }
 
-.infoNote {
-  margin: 4px 0 0;
-  padding: 10px 14px;
-  display: flex;
-  align-items: flex-start;
-  gap: 9px;
-  border-radius: 6px;
-  background: #eef8fa;
-  color: #4d7c88;
-  font-size: 13.5px;
-  font-weight: 600;
-  line-height: 1.5;
-}
+.infoTooltip { position: relative; display: inline-flex; vertical-align: middle; margin-left: 5px; }
+.infoTooltipTrigger { width: 19px; height: 19px; display: inline-grid; place-items: center; color: #188da7; cursor: help; }
+.infoTooltipContent { position: absolute; z-index: 20; left: -8px; top: 50%; width: min(310px, 72vw); min-height: 35px; padding: 8px 12px 8px 9px; display: flex; align-items: flex-start; gap: 9px; border: 1px solid #b9dce4; border-radius: 9px; background: #f7fcfd; box-shadow: 0 8px 24px rgba(25, 45, 58, 0.16); color: #4d6570; font-size: 12px; font-weight: 650; line-height: 1.45; opacity: 0; visibility: hidden; transform: translateY(-50%) scale(0.98); transform-origin: left center; transition: opacity 140ms ease, transform 140ms ease; pointer-events: none; text-transform: none; letter-spacing: normal; }
+.infoTooltipContentIcon { width: 20px; height: 20px; flex: 0 0 20px; display: inline-grid; place-items: center; color: #188da7; }
+.infoTooltipText { padding-top: 1px; }
+.infoTooltip:hover .infoTooltipContent, .infoTooltip:focus-within .infoTooltipContent { opacity: 1; visibility: visible; transform: translateY(-50%) scale(1); }
 
-.infoNote svg {
-  flex: none;
-  margin-top: 1px;
-  color: #37aeca;
-}
+.persistentInfoNote { margin: 8px 0 14px; padding: 10px 12px; border-radius: 7px; background: #eef8fa; color: #4d7c88; font-size: 13px; font-weight: 650; line-height: 1.45; }
+.sectionTitleRow, .personaStepHeading, .personaGenerateActions { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.compactActionButton { min-height: 34px; padding: 7px 11px; font-size: 12px; }
+.kpaOption { padding: 12px; border: 1px solid #dce5e9; border-radius: 8px; background: #fff; }
+.kpaParentRow { padding: 0; font-weight: 800; }
+.kpaOption ul { margin: 8px 0 0 29px; padding: 0; color: #66737f; font-size: 12.5px; line-height: 1.55; }
+.fieldHelperText { margin: 7px 0 13px; color: #6b7882; font-size: 13px; line-height: 1.45; }
+.kpaSelectionField { width: 100%; max-width: none; margin-bottom: 10px; }
+.kpaSelectionField .selectControl { width: 100%; }
+.kpaHierarchy { display: grid; gap: 12px; }
+.kpaBehaviorList { margin: 10px 0 0 28px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 18px; }
+.kpaBehaviorRow { min-height: 20px; color: #6b7882; font-size: 13px; font-weight: 650; }
+.scenarioSetupSection, .scenarioDomainSection { padding: 18px; }
+.stageSetupHeader, .scenarioParticipantCardHeader { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.participantCountField, .militaryBranchField { max-width: 340px; margin-top: 12px; }
+.scenarioParticipantGrid, .generatedStructureGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 14px; }
+.scenarioParticipantCard { padding: 14px; display: grid; gap: 10px; border: 1px solid #dce5e9; border-radius: 8px; background: #fff; }
+.scenarioParticipantCard > strong { color: #26333e; font-size: 14px; }
+.scenarioParticipantCardHeader > strong { color: #26333e; font-size: 14px; }
+.removeStageButton { width: 30px; height: 30px; display: inline-grid; place-items: center; border: 1px solid #d7e1e5; border-radius: 7px; background: #fff; color: #7c8992; cursor: pointer; }
+.removeStageButton:hover { border-color: #e5a1a1; background: #fff5f5; color: #b84b4b; }
+.assignedDomainTitle { margin: 0; padding-top: 8px; display: grid; gap: 2px; border-top: 1px solid #e2e8eb; }
+.assignedDomainTitle span { color: #71808a; font-size: 10px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
+.assignedDomainTitle strong { color: #33434e; font-size: 13px; }
+.domainOptionGrid { display: flex; gap: 10px; margin-top: 13px; }
+.domainOption { min-width: 130px; padding: 12px 14px; display: flex; align-items: center; gap: 9px; border: 1px solid #d7e1e5; border-radius: 8px; background: #fff; color: #56646f; font-weight: 800; cursor: pointer; }
+.domainOption.selected { border-color: #1597b2; background: #eef9fb; color: #126f83; box-shadow: 0 0 0 2px rgba(21, 151, 178, 0.12); }
+.generatedStructureCard { padding: 13px; border: 1px solid #dce5e9; border-radius: 8px; background: #f8fafb; }
+.generatedStructureCard strong { display: block; color: #56646f; font-size: 11px; font-weight: 900; letter-spacing: .07em; text-transform: uppercase; }
+.generatedStructureCard p { margin: 6px 0 0; color: #34424d; font-size: 13px; line-height: 1.45; }
+.configuredRoleSummary { padding: 13px 14px; display: grid; gap: 2px; border: 1px solid #dce5e9; border-radius: 8px; background: #f8fafb; }
+.configuredRoleSummary span { color: #71808a; font-size: 11px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
+.configuredRoleSummary strong { color: #26333e; font-size: 15px; }
+.configuredRoleSummary small { color: #71808a; font-size: 12px; }
+.personaStepHeading { align-items: flex-start; margin-bottom: 8px; }
+.personaStepHeading .wizardStepIntro { margin-bottom: 0; }
+.scenarioGenerationCallout { margin-top: 14px; padding: 17px; display: flex; align-items: center; justify-content: space-between; gap: 18px; border: 1px solid #b9ddcd; border-radius: 9px; background: #f1faf6; }
+.scenarioGenerationCallout strong { color: #1f2b36; }
+.scenarioGenerationCallout p { margin: 4px 0 0; color: #65727d; font-size: 13px; }
 
 .sourceModeRow {
   display: flex;
@@ -845,6 +1199,168 @@ textarea:focus {
   display: grid;
   grid-template-columns: repeat(2, minmax(200px, 1fr));
   gap: 16px 20px;
+}
+
+.evaluationStepBody {
+  gap: 16px;
+}
+
+.evaluationStepBody .wizardStepIntro {
+  margin-bottom: 2px;
+}
+
+.evaluationSection {
+  gap: 12px;
+}
+
+.evaluationSectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.evaluationSectionHeader .studioLabel,
+.evaluationSection > .studioLabel {
+  margin-top: 0;
+}
+
+.evaluationSectionHeader > span:last-child {
+  color: #7c8892;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.decisionPointList,
+.repeatableList {
+  display: grid;
+  gap: 12px;
+}
+
+.decisionPointCard {
+  margin: 0;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  border: 1px solid #dce5e9;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.decisionPointCard legend {
+  padding: 0 6px;
+  color: #53616c;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.decisionPointCard label {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+}
+
+.decisionPointCard label > span {
+  color: #66737f;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.decisionPointCard textarea {
+  min-height: 104px;
+  font-size: 14px;
+}
+
+.removeDecisionButton {
+  grid-column: 1 / -1;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: #8a5b55;
+  font-size: 12.5px;
+  font-weight: 800;
+}
+
+.removeDecisionButton:disabled,
+.iconButton:disabled {
+  cursor: default;
+  opacity: 0.35;
+}
+
+.repeatableRow {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) 38px;
+  align-items: start;
+  gap: 10px;
+}
+
+.repeatableIndex {
+  width: 26px;
+  height: 26px;
+  margin-top: 9px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #e9f5f7;
+  color: #087f92;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.repeatableRow textarea {
+  min-height: 72px;
+  font-size: 14px;
+}
+
+.successCriterionInputs {
+  display: grid;
+  gap: 9px;
+}
+
+.successCriterionInputs select {
+  min-height: 40px;
+  font-size: 14px;
+}
+
+.iconButton {
+  width: 38px;
+  height: 38px;
+  margin-top: 3px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid #e1d0cd;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #8a5b55;
+}
+
+.addRowButton {
+  justify-self: start;
+  min-height: 38px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px dashed #7bc5d2;
+  border-radius: 7px;
+  background: #f4fbfc;
+  color: #087f92;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.addRowButton:hover {
+  border-style: solid;
+  background: #eaf7f9;
+}
+
+.evaluationEvidenceGrid {
+  max-width: none;
+  grid-template-columns: repeat(3, minmax(170px, 1fr));
 }
 
 .primaryButton,
@@ -1062,7 +1578,7 @@ textarea:focus {
 
 .runtimeAvatarFocus {
   display: grid;
-  grid-template-rows: auto minmax(310px, 1fr) auto;
+  grid-template-rows: auto auto minmax(260px, 1fr) auto;
   background:
     linear-gradient(180deg, #ffffff 0%, #f7fbfc 100%);
 }
@@ -1105,6 +1621,58 @@ textarea:focus {
   color: #65727d;
   font-size: 12.5px;
   font-weight: 900;
+}
+
+.runtimeStageSwitcher {
+  padding: 10px 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 8px;
+  border-bottom: 1px solid #dbe5e8;
+  background: #f7fafb;
+}
+
+.runtimeStageSwitcher button {
+  min-width: 0;
+  min-height: 49px;
+  padding: 7px 10px;
+  display: grid;
+  align-content: center;
+  gap: 2px;
+  border: 1px solid #cad8de;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #53636e;
+  text-align: left;
+}
+
+.runtimeStageSwitcher button:hover:not(:disabled) {
+  border-color: #66bdcd;
+  background: #eef9fa;
+}
+
+.runtimeStageSwitcher button.active {
+  border-color: #078da2;
+  background: #dff3f5;
+  color: #075f70;
+}
+
+.runtimeStageSwitcher button:focus-visible {
+  outline: 3px solid rgba(7, 141, 162, 0.22);
+  outline-offset: 2px;
+}
+
+.runtimeStageSwitcher span {
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.runtimeStageSwitcher small {
+  overflow: hidden;
+  font-size: 11px;
+  font-weight: 750;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .runtimeAvatarStage {
@@ -1443,12 +2011,32 @@ textarea:focus {
 }
 
 .homeHero {
+  position: relative;
+  isolation: isolate;
+  min-height: 226px;
   padding: 32px;
   display: grid;
   gap: 14px;
   border: 1px solid #d9e1e5;
   border-radius: var(--surface-radius);
-  background: linear-gradient(135deg, #ffffff, #eef8fa);
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.homeHero::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0 0 0 auto;
+  width: min(56%, 720px);
+  background: url("./images/lines-dots-art.png") right center / auto 100% no-repeat;
+  pointer-events: none;
+}
+
+.homeHero > * {
+  position: relative;
+  z-index: 1;
+  max-width: 60%;
 }
 
 .homeHero h1 {
@@ -1669,6 +2257,37 @@ textarea:focus {
 .homeStatsRow {
   display: grid;
   grid-template-columns: 1fr;
+}
+
+.homeSignOutSection {
+  padding: 12px;
+  border-top: 1px solid #d9e1e5;
+  background: #ffffff;
+}
+
+.homeSignOutButton {
+  width: 100%;
+  min-height: 42px;
+  padding: 0 11px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 8px;
+  background: transparent;
+  color: #66737f;
+  font-size: 13.5px;
+  font-weight: 800;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.homeSignOutButton:hover {
+  background: #fff2f0;
+  color: #a63d47;
+}
+
+.homeSignOutButton:focus-visible {
+  outline: 3px solid rgba(7, 141, 162, 0.22);
+  outline-offset: 2px;
 }
 
 .homeStatTile {
@@ -2080,7 +2699,7 @@ textarea:focus {
   justify-content: space-between;
   gap: 16px;
   border-bottom: 1px solid #dce6e9;
-  background: linear-gradient(135deg, #f3fbfc 0%, #ffffff 72%);
+  background: #ffffff;
 }
 
 .livePreviewHeader h2 {
@@ -2211,6 +2830,11 @@ textarea:focus {
   background: #ffffff;
 }
 
+.livePreviewBlock.active {
+  border-color: #7bcde0;
+  box-shadow: 0 0 0 2px rgba(123, 205, 224, 0.22);
+}
+
 .livePreviewBlockHeader {
   display: flex;
   align-items: center;
@@ -2291,6 +2915,17 @@ textarea:focus {
 .livePreviewBlock .livePreviewNote {
   padding-top: 8px;
   border-top: 1px solid #edf1f3;
+}
+
+.livePreviewBlock .livePreviewLabeledItem {
+  display: block;
+  overflow: visible;
+  -webkit-line-clamp: initial;
+}
+
+.livePreviewLabeledItem strong {
+  color: #4f5d68;
+  font-size: inherit;
 }
 
 .wizardStepBody {
@@ -2427,7 +3062,13 @@ textarea:focus {
   .competencyGroup .checkboxGrid,
   .factorGroup .checkboxGrid,
   .personaControlGrid,
-  .generatedInputsSection {
+  .generatedInputsSection,
+  .scenarioStructureGrid,
+  .scenarioParticipantGrid,
+  .generatedStructureGrid,
+  .kpaBehaviorList,
+  .decisionPointCard,
+  .evaluationEvidenceGrid {
     grid-template-columns: 1fr;
   }
 
@@ -2471,6 +3112,16 @@ textarea:focus {
 
   .homeHero {
     padding: 24px;
+  }
+
+  .homeHero::after {
+    right: -18%;
+    width: 82%;
+    opacity: 0.35;
+  }
+
+  .homeHero > * {
+    max-width: 100%;
   }
 
   .homeUserIdentity {
@@ -2626,5 +3277,487 @@ textarea:focus {
   .assignedScenarioTable td:nth-child(3) {
     width: 36%;
     display: table-cell;
+  }
+}
+
+/* Dark theme */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  color: #dce7eb;
+  background: #071820;
+}
+
+.aarScreen { width: 100%; padding: var(--layout-gap) 16px 70px; display: grid; gap: 20px; background: #f5f6f8; }
+.aarHero { padding: 28px 30px; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; border: 1px solid #d9e1e5; border-radius: var(--surface-radius); background: #fff; }
+.aarEyebrow, .aarCardHeader span { color: #1689a1; font-size: 11px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.aarHero h1 { margin: 8px 0 6px; color: #1f2b36; font-size: clamp(28px, 3vw, 40px); line-height: 1.05; }
+.aarHero p { max-width: 720px; margin: 0; color: #66737f; font-size: 15px; line-height: 1.5; }
+.aarCompleteBadge { padding: 8px 12px; border: 1px solid #b9ddcd; border-radius: 999px; background: #f1faf6; color: #167156; font-size: 12px; font-weight: 850; white-space: nowrap; }
+.aarMetrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.aarMetrics article { padding: 16px; display: flex; align-items: center; gap: 12px; border: 1px solid #dce5e9; border-radius: 10px; background: #fff; color: #1689a1; }
+.aarMetrics article div { display: grid; gap: 2px; }
+.aarMetrics strong { color: #26333e; font-size: 22px; line-height: 1; }
+.aarMetrics span { color: #71808a; font-size: 12px; font-weight: 700; }
+.aarGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "focus reflection" "stages reflection" "transcript transcript"; gap: 20px; align-items: stretch; }
+.aarCard { padding: 22px; display: grid; gap: 18px; border: 1px solid #d9e1e5; border-radius: var(--surface-radius); background: #fff; }
+.aarFocusCard { grid-area: focus; }
+.aarStagesCard { grid-area: stages; }
+.aarCardHeader { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; color: #1689a1; }
+.aarCardHeader h2 { margin: 5px 0 0; color: #26333e; font-size: 20px; }
+.aarTranscriptExport { min-height: 36px; padding: 0 12px; display: inline-flex; align-items: center; gap: 7px; border: 1px solid #9acfd8; border-radius: 7px; background: #fff; color: #078da2; font-size: 13px; font-weight: 850; }
+.aarTranscriptExport:hover:not(:disabled) { background: #eef8fa; border-color: #078da2; }
+.aarTranscriptExport:focus-visible { outline: 3px solid rgba(7, 141, 162, .22); outline-offset: 2px; }
+.aarTranscriptExport:disabled { opacity: .5; cursor: not-allowed; }
+.aarFocusList { margin: 0; display: grid; gap: 12px; }
+.aarFocusList div { padding-bottom: 11px; border-bottom: 1px solid #e5eaed; }
+.aarFocusList div:last-child { padding-bottom: 0; border-bottom: 0; }
+.aarFocusList dt { color: #71808a; font-size: 11px; font-weight: 900; letter-spacing: .05em; text-transform: uppercase; }
+.aarFocusList dd { margin: 4px 0 0; color: #34424d; font-size: 14px; line-height: 1.45; }
+.aarStageList { display: grid; gap: 9px; }
+.aarStageList div { padding: 12px 13px; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-radius: 8px; background: #f6f9fa; }
+.aarStageList strong { color: #34424d; font-size: 13px; }
+.aarStageList span { color: #687680; font-size: 13px; text-align: right; }
+.aarReflectionCard { grid-area: reflection; align-content: start; }
+.aarReflectionCard ol { margin: 0; padding-left: 22px; display: grid; gap: 12px; color: #45535e; line-height: 1.5; }
+.aarTranscriptCard { grid-area: transcript; }
+.aarTranscript { max-height: 420px; padding-right: 6px; display: grid; gap: 10px; overflow-y: auto; }
+.aarTranscript article { max-width: 78%; padding: 12px 14px; border-radius: 10px; background: #f0f4f6; }
+.aarTranscript article.trainee { margin-left: auto; background: #eaf7fa; }
+.aarTranscript article > span { color: #687680; font-size: 10px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
+.aarTranscript p { margin: 4px 0 0; color: #34424d; font-size: 14px; line-height: 1.5; }
+.aarActions { padding-top: 2px; display: flex; justify-content: flex-end; gap: 10px; }
+
+@media (max-width: 820px) {
+  .aarMetrics, .aarGrid { grid-template-columns: 1fr; }
+  .aarGrid { grid-template-areas: "focus" "stages" "reflection" "transcript"; }
+  .aarHero { flex-direction: column; }
+  .aarActions { align-items: stretch; flex-direction: column; }
+  .aarActions button { width: 100%; }
+}
+
+.appShell[data-theme="dark"] {
+  min-height: 100vh;
+  background: #071820;
+  color: #dce7eb;
+}
+
+.appShell[data-theme="dark"] .loginScreen,
+.appShell[data-theme="dark"] .homeScreen,
+.appShell[data-theme="dark"] .wizardShell,
+.appShell[data-theme="dark"] .runtimeScreen,
+.appShell[data-theme="dark"] .aarScreen {
+  background: #071820;
+}
+
+.appShell[data-theme="dark"] .loginPanel {
+  border-color: rgba(92, 139, 153, 0.5);
+  background: rgba(8, 29, 39, 0.94);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.38);
+}
+
+.appShell[data-theme="dark"] .loginBrand img,
+.appShell[data-theme="dark"] .appHeaderMark img {
+  filter: invert(1) grayscale(1) brightness(1.8);
+}
+
+.appShell[data-theme="dark"] .loginFormShell h1,
+.appShell[data-theme="dark"] .homeHero h1,
+.appShell[data-theme="dark"] .homeUserName,
+.appShell[data-theme="dark"] .homeStatValue,
+.appShell[data-theme="dark"] .currentCardInfo h3,
+.appShell[data-theme="dark"] .recentsTitleCell,
+.appShell[data-theme="dark"] .wizardStepBody h2,
+.appShell[data-theme="dark"] .stagePersonaBuilderHeader h3,
+.appShell[data-theme="dark"] .livePreviewHeader h2,
+.appShell[data-theme="dark"] .livePreviewChatbotSection > h3,
+.appShell[data-theme="dark"] .livePreviewBlock strong,
+.appShell[data-theme="dark"] .reviewReadiness strong,
+.appShell[data-theme="dark"] .runtimePanelHeader p,
+.appShell[data-theme="dark"] .runtimeStageHeader h1,
+.appShell[data-theme="dark"] .runtimeLiveResponse p,
+.appShell[data-theme="dark"] .appHeaderRuntimeTitle strong,
+.appShell[data-theme="dark"] .aarHero h1,
+.appShell[data-theme="dark"] .aarMetrics strong,
+.appShell[data-theme="dark"] .aarCardHeader h2,
+.appShell[data-theme="dark"] .aarStageList strong {
+  color: #edf5f7;
+}
+
+.appShell[data-theme="dark"] .loginEyebrow,
+.appShell[data-theme="dark"] .loginIntro,
+.appShell[data-theme="dark"] .loginField > span,
+.appShell[data-theme="dark"] .loginOptions,
+.appShell[data-theme="dark"] .loginPrototypeNote,
+.appShell[data-theme="dark"] .loginFooter,
+.appShell[data-theme="dark"] .homeHeroSubtitle,
+.appShell[data-theme="dark"] .homeSectionHeading p,
+.appShell[data-theme="dark"] .homeUserWelcome,
+.appShell[data-theme="dark"] .homeUserMeta,
+.appShell[data-theme="dark"] .homeStatLabel,
+.appShell[data-theme="dark"] .currentCardRole,
+.appShell[data-theme="dark"] .homeEmptyState,
+.appShell[data-theme="dark"] .recentsTable td,
+.appShell[data-theme="dark"] .wizardStepIntro,
+.appShell[data-theme="dark"] .studioLabel,
+.appShell[data-theme="dark"] .studioLabel em,
+.appShell[data-theme="dark"] .checkRow,
+.appShell[data-theme="dark"] .otherToggle,
+.appShell[data-theme="dark"] .personaSelect span,
+.appShell[data-theme="dark"] .compactField span,
+.appShell[data-theme="dark"] .stagePersonaBuilderHeader span,
+.appShell[data-theme="dark"] .decisionPointCard label > span,
+.appShell[data-theme="dark"] .livePreviewBlock p,
+.appShell[data-theme="dark"] .livePreviewBlockHeader > span:first-child,
+.appShell[data-theme="dark"] .livePreviewLabeledItem strong,
+.appShell[data-theme="dark"] .reviewReadiness p,
+.appShell[data-theme="dark"] .runtimePanelHeader span,
+.appShell[data-theme="dark"] .runtimeStageHeader p,
+.appShell[data-theme="dark"] .runtimeMessageRow time,
+.appShell[data-theme="dark"] .runtimeDraftLabelRow label,
+.appShell[data-theme="dark"] .runtimeDraftLabelRow span,
+.appShell[data-theme="dark"] .runtimeSessionStrip,
+.appShell[data-theme="dark"] .aarHero p,
+.appShell[data-theme="dark"] .aarFocusList dd,
+.appShell[data-theme="dark"] .aarReflectionCard ol,
+.appShell[data-theme="dark"] .aarTranscript p,
+.appShell[data-theme="dark"] .aarStageList span {
+  color: #9eb0b8;
+}
+
+.appShell[data-theme="dark"] .aarHero,
+.appShell[data-theme="dark"] .aarMetrics article,
+.appShell[data-theme="dark"] .aarCard {
+  border-color: #294753;
+  background: #0c222b;
+}
+
+.appShell[data-theme="dark"] .aarTranscriptExport {
+  border-color: #355661;
+  background: #16323d;
+  color: #8ed5df;
+}
+
+.appShell[data-theme="dark"] .aarTranscriptExport:hover:not(:disabled) {
+  border-color: #4eaebf;
+  background: #193b47;
+}
+
+.appShell[data-theme="dark"] .aarStageList div,
+.appShell[data-theme="dark"] .aarTranscript article {
+  background: #122c36;
+}
+
+.appShell[data-theme="dark"] .aarTranscript article.trainee {
+  background: #143842;
+}
+
+.appShell[data-theme="dark"] .appHeader,
+.appShell[data-theme="dark"] .homeHero,
+.appShell[data-theme="dark"] .homeUserCard,
+.appShell[data-theme="dark"] .homeSignOutSection,
+.appShell[data-theme="dark"] .homeStatTile,
+.appShell[data-theme="dark"] .recentsTableWrap,
+.appShell[data-theme="dark"] .wizardCard,
+.appShell[data-theme="dark"] .livePreviewPanel,
+.appShell[data-theme="dark"] .livePreviewHeader,
+.appShell[data-theme="dark"] .livePreviewBlock,
+.appShell[data-theme="dark"] .decisionPointCard,
+.appShell[data-theme="dark"] .sourceScenarioDetail,
+.appShell[data-theme="dark"] .runtimeTranscriptPanel,
+.appShell[data-theme="dark"] .runtimeAvatarFocus,
+.appShell[data-theme="dark"] .runtimeMindPanel,
+.appShell[data-theme="dark"] .runtimeLiveResponse,
+.appShell[data-theme="dark"] .runtimeTypingLine {
+  border-color: #294753;
+  background: #102b36;
+}
+
+.appShell[data-theme="dark"] .appHeader {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+.appShell[data-theme="dark"] .homeSignOutSection,
+.appShell[data-theme="dark"] .homeStatTile,
+.appShell[data-theme="dark"] .recentsTable th,
+.appShell[data-theme="dark"] .recentsTable td,
+.appShell[data-theme="dark"] .wizardFooter,
+.appShell[data-theme="dark"] .stagePersonaBuilderHeader,
+.appShell[data-theme="dark"] .previewHeading,
+.appShell[data-theme="dark"] .previewField,
+.appShell[data-theme="dark"] .livePreviewHeader,
+.appShell[data-theme="dark"] .livePreviewChatbotSection,
+.appShell[data-theme="dark"] .runtimePanelHeader,
+.appShell[data-theme="dark"] .runtimeStageHeader,
+.appShell[data-theme="dark"] .runtimeStageSwitcher,
+.appShell[data-theme="dark"] .runtimeLiveResponse {
+  border-color: #294753;
+}
+
+.appShell[data-theme="dark"] .runtimeStageSwitcher {
+  background: #0f2731;
+}
+
+.appShell[data-theme="dark"] .runtimeStageSwitcher button {
+  border-color: #355661;
+  background: #16323d;
+  color: #a9c2cb;
+}
+
+.appShell[data-theme="dark"] .runtimeStageSwitcher button:hover:not(:disabled) {
+  border-color: #4eaebf;
+  background: #193b47;
+}
+
+.appShell[data-theme="dark"] .runtimeStageSwitcher button.active {
+  border-color: #43b4c7;
+  background: #17444f;
+  color: #d8f4f7;
+}
+
+.appShell[data-theme="dark"] .homeScenarios h2,
+.appShell[data-theme="dark"] .homeCurrentSection h2,
+.appShell[data-theme="dark"] .recentsTable td,
+.appShell[data-theme="dark"] .sourceScenarioDetail,
+.appShell[data-theme="dark"] .sourceScenarioDetail strong,
+.appShell[data-theme="dark"] .existingCopyMessage strong,
+.appShell[data-theme="dark"] .decisionPointCard legend,
+.appShell[data-theme="dark"] .livePreviewCopyNotice strong {
+  color: #c8d6dc;
+}
+
+.appShell[data-theme="dark"] .recentsTable th,
+.appShell[data-theme="dark"] .homeSectionHeading > span,
+.appShell[data-theme="dark"] .previewField span,
+.appShell[data-theme="dark"] .evaluationSectionHeader > span:last-child {
+  color: #8fa4ad;
+}
+
+.appShell[data-theme="dark"] .recentsTable tbody tr:hover {
+  background: #153641;
+}
+
+.appShell[data-theme="dark"] .currentCard {
+  border-color: #2c7280;
+  background: linear-gradient(135deg, #12343f, #102731);
+}
+
+.appShell[data-theme="dark"] .currentCardDelete,
+.appShell[data-theme="dark"] .secondaryButton,
+.appShell[data-theme="dark"] .iconButton,
+.appShell[data-theme="dark"] .appHeaderBack,
+.appShell[data-theme="dark"] .appHeaderRuntimeActions button,
+.appShell[data-theme="dark"] .appHeaderThemeToggle {
+  border-color: #355661;
+  background: #16323d;
+  color: #a9c2cb;
+}
+
+.appShell[data-theme="dark"] .appHeaderThemeToggle:hover,
+.appShell[data-theme="dark"] .appHeaderBack:hover,
+.appShell[data-theme="dark"] .appHeaderRuntimeActions button:hover {
+  border-color: #36a9ba;
+  background: #193f4b;
+  color: #7ed9e7;
+}
+
+.appShell[data-theme="dark"] .appHeaderHomeLogo:hover {
+  background: #16323d;
+}
+
+.appShell[data-theme="dark"] .appHeaderRuntimeActions button.danger,
+.appShell[data-theme="dark"] .currentCardDelete:hover {
+  border-color: #7b4c50;
+  background: #3a2429;
+  color: #f0a5aa;
+}
+
+.appShell[data-theme="dark"] .homeSignOutButton {
+  color: #9eb0b8;
+}
+
+.appShell[data-theme="dark"] .homeSignOutButton:hover {
+  background: #3a2429;
+  color: #f0a5aa;
+}
+
+.appShell[data-theme="dark"] :is(select, input[type="text"], input[type="email"], input[type="password"], input:not([type]), textarea),
+.appShell[data-theme="dark"] .existingCopyControls input {
+  border-color: #36545f;
+  background: #0b222c;
+  color: #e5eef1;
+  caret-color: #7ed9e7;
+}
+
+.appShell[data-theme="dark"] :is(select, input, textarea)::placeholder {
+  color: #728891;
+}
+
+.appShell[data-theme="dark"] .sourceScenarioSection,
+.appShell[data-theme="dark"] .generatedInputsSection,
+.appShell[data-theme="dark"] .personaConfig,
+.appShell[data-theme="dark"] .scenarioStructureSection,
+.appShell[data-theme="dark"] .evaluationSection,
+.appShell[data-theme="dark"] .stageTabs-preview,
+.appShell[data-theme="dark"] .livePreviewBody,
+.appShell[data-theme="dark"] .reviewReadiness,
+.appShell[data-theme="dark"] .previewField.boxed p {
+  border-color: #294753;
+  background: #0c222b;
+  color: #b7c7cd;
+}
+
+.appShell[data-theme="dark"] .infoNote,
+.appShell[data-theme="dark"] .persistentInfoNote,
+.appShell[data-theme="dark"] .addRowButton {
+  border-color: #2f7180;
+  background: #12343f;
+  color: #8bcbd5;
+}
+
+.appShell[data-theme="dark"] .infoTooltipContent,
+.appShell[data-theme="dark"] .kpaOption,
+.appShell[data-theme="dark"] .scenarioParticipantCard,
+.appShell[data-theme="dark"] .domainOption,
+.appShell[data-theme="dark"] .generatedStructureCard,
+.appShell[data-theme="dark"] .configuredRoleSummary {
+  border-color: #41515d;
+  background: #26343e;
+  color: #d6e0e5;
+}
+
+.appShell[data-theme="dark"] .domainOption.selected {
+  border-color: #43b5cb;
+  background: #173943;
+  color: #8ad5e2;
+}
+
+.appShell[data-theme="dark"] .generatedStructureCard p,
+.appShell[data-theme="dark"] .scenarioParticipantCard > strong,
+.appShell[data-theme="dark"] .scenarioParticipantCardHeader > strong,
+.appShell[data-theme="dark"] .configuredRoleSummary strong {
+  color: #e0e8ec;
+}
+
+.appShell[data-theme="dark"] .removeStageButton {
+  border-color: #41515d;
+  background: #1b2b34;
+  color: #aab9c0;
+}
+
+.appShell[data-theme="dark"] .infoTooltipContentIcon {
+  color: #75c5d6;
+}
+
+.appShell[data-theme="dark"] .scenarioGenerationCallout {
+  border-color: #3f6f61;
+  background: #233a36;
+}
+
+.appShell[data-theme="dark"] .stageTabs button {
+  border-color: #36545f;
+  background: #102b36;
+  color: #9eb0b8;
+}
+
+.appShell[data-theme="dark"] .stageTabs button.complete {
+  border-color: #347785;
+  background: #143844;
+  color: #93d5df;
+}
+
+.appShell[data-theme="dark"] .stageTabs button.complete.active {
+  border-color: #36a9ba;
+  background: rgba(54, 169, 186, 0.2);
+}
+
+.appShell[data-theme="dark"] .stageTabs button.unfinished {
+  border-color: rgba(255, 173, 21, 0.58);
+  background: rgba(255, 173, 21, 0.12);
+  color: #ffd17b;
+}
+
+.appShell[data-theme="dark"] .stageTabs button.stageTabsAdd {
+  border-color: #516873;
+  background: rgba(16, 43, 54, 0.5);
+  color: #93a7af;
+}
+
+.appShell[data-theme="dark"] .stagePersonaBuilderHeader > strong,
+.appShell[data-theme="dark"] .livePreviewTags span,
+.appShell[data-theme="dark"] .runtimeStageHeader > span,
+.appShell[data-theme="dark"] .livePreviewBlockStatus {
+  border-color: #36545f;
+  background: #17323d;
+  color: #a8bac1;
+}
+
+.appShell[data-theme="dark"] .wizardStepperItem::after {
+  background: #36505a;
+}
+
+.appShell[data-theme="dark"] .wizardStepperDot {
+  border-color: #49616a;
+  background: #102b36;
+  color: #8fa4ad;
+}
+
+.appShell[data-theme="dark"] .wizardStepperItem.active .wizardStepperLabel {
+  color: #edf5f7;
+}
+
+.appShell[data-theme="dark"] .livePreviewBody {
+  background: #091d26;
+}
+
+.appShell[data-theme="dark"] .livePreviewCopyNotice,
+.appShell[data-theme="dark"] .existingCopyBanner {
+  border-color: #745f36;
+  background: #2a251c;
+  color: #e4bc6e;
+}
+
+.appShell[data-theme="dark"] .existingCopyBanner.saved,
+.appShell[data-theme="dark"] .livePreviewCopyNotice.saved,
+.appShell[data-theme="dark"] .reviewReadiness.ready {
+  border-color: #376c5a;
+  background: #142f28;
+  color: #8ed0b7;
+}
+
+.appShell[data-theme="dark"] .runtimeAvatarFocus {
+  background: linear-gradient(180deg, #102b36 0%, #0a2029 100%);
+}
+
+.appShell[data-theme="dark"] .runtimeAvatarStage {
+  border-color: #294753;
+  background: #06151c;
+}
+
+.appShell[data-theme="dark"] .runtimeBubble.avatar,
+.appShell[data-theme="dark"] .voiceButton {
+  background: #18343f;
+  color: #dce7eb;
+}
+
+.appShell[data-theme="dark"] .runtimeComposerShell {
+  border-color: #294753;
+  background: rgba(8, 27, 36, 0.96);
+}
+
+.appShell[data-theme="dark"] .emotionGuideRing,
+.appShell[data-theme="dark"] .emotionGuideSpoke {
+  stroke: #38515b;
+}
+
+.appShell[data-theme="dark"] .emotionPetalLabel,
+.appShell[data-theme="dark"] .emotionWheelCaption,
+.appShell[data-theme="dark"] .emotionWheelCaption strong {
+  color: #c8d6dc;
+  fill: #c8d6dc;
+}
+
+@media (max-width: 520px) {
+  .appShell[data-theme="dark"] .loginPanel {
+    background: rgba(8, 29, 39, 0.96);
   }
 }

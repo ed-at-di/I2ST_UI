@@ -4,8 +4,10 @@ import XLSX from "xlsx-js-style";
 import { RuntimeChatScreen } from "./chatbot-ui/RuntimeChatScreen.jsx";
 import { AppHeader } from "./components/AppHeader.jsx";
 import { HomeScreen } from "./screens/HomeScreen.jsx";
+import { LoginScreen } from "./screens/LoginScreen.jsx";
+import { AfterActionReviewScreen } from "./screens/AfterActionReviewScreen.jsx";
 import { ScenarioWizard, STEPS, wizardStepsForMode } from "./wizard/ScenarioWizard.jsx";
-import { DEFAULT_FORM, NEW_SCENARIO_FORM } from "./data/scenarioOptions.js";
+import { COMPETENCY_OPTIONS, DEFAULT_FORM, NEW_SCENARIO_FORM } from "./data/scenarioOptions.js";
 import { demoApi, demoUiApi } from "./demo/demoApi.js";
 import {
   competencyDetails,
@@ -15,6 +17,7 @@ import {
   previewFromFormOrScenario,
   scenarioFromCatalogItem,
   selectedCompetencies,
+  selectedCompetencyBehaviors,
   sourceLabel,
   writeScenarioWorkbook,
 } from "./lib/scenarioHelpers.js";
@@ -67,14 +70,17 @@ async function uiApi(path, options = {}) {
 }
 
 function App() {
+  const [theme, setTheme] = useState(() => window.localStorage.getItem("i2st-theme") || "light");
   const [catalog, setCatalog] = useState({ curriculumScenarios: [], scenarios: [], personas: [], counts: {} });
   const [health, setHealth] = useState({ ok: false, sessions: 0 });
   const [form, setForm] = useState(DEFAULT_FORM);
   const [scenario, setScenario] = useState(null);
   const [session, setSession] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [runtimeStageIndex, setRuntimeStageIndex] = useState(0);
+  const [runtimeStageRuns, setRuntimeStageRuns] = useState({});
   const [input, setInput] = useState("");
-  const [view, setView] = useState("home"); // "home" | "wizard" | "runtime"
+  const [view, setView] = useState("login"); // "login" | "home" | "wizard" | "runtime" | "aar"
   const [wizardStep, setWizardStep] = useState(0);
   const [creationMode, setCreationMode] = useState("new"); // "new" | "existing"
   const [existingOriginalName, setExistingOriginalName] = useState("");
@@ -158,12 +164,18 @@ function App() {
   }, []);
 
   useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem("i2st-theme", theme);
+  }, [theme]);
+
+  useEffect(() => {
     if (!messages.length) return;
     scrollRef.current?.scrollIntoView({ block: "end" });
   }, [messages, busy]);
 
   function payloadFromForm() {
     const focusTitles = selectedCompetencies(form);
+    const focusBehaviors = selectedCompetencyBehaviors(form);
     const stages = activeScenarioStages(form);
     return {
       ...form,
@@ -171,9 +183,32 @@ function App() {
       stages,
       competencyFocus: focusTitles.join(", "),
       competencyFocuses: focusTitles,
-      competencyFocusDetails: competencyDetails(focusTitles),
+      competencyFocusDetails: focusBehaviors.length ? focusBehaviors : competencyDetails(focusTitles),
+      evaluationKpa: form.selectedKpa,
+      evaluationCompetencyFocuses: COMPETENCY_OPTIONS.map((option) => option.title),
       curriculumScenarioId: isManualSource ? form.curriculumScenarioId || source?.curriculum_scenario_id || "" : "",
       scenarioName: creationMode === "existing" ? existingCopyName.trim() : "",
+    };
+  }
+
+  function scenarioForStage(baseScenario, stage, stageIndex) {
+    if (!stage) return baseScenario;
+    const role = stage.chatbotRole === "Other" ? stage.chatbotRoleOther : stage.chatbotRole;
+    return {
+      ...baseScenario,
+      role: role || baseScenario.role,
+      active_stage_index: stageIndex,
+      active_stage_name: stage.name || `Stage ${stageIndex + 1}`,
+      persona: {
+        ...(baseScenario.persona || {}),
+        style: stage.personaStyle === "Other" ? stage.personaStyleOther : stage.personaStyle,
+        emotional_state: stage.personaEmotionalState === "Other" ? stage.personaEmotionalStateOther : stage.personaEmotionalState,
+        trust_level: stage.personaTrustLevel === "Other" ? stage.personaTrustLevelOther : stage.personaTrustLevel,
+        communication_style: stage.personaCommunicationStyle === "Other" ? stage.personaCommunicationStyleOther : stage.personaCommunicationStyle,
+        primary_concern: stage.personaPrimaryConcern === "Other" ? stage.personaPrimaryConcernOther : stage.personaPrimaryConcern,
+        notes: stage.personaNotes || "",
+        behavior_notes: stage.chatbotBehaviorNotes || "",
+      },
     };
   }
 
@@ -212,17 +247,31 @@ function App() {
     }
   }
 
-  async function openChatSession(activeScenario) {
+  async function openChatSession(activeScenario, stageIndex = 0) {
+    const stages = activeScenarioStages(form);
+    const stageScenario = scenarioForStage(activeScenario, stages[stageIndex], stageIndex);
     const result = await api("/sessions", {
       method: "POST",
-      body: JSON.stringify({ scenario: activeScenario.isCatalogStub ? activeScenario.scenario_id : activeScenario }),
+      body: JSON.stringify({ scenario: activeScenario.isCatalogStub ? activeScenario.scenario_id : stageScenario }),
     });
+    if (!result?.session_id) throw new Error("The chat session did not return a session ID.");
+    const initialMessages = [{ role: "avatar", text: result.avatar || "No response returned.", latencyMs: result.latency_ms }];
+    setRuntimeStageIndex(stageIndex);
     setSession(result);
-    setMessages([{ role: "avatar", text: result.avatar || "No response returned.", latencyMs: result.latency_ms }]);
-    const healthResult = await api("/health").catch(() => null);
-    if (healthResult) setHealth(healthResult);
-    setStatus(`Chat started · ${formatLatency(result.latency_ms)}`);
+    setMessages(initialMessages);
+    setRuntimeStageRuns((current) => ({
+      ...current,
+      [stageIndex]: { session: result, messages: initialMessages },
+    }));
+    setStatus(`Stage ${stageIndex + 1} started · ${formatLatency(result.latency_ms)}`);
     setView("runtime");
+
+    // Session startup should not be blocked by this secondary status refresh.
+    void api("/health")
+      .then((healthResult) => {
+        if (healthResult) setHealth(healthResult);
+      })
+      .catch(() => {});
   }
 
   async function startSession() {
@@ -230,13 +279,45 @@ function App() {
     setError("");
     setMessages([]);
     try {
+      setRuntimeStageRuns({});
+      setRuntimeStageIndex(0);
       let activeScenario = scenario;
       if (!activeScenario) {
         const result = await requestScenarioPacket();
         setScenario(result);
         activeScenario = result;
       }
-      await openChatSession(activeScenario);
+      await openChatSession(activeScenario, 0);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function selectRuntimeStage(nextStageIndex) {
+    if (nextStageIndex === runtimeStageIndex || busy) return;
+    setRuntimeStageRuns((current) => ({
+      ...current,
+      [runtimeStageIndex]: { session, messages },
+    }));
+
+    const previousRun = runtimeStageRuns[nextStageIndex];
+    if (previousRun) {
+      setRuntimeStageIndex(nextStageIndex);
+      setSession(previousRun.session);
+      setMessages(previousRun.messages);
+      setInput("");
+      setError("");
+      setStatus(`Returned to Stage ${nextStageIndex + 1}`);
+      return;
+    }
+
+    setBusy(true);
+    setError("");
+    setInput("");
+    try {
+      await openChatSession(scenario, nextStageIndex);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -269,22 +350,30 @@ function App() {
     setInput("");
     setBusy(true);
     setError("");
-    setMessages((current) => [...current, { role: "trainee", text }]);
+    setMessages((current) => {
+      const nextMessages = [...current, { role: "trainee", text }];
+      setRuntimeStageRuns((runs) => ({ ...runs, [runtimeStageIndex]: { session, messages: nextMessages } }));
+      return nextMessages;
+    });
     try {
       const result = await api(`/sessions/${session.session_id}/turns`, {
         method: "POST",
         body: JSON.stringify({ message: text }),
       });
-      setMessages((current) => [
-        ...current,
-        {
+      setMessages((current) => {
+        const nextMessages = [
+          ...current,
+          {
           role: "avatar",
           text: result.avatar || "No response returned.",
           latencyMs: result.latency_ms,
           fallback: result.fallback,
           repairUsed: result.repair_used,
-        },
-      ]);
+          },
+        ];
+        setRuntimeStageRuns((runs) => ({ ...runs, [runtimeStageIndex]: { session, messages: nextMessages } }));
+        return nextMessages;
+      });
     } catch (err) {
       setError(err.message);
     } finally {
@@ -301,6 +390,8 @@ function App() {
     setScenario(null);
     setSession(null);
     setMessages([]);
+    setRuntimeStageIndex(0);
+    setRuntimeStageRuns({});
     setStatus("");
     setError("");
   }
@@ -368,10 +459,16 @@ function App() {
   }
 
   function endTrainingSession() {
+    setInput("");
+    setStatus("Training session ended");
+    setView("aar");
+  }
+
+  function finishAfterActionReview() {
     setSession(null);
     setMessages([]);
     setInput("");
-    setStatus("Training session ended");
+    setDraftActive(false);
     setView("home");
     loadCatalog();
   }
@@ -384,6 +481,23 @@ function App() {
     resetForm();
     setWizardStep(0);
     setDraftActive(false);
+  }
+
+  function signOut() {
+    resetForm();
+    setSession(null);
+    setMessages([]);
+    setInput("");
+    setDraftActive(false);
+    setView("login");
+  }
+
+  function signIn() {
+    setView("home");
+  }
+
+  function toggleTheme() {
+    setTheme((current) => (current === "dark" ? "light" : "dark"));
   }
 
   const draftRoleLabel = (form.chatbotRole === "Other" ? form.chatbotRoleOther : form.chatbotRole) || "Scenario";
@@ -402,7 +516,10 @@ function App() {
     : null;
 
   let body;
-  if (view === "runtime" && session) {
+  if (view === "login") {
+    body = <LoginScreen onLogin={signIn} theme={theme} />;
+  } else if (view === "runtime" && session) {
+    const runtimeStages = activeScenarioStages(form);
     body = (
       <RuntimeChatScreen
         busy={busy}
@@ -415,6 +532,20 @@ function App() {
         sendTurn={sendTurn}
         session={session}
         setInput={setInput}
+        stages={runtimeStages}
+        activeStageIndex={runtimeStageIndex}
+        onSelectStage={selectRuntimeStage}
+      />
+    );
+  } else if (view === "aar" && session) {
+    body = (
+      <AfterActionReviewScreen
+        scenario={scenario}
+        form={form}
+        messages={messages}
+        busy={busy}
+        onReturnHome={finishAfterActionReview}
+        onRunAgain={startSession}
       />
     );
   } else if (view === "wizard") {
@@ -457,34 +588,49 @@ function App() {
         draft={draft}
         onResumeDraft={resumeDraft}
         onDeleteDraft={deleteDraft}
+        onSignOut={signOut}
       />
     );
   }
 
   return (
-    <div className="appShell">
-      <AppHeader
-        runtimeSession={
-          view === "runtime" && session
-            ? {
-                title: scenario?.title || scenario?.preview?.scenarioTitle || "Scenario session",
-                onExport: exportScenarioExcel,
-                exportDisabled: busy || !scenario,
-                onEndSession: endTrainingSession,
-              }
-            : undefined
-        }
-        wizardNavigation={
-          view === "wizard"
-            ? {
-                steps: wizardStepsForMode(creationMode),
-                step: wizardStep,
-                onStepChange: setWizardStep,
-                onExitToHome: returnHome,
-              }
-            : undefined
-        }
-      />
+    <div className={`appShell appShell-${view}`} data-theme={theme}>
+      {view !== "login" && (
+        <AppHeader
+          themeToggle={view === "home" ? { theme, onToggle: toggleTheme } : undefined}
+          runtimeSession={
+            view === "runtime" && session
+              ? {
+                  title: scenario?.title || scenario?.preview?.scenarioTitle || "Scenario session",
+                  stageLabel: `Stage ${runtimeStageIndex + 1} of ${activeScenarioStages(form).length} · ${(() => {
+                    const stage = activeScenarioStages(form)[runtimeStageIndex];
+                    return (stage?.chatbotRole === "Other" ? stage.chatbotRoleOther : stage?.chatbotRole) || "Avatar";
+                  })()}`,
+                  onEndSession: endTrainingSession,
+                }
+              : undefined
+          }
+          aarNavigation={
+            view === "aar"
+              ? {
+                  onHome: finishAfterActionReview,
+                  onExport: exportScenarioExcel,
+                  exportDisabled: busy || !scenario,
+                }
+              : undefined
+          }
+          wizardNavigation={
+            view === "wizard"
+              ? {
+                  steps: wizardStepsForMode(creationMode),
+                  step: wizardStep,
+                  onStepChange: setWizardStep,
+                  onExitToHome: returnHome,
+                }
+              : undefined
+          }
+        />
+      )}
       {body}
     </div>
   );

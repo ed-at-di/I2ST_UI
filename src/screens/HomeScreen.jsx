@@ -1,4 +1,4 @@
-import { ArrowRight, Library, Play, Plus, Trash2 } from "lucide-react";
+import { ArrowRight, Library, LogOut, Play, Plus, Trash2 } from "lucide-react";
 import { assignedScenariosFromCatalog } from "../data/dummyAssignedScenarioData.js";
 import { DUMMY_STATS, DUMMY_USER } from "../data/dummyHomeData.js";
 
@@ -44,6 +44,7 @@ export function HomeScreen({
   draft,
   onResumeDraft,
   onDeleteDraft,
+  onSignOut,
 }) {
   const firstName = DUMMY_USER.name.split(" ")[0];
   const assignedScenarios = assignedScenariosFromCatalog(scenarios);
@@ -68,12 +69,18 @@ export function HomeScreen({
               </div>
             ))}
           </div>
+          <div className="homeSignOutSection">
+            <button className="homeSignOutButton" type="button" onClick={onSignOut}>
+              <LogOut size={16} />
+              <span>Sign out</span>
+            </button>
+          </div>
         </div>
       </aside>
 
       <div className="homeMain">
         <section className="homeHero">
-          <h1>Build and run roleplay training scenarios</h1>
+          <h1>AI ROLE</h1>
           <p className="homeHeroSubtitle">
             Start with a blank scenario or use an existing scenario as the foundation.
           </p>

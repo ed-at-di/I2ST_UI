@@ -76,7 +76,13 @@ export function personaValuesForStage(stage) {
 }
 
 export function stagePersonaComplete(stage) {
-  return Boolean(formValue(stage, "chatbotRole", "chatbotRoleOther")) && personaValuesForStage(stage).length === 5;
+  const requiredTraits = [
+    formValue(stage, "personaEmotionalState", "personaEmotionalStateOther"),
+    formValue(stage, "personaTrustLevel", "personaTrustLevelOther"),
+    formValue(stage, "personaCommunicationStyle", "personaCommunicationStyleOther"),
+    formValue(stage, "personaPrimaryConcern", "personaPrimaryConcernOther"),
+  ];
+  return Boolean(formValue(stage, "chatbotRole", "chatbotRoleOther")) && requiredTraits.every(Boolean);
 }
 
 export function legacyPersonaPatch(stage) {

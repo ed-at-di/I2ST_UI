@@ -3,9 +3,14 @@ import { Info } from "lucide-react";
 export function InfoNote({ children }) {
   if (!children) return null;
   return (
-    <p className="infoNote">
-      <Info size={13} />
-      <span>{children}</span>
-    </p>
+    <span className="infoTooltip">
+      <span className="infoTooltipTrigger" role="button" tabIndex="0" aria-label="More information">
+        <Info size={17} />
+      </span>
+      <span className="infoTooltipContent" role="tooltip">
+        <span className="infoTooltipContentIcon" aria-hidden="true"><Info size={17} /></span>
+        <span className="infoTooltipText">{children}</span>
+      </span>
+    </span>
   );
 }

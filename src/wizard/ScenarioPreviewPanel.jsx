@@ -4,9 +4,9 @@ import { StageTabs } from "../components/StageTabs.jsx";
 import { formValue, selectedList, sourceLabel } from "../lib/scenarioHelpers.js";
 import { activeScenarioStages, personaValuesForStage, stagePersonaComplete } from "../lib/stageHelpers.js";
 
-function PreviewBlock({ label, complete, children, sectionRef }) {
+function PreviewBlock({ label, complete, children, sectionRef, active = false }) {
   return (
-    <section ref={sectionRef} className={`livePreviewBlock ${complete ? "complete" : ""}`}>
+    <section ref={sectionRef} className={`livePreviewBlock ${complete ? "complete" : ""} ${active ? "active" : ""}`}>
       <div className="livePreviewBlockHeader">
         <span>{label}</span>
         <span className="livePreviewBlockStatus" aria-label={complete ? "Selection added" : "Not yet completed"}>
@@ -52,6 +52,7 @@ export function ScenarioPreviewPanel({
   const sourceSectionRef = useRef(null);
   const kpaSectionRef = useRef(null);
   const detailsSectionRef = useRef(null);
+  const evaluationSectionRef = useRef(null);
   const chatbotSectionRef = useRef(null);
   const outputSectionRef = useRef(null);
 
@@ -61,8 +62,9 @@ export function ScenarioPreviewPanel({
       0: sourceSectionRef.current,
       1: kpaSectionRef.current,
       2: detailsSectionRef.current,
-      3: chatbotSectionRef.current,
-      4: outputSectionRef.current,
+      3: evaluationSectionRef.current,
+      4: chatbotSectionRef.current,
+      5: outputSectionRef.current,
     };
     const activeSection = sectionByStep[wizardStep];
     if (!previewBody || !activeSection || previewBody.scrollHeight <= previewBody.clientHeight) return;
@@ -118,7 +120,7 @@ export function ScenarioPreviewPanel({
             </div>
           )}
 
-          <PreviewBlock label="Source" complete={Boolean(sourceTitle)} sectionRef={sourceSectionRef}>
+          <PreviewBlock label="Source" complete={Boolean(sourceTitle)} sectionRef={sourceSectionRef} active={wizardStep === 0}>
             <strong>{sourceTitle}</strong>
             <p>
               {isManualSource
@@ -127,11 +129,19 @@ export function ScenarioPreviewPanel({
             </p>
           </PreviewBlock>
 
-          <PreviewBlock label="KPA Focus" complete={Boolean(competencies.length)} sectionRef={kpaSectionRef}>
-            <TagList values={competencies} emptyText="Add at least one Key Performance Area." />
+          <PreviewBlock label="KPA & Focus Areas" complete={Boolean(form.selectedKpa && (form.competencyBehaviorFocuses || []).length)} sectionRef={kpaSectionRef} active={wizardStep === 1}>
+            {form.performanceObjective && <p>{form.performanceObjective}</p>}
+            <TagList values={form.selectedKpa ? [form.selectedKpa] : []} emptyText="Select a KPA." />
+            <TagList values={competencies} emptyText="Add at least one focus area." />
+            <TagList values={form.competencyBehaviorFocuses || []} emptyText="Choose at least one behavior to emphasize." />
           </PreviewBlock>
 
-          <PreviewBlock label="Scenario Details" complete={isManualSource || Boolean(factors.length || complexities.length)} sectionRef={detailsSectionRef}>
+          <PreviewBlock
+            label="Scenario Details"
+            complete={Boolean(form.domainType && (form.domainType !== "Military" || form.militaryBranch) && stages.every((stage) => stage.chatbotRole) && (isManualSource || factors.length))}
+            sectionRef={detailsSectionRef}
+            active={wizardStep === 2}
+          >
             {isManualSource ? (
               <p>Details are inherited from the selected curriculum scenario.</p>
             ) : (
@@ -140,10 +150,31 @@ export function ScenarioPreviewPanel({
                 <TagList values={complexities} emptyText="No additional complexities selected." />
               </>
             )}
+            {form.domainType && <p className="livePreviewLabeledItem"><strong>Domain:</strong> {form.domainType}{form.militaryBranch ? ` — ${form.militaryBranch}` : ""}</p>}
+            <p className="livePreviewLabeledItem"><strong>Stages:</strong> {stages.map((stage, index) => {
+              const role = stage.chatbotRole === "Other" ? stage.chatbotRoleOther : stage.chatbotRole;
+              return role ? `Stage ${index + 1}: ${role}` : "";
+            }).filter(Boolean).join(" · ") || "Not configured"}</p>
+            {[
+              ["Setting", form.scenarioSetting],
+              ["Background", form.scenarioBackground],
+              ["Trigger", form.scenarioTrigger],
+              ["Challenge", form.scenarioChallenge],
+            ].map(([label, value]) => value && <p className="livePreviewLabeledItem" key={label}><strong>{label}:</strong> {value}</p>)}
             {form.otherDetails && <p className="livePreviewNote">{form.otherDetails}</p>}
           </PreviewBlock>
 
-          <PreviewBlock label="Scenario Output" complete={Boolean(scenario)} sectionRef={outputSectionRef}>
+          <PreviewBlock
+            label="Evaluation"
+            complete={Boolean(scenario)}
+            sectionRef={evaluationSectionRef}
+            active={wizardStep === 3}
+          >
+            <strong>{form.decisionPoints.filter((point) => point.cue.trim() && point.learnerBehavior.trim() && point.consequence.trim()).length} mapped decision points</strong>
+            <p>{scenario ? "The shared scenario is ready for stage personas." : "Generate the shared scenario before continuing to Chatbot."}</p>
+          </PreviewBlock>
+
+          <PreviewBlock label="Scenario Summary" complete={Boolean(scenario)} sectionRef={outputSectionRef} active={wizardStep === 5}>
             {scenario?.avatar_name && <strong>Character: {scenario.avatar_name}</strong>}
             <p className={!scenario ? "livePreviewEmpty" : ""}>{draftSummary}</p>
             {scenario && preview.inContextPersonaSummary && (
@@ -162,7 +193,7 @@ export function ScenarioPreviewPanel({
             variant="preview"
           />
 
-          <PreviewBlock label={`Stage ${activeStageIndex + 1} Persona`} complete={stagePersonaComplete(activeStage)}>
+          <PreviewBlock label={`Stage ${activeStageIndex + 1} Persona`} complete={stagePersonaComplete(activeStage)} active={wizardStep === 4}>
             <strong>{activeRole || `Choose a role for Stage ${activeStageIndex + 1}`}</strong>
             <TagList values={activePersona} emptyText={`Stage ${activeStageIndex + 1} persona selections will appear here.`} />
             {activeStage.chatbotBehaviorNotes && <p className="livePreviewNote">{activeStage.chatbotBehaviorNotes}</p>}

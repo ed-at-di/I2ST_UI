@@ -1,5 +1,19 @@
 export const CHATBOT_ROLES = ["Complainant", "Witness", "Subject", "Other"];
 
+export const DOMAIN_OPTIONS = ["Civilian", "Military"];
+
+export const MILITARY_BRANCH_OPTIONS = [
+  "Air Force",
+  "Army",
+  "Coast Guard",
+  "Marine Corps",
+  "Navy",
+  "Space Force",
+];
+
+// Placeholder values until KPA data is supplied by the connected application.
+export const KPA_OPTIONS = ["KPA 1", "KPA 2", "KPA 3", "KPA 4", "KPA 5"];
+
 export const COMPETENCY_OPTIONS = [
   { title: "Empathy & Support", details: ["Empathy & Reassurance", "Active Listening", "Crisis Management"] },
   {
@@ -62,6 +76,15 @@ export const PERSONA_PRIMARY_CONCERN_OPTIONS = [
   "Other",
 ];
 
+export const EVIDENCE_OPTIONS = [
+  "System-recorded transcript",
+  "Observation checklist / rubric",
+  "Recorded learner decision",
+  "Written or verbal reflection",
+  "Discussion response",
+  "Other",
+];
+
 export const DEFAULT_FORM = {
   sourceScenarioMode: "auto",
   curriculumScenarioId: "",
@@ -69,12 +92,30 @@ export const DEFAULT_FORM = {
   chatbotRoleOther: "",
   competencyFocus: "Empathy & Support",
   competencyFocuses: ["Empathy & Support"],
+  competencyBehaviorFocuses: ["Empathy & Reassurance", "Active Listening", "Crisis Management"],
+  selectedKpa: "KPA 1",
+  performanceObjective: "",
+  domainType: "Civilian",
+  militaryBranch: "",
   scenarioFactors: ["Sexual Orientation", "Pregnancy/Parental Issue"],
   scenarioComplexities: ["Maximized Emotional Intensity"],
   otherFactor: "",
   otherComplexity: "",
+  scenarioSetting: "",
+  scenarioBackground: "",
+  scenarioTrigger: "",
+  scenarioChallenge: "",
   chatbotBehaviorNotes: "",
   otherDetails: "",
+  decisionPoints: [{ cue: "", learnerBehavior: "", consequence: "" }],
+  successCriteria: [
+    { description: "", kpa: "" },
+    { description: "", kpa: "" },
+  ],
+  evidenceMethods: [],
+  evidenceOther: "",
+  criticalErrors: [""],
+  debriefQuestions: ["", ""],
   stageCount: 1,
   stages: [
     {
@@ -116,6 +157,11 @@ export const NEW_SCENARIO_FORM = {
   chatbotRole: "",
   competencyFocus: "",
   competencyFocuses: [],
+  competencyBehaviorFocuses: [],
+  selectedKpa: "",
+  performanceObjective: "",
+  domainType: "",
+  militaryBranch: "",
   scenarioFactors: [],
   scenarioComplexities: [],
   stageCount: 1,
