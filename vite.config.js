@@ -16,7 +16,6 @@ export default defineConfig({
       "/chatbot": {
         target: chatbotTarget,
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/chatbot/, ""),
       },
     },
   },

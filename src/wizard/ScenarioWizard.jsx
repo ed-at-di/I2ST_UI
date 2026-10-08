@@ -61,17 +61,10 @@ export function ScenarioWizard({
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [step]);
 
-  const kpaFocusValid = competencies.length > 0 && Boolean(form.performanceObjective.trim());
-  const detailsValid = isManualSource || (
-    form.scenarioFactors.length > 0 &&
-    [form.scenarioSetting, form.scenarioBackground, form.scenarioTrigger, form.scenarioChallenge].every((value) => value.trim())
-  );
-  const evaluationValid =
-    form.decisionPoints.some((point) => point.cue.trim() && point.learnerBehavior.trim() && point.consequence.trim()) &&
-    form.successCriteria.filter((criterion) => criterion.description.trim() && criterion.kpa).length >= 2 &&
-    form.evidenceMethods.length > 0 &&
-    (!form.evidenceMethods.includes("Other") || Boolean(form.evidenceOther.trim())) &&
-    form.debriefQuestions.filter((value) => value.trim()).length >= 2;
+  const kpaFocusValid = Boolean(form.selectedKpa) && (form.competencyBehaviorFocuses || []).length > 0 && (creationMode === "existing" || Boolean(form.performanceObjective.trim()));
+  const setupValid = Boolean(form.domainType) && (form.domainType !== "Military" || Boolean(form.militaryBranch)) && stages.every((stage) => Boolean(stage.chatbotRole && (stage.chatbotRole !== "Other" || stage.chatbotRoleOther.trim())));
+  const detailsValid = setupValid && (isManualSource || form.scenarioFactors.length > 0);
+  const evaluationValid = Boolean(scenario);
   const personaValid = stages.every(stagePersonaComplete);
   const canAdvanceFrom = { 0: true, 1: kpaFocusValid, 2: detailsValid, 3: evaluationValid, 4: personaValid, 5: true };
   const visibleSteps = wizardStepsForMode(creationMode);
@@ -93,9 +86,9 @@ export function ScenarioWizard({
         <section className="wizardBuilderColumn">
           <div className="wizardCard">
             {step === 0 && <SourceStep updateForm={updateForm} catalog={catalog} source={source} />}
-            {step === 1 && <RoleFocusStep form={form} updateForm={updateForm} competencies={competencies} />}
+            {step === 1 && <RoleFocusStep form={form} updateForm={updateForm} competencies={competencies} creationMode={creationMode} />}
             {step === 2 && <DetailsStep form={form} updateForm={updateForm} isManualSource={isManualSource} />}
-            {step === 3 && <EvaluationStep form={form} updateForm={updateForm} competencies={competencies} />}
+            {step === 3 && <EvaluationStep form={form} updateForm={updateForm} competencies={competencies} scenario={scenario} busy={busy || loading} onGenerateScenario={onRegenerate} />}
             {step === 4 && (
               <PersonaStep
                 form={form}

@@ -1,6 +1,7 @@
 :root {
   --layout-gap: 32px;
   --surface-radius: 14px;
+  --site-max-width: 1920px;
   color-scheme: light;
   color: #18202a;
   background: #f4f6f8;
@@ -51,6 +52,34 @@ input[type="radio"] {
 
 .appShell {
   min-height: 100vh;
+}
+
+@media (min-width: 2080px) {
+  .appShell:not(.appShell-login) {
+    position: relative;
+    width: var(--site-max-width);
+    max-width: var(--site-max-width);
+  }
+
+  .appShell:not(.appShell-login)::after {
+    content: "";
+    position: fixed;
+    z-index: 0;
+    inset: 0 0 0 var(--site-max-width);
+    border-left: 1px solid rgba(185, 207, 214, 0.75);
+    background: #f4f7f8 url("./images/login-background-art.jpg") right center / cover no-repeat;
+    pointer-events: none;
+  }
+
+  .appShell:not(.appShell-login)[data-theme="dark"]::after {
+    border-left-color: rgba(58, 83, 94, 0.8);
+    background-color: #071c25;
+    background-image: url("./images/login-background-art-dark.jpg");
+  }
+
+  .appShell-runtime .runtimeScreen {
+    right: calc(100vw - var(--site-max-width));
+  }
 }
 
 .loginScreen {
@@ -312,6 +341,23 @@ input[type="radio"] {
   height: 24px;
   width: auto;
   display: block;
+}
+
+.appHeaderHomeLogo {
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: transparent;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.appHeaderHomeLogo:hover {
+  background: #eef5f6;
+  transform: translateY(-1px);
+}
+
+.appHeaderHomeLogo:focus-visible {
+  outline: 3px solid rgba(7, 141, 162, 0.22);
+  outline-offset: 2px;
 }
 
 .appHeaderThemeToggle {
@@ -946,25 +992,52 @@ input[type="radio"] {
   line-height: 1;
 }
 
-.infoNote {
-  margin: 4px 0 0;
-  padding: 10px 14px;
-  display: flex;
-  align-items: flex-start;
-  gap: 9px;
-  border-radius: 6px;
-  background: #eef8fa;
-  color: #4d7c88;
-  font-size: 13.5px;
-  font-weight: 600;
-  line-height: 1.5;
-}
+.infoTooltip { position: relative; display: inline-flex; vertical-align: middle; margin-left: 5px; }
+.infoTooltipTrigger { width: 19px; height: 19px; display: inline-grid; place-items: center; color: #188da7; cursor: help; }
+.infoTooltipContent { position: absolute; z-index: 20; left: -8px; top: 50%; width: min(310px, 72vw); min-height: 35px; padding: 8px 12px 8px 9px; display: flex; align-items: flex-start; gap: 9px; border: 1px solid #b9dce4; border-radius: 9px; background: #f7fcfd; box-shadow: 0 8px 24px rgba(25, 45, 58, 0.16); color: #4d6570; font-size: 12px; font-weight: 650; line-height: 1.45; opacity: 0; visibility: hidden; transform: translateY(-50%) scale(0.98); transform-origin: left center; transition: opacity 140ms ease, transform 140ms ease; pointer-events: none; text-transform: none; letter-spacing: normal; }
+.infoTooltipContentIcon { width: 20px; height: 20px; flex: 0 0 20px; display: inline-grid; place-items: center; color: #188da7; }
+.infoTooltipText { padding-top: 1px; }
+.infoTooltip:hover .infoTooltipContent, .infoTooltip:focus-within .infoTooltipContent { opacity: 1; visibility: visible; transform: translateY(-50%) scale(1); }
 
-.infoNote svg {
-  flex: none;
-  margin-top: 1px;
-  color: #37aeca;
-}
+.persistentInfoNote { margin: 8px 0 14px; padding: 10px 12px; border-radius: 7px; background: #eef8fa; color: #4d7c88; font-size: 13px; font-weight: 650; line-height: 1.45; }
+.sectionTitleRow, .personaStepHeading, .personaGenerateActions { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.compactActionButton { min-height: 34px; padding: 7px 11px; font-size: 12px; }
+.kpaOption { padding: 12px; border: 1px solid #dce5e9; border-radius: 8px; background: #fff; }
+.kpaParentRow { padding: 0; font-weight: 800; }
+.kpaOption ul { margin: 8px 0 0 29px; padding: 0; color: #66737f; font-size: 12.5px; line-height: 1.55; }
+.fieldHelperText { margin: 7px 0 13px; color: #6b7882; font-size: 13px; line-height: 1.45; }
+.kpaSelectionField { width: 100%; max-width: none; margin-bottom: 10px; }
+.kpaSelectionField .selectControl { width: 100%; }
+.kpaHierarchy { display: grid; gap: 12px; }
+.kpaBehaviorList { margin: 10px 0 0 28px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 18px; }
+.kpaBehaviorRow { min-height: 20px; color: #6b7882; font-size: 13px; font-weight: 650; }
+.scenarioSetupSection, .scenarioDomainSection { padding: 18px; }
+.stageSetupHeader, .scenarioParticipantCardHeader { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.participantCountField, .militaryBranchField { max-width: 340px; margin-top: 12px; }
+.scenarioParticipantGrid, .generatedStructureGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 14px; }
+.scenarioParticipantCard { padding: 14px; display: grid; gap: 10px; border: 1px solid #dce5e9; border-radius: 8px; background: #fff; }
+.scenarioParticipantCard > strong { color: #26333e; font-size: 14px; }
+.scenarioParticipantCardHeader > strong { color: #26333e; font-size: 14px; }
+.removeStageButton { width: 30px; height: 30px; display: inline-grid; place-items: center; border: 1px solid #d7e1e5; border-radius: 7px; background: #fff; color: #7c8992; cursor: pointer; }
+.removeStageButton:hover { border-color: #e5a1a1; background: #fff5f5; color: #b84b4b; }
+.assignedDomainTitle { margin: 0; padding-top: 8px; display: grid; gap: 2px; border-top: 1px solid #e2e8eb; }
+.assignedDomainTitle span { color: #71808a; font-size: 10px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
+.assignedDomainTitle strong { color: #33434e; font-size: 13px; }
+.domainOptionGrid { display: flex; gap: 10px; margin-top: 13px; }
+.domainOption { min-width: 130px; padding: 12px 14px; display: flex; align-items: center; gap: 9px; border: 1px solid #d7e1e5; border-radius: 8px; background: #fff; color: #56646f; font-weight: 800; cursor: pointer; }
+.domainOption.selected { border-color: #1597b2; background: #eef9fb; color: #126f83; box-shadow: 0 0 0 2px rgba(21, 151, 178, 0.12); }
+.generatedStructureCard { padding: 13px; border: 1px solid #dce5e9; border-radius: 8px; background: #f8fafb; }
+.generatedStructureCard strong { display: block; color: #56646f; font-size: 11px; font-weight: 900; letter-spacing: .07em; text-transform: uppercase; }
+.generatedStructureCard p { margin: 6px 0 0; color: #34424d; font-size: 13px; line-height: 1.45; }
+.configuredRoleSummary { padding: 13px 14px; display: grid; gap: 2px; border: 1px solid #dce5e9; border-radius: 8px; background: #f8fafb; }
+.configuredRoleSummary span { color: #71808a; font-size: 11px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
+.configuredRoleSummary strong { color: #26333e; font-size: 15px; }
+.configuredRoleSummary small { color: #71808a; font-size: 12px; }
+.personaStepHeading { align-items: flex-start; margin-bottom: 8px; }
+.personaStepHeading .wizardStepIntro { margin-bottom: 0; }
+.scenarioGenerationCallout { margin-top: 14px; padding: 17px; display: flex; align-items: center; justify-content: space-between; gap: 18px; border: 1px solid #b9ddcd; border-radius: 9px; background: #f1faf6; }
+.scenarioGenerationCallout strong { color: #1f2b36; }
+.scenarioGenerationCallout p { margin: 4px 0 0; color: #65727d; font-size: 13px; }
 
 .sourceModeRow {
   display: flex;
@@ -1505,7 +1578,7 @@ textarea:focus {
 
 .runtimeAvatarFocus {
   display: grid;
-  grid-template-rows: auto minmax(310px, 1fr) auto;
+  grid-template-rows: auto auto minmax(260px, 1fr) auto;
   background:
     linear-gradient(180deg, #ffffff 0%, #f7fbfc 100%);
 }
@@ -1548,6 +1621,58 @@ textarea:focus {
   color: #65727d;
   font-size: 12.5px;
   font-weight: 900;
+}
+
+.runtimeStageSwitcher {
+  padding: 10px 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 8px;
+  border-bottom: 1px solid #dbe5e8;
+  background: #f7fafb;
+}
+
+.runtimeStageSwitcher button {
+  min-width: 0;
+  min-height: 49px;
+  padding: 7px 10px;
+  display: grid;
+  align-content: center;
+  gap: 2px;
+  border: 1px solid #cad8de;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #53636e;
+  text-align: left;
+}
+
+.runtimeStageSwitcher button:hover:not(:disabled) {
+  border-color: #66bdcd;
+  background: #eef9fa;
+}
+
+.runtimeStageSwitcher button.active {
+  border-color: #078da2;
+  background: #dff3f5;
+  color: #075f70;
+}
+
+.runtimeStageSwitcher button:focus-visible {
+  outline: 3px solid rgba(7, 141, 162, 0.22);
+  outline-offset: 2px;
+}
+
+.runtimeStageSwitcher span {
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.runtimeStageSwitcher small {
+  overflow: hidden;
+  font-size: 11px;
+  font-weight: 750;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .runtimeAvatarStage {
@@ -2705,6 +2830,11 @@ textarea:focus {
   background: #ffffff;
 }
 
+.livePreviewBlock.active {
+  border-color: #7bcde0;
+  box-shadow: 0 0 0 2px rgba(123, 205, 224, 0.22);
+}
+
 .livePreviewBlockHeader {
   display: flex;
   align-items: center;
@@ -2934,6 +3064,9 @@ textarea:focus {
   .personaControlGrid,
   .generatedInputsSection,
   .scenarioStructureGrid,
+  .scenarioParticipantGrid,
+  .generatedStructureGrid,
+  .kpaBehaviorList,
   .decisionPointCard,
   .evaluationEvidenceGrid {
     grid-template-columns: 1fr;
@@ -3154,6 +3287,54 @@ textarea:focus {
   background: #071820;
 }
 
+.aarScreen { width: 100%; padding: var(--layout-gap) 16px 70px; display: grid; gap: 20px; background: #f5f6f8; }
+.aarHero { padding: 28px 30px; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; border: 1px solid #d9e1e5; border-radius: var(--surface-radius); background: #fff; }
+.aarEyebrow, .aarCardHeader span { color: #1689a1; font-size: 11px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.aarHero h1 { margin: 8px 0 6px; color: #1f2b36; font-size: clamp(28px, 3vw, 40px); line-height: 1.05; }
+.aarHero p { max-width: 720px; margin: 0; color: #66737f; font-size: 15px; line-height: 1.5; }
+.aarCompleteBadge { padding: 8px 12px; border: 1px solid #b9ddcd; border-radius: 999px; background: #f1faf6; color: #167156; font-size: 12px; font-weight: 850; white-space: nowrap; }
+.aarMetrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.aarMetrics article { padding: 16px; display: flex; align-items: center; gap: 12px; border: 1px solid #dce5e9; border-radius: 10px; background: #fff; color: #1689a1; }
+.aarMetrics article div { display: grid; gap: 2px; }
+.aarMetrics strong { color: #26333e; font-size: 22px; line-height: 1; }
+.aarMetrics span { color: #71808a; font-size: 12px; font-weight: 700; }
+.aarGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "focus reflection" "stages reflection" "transcript transcript"; gap: 20px; align-items: stretch; }
+.aarCard { padding: 22px; display: grid; gap: 18px; border: 1px solid #d9e1e5; border-radius: var(--surface-radius); background: #fff; }
+.aarFocusCard { grid-area: focus; }
+.aarStagesCard { grid-area: stages; }
+.aarCardHeader { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; color: #1689a1; }
+.aarCardHeader h2 { margin: 5px 0 0; color: #26333e; font-size: 20px; }
+.aarTranscriptExport { min-height: 36px; padding: 0 12px; display: inline-flex; align-items: center; gap: 7px; border: 1px solid #9acfd8; border-radius: 7px; background: #fff; color: #078da2; font-size: 13px; font-weight: 850; }
+.aarTranscriptExport:hover:not(:disabled) { background: #eef8fa; border-color: #078da2; }
+.aarTranscriptExport:focus-visible { outline: 3px solid rgba(7, 141, 162, .22); outline-offset: 2px; }
+.aarTranscriptExport:disabled { opacity: .5; cursor: not-allowed; }
+.aarFocusList { margin: 0; display: grid; gap: 12px; }
+.aarFocusList div { padding-bottom: 11px; border-bottom: 1px solid #e5eaed; }
+.aarFocusList div:last-child { padding-bottom: 0; border-bottom: 0; }
+.aarFocusList dt { color: #71808a; font-size: 11px; font-weight: 900; letter-spacing: .05em; text-transform: uppercase; }
+.aarFocusList dd { margin: 4px 0 0; color: #34424d; font-size: 14px; line-height: 1.45; }
+.aarStageList { display: grid; gap: 9px; }
+.aarStageList div { padding: 12px 13px; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-radius: 8px; background: #f6f9fa; }
+.aarStageList strong { color: #34424d; font-size: 13px; }
+.aarStageList span { color: #687680; font-size: 13px; text-align: right; }
+.aarReflectionCard { grid-area: reflection; align-content: start; }
+.aarReflectionCard ol { margin: 0; padding-left: 22px; display: grid; gap: 12px; color: #45535e; line-height: 1.5; }
+.aarTranscriptCard { grid-area: transcript; }
+.aarTranscript { max-height: 420px; padding-right: 6px; display: grid; gap: 10px; overflow-y: auto; }
+.aarTranscript article { max-width: 78%; padding: 12px 14px; border-radius: 10px; background: #f0f4f6; }
+.aarTranscript article.trainee { margin-left: auto; background: #eaf7fa; }
+.aarTranscript article > span { color: #687680; font-size: 10px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
+.aarTranscript p { margin: 4px 0 0; color: #34424d; font-size: 14px; line-height: 1.5; }
+.aarActions { padding-top: 2px; display: flex; justify-content: flex-end; gap: 10px; }
+
+@media (max-width: 820px) {
+  .aarMetrics, .aarGrid { grid-template-columns: 1fr; }
+  .aarGrid { grid-template-areas: "focus" "stages" "reflection" "transcript"; }
+  .aarHero { flex-direction: column; }
+  .aarActions { align-items: stretch; flex-direction: column; }
+  .aarActions button { width: 100%; }
+}
+
 .appShell[data-theme="dark"] {
   min-height: 100vh;
   background: #071820;
@@ -3163,7 +3344,8 @@ textarea:focus {
 .appShell[data-theme="dark"] .loginScreen,
 .appShell[data-theme="dark"] .homeScreen,
 .appShell[data-theme="dark"] .wizardShell,
-.appShell[data-theme="dark"] .runtimeScreen {
+.appShell[data-theme="dark"] .runtimeScreen,
+.appShell[data-theme="dark"] .aarScreen {
   background: #071820;
 }
 
@@ -3193,7 +3375,11 @@ textarea:focus {
 .appShell[data-theme="dark"] .runtimePanelHeader p,
 .appShell[data-theme="dark"] .runtimeStageHeader h1,
 .appShell[data-theme="dark"] .runtimeLiveResponse p,
-.appShell[data-theme="dark"] .appHeaderRuntimeTitle strong {
+.appShell[data-theme="dark"] .appHeaderRuntimeTitle strong,
+.appShell[data-theme="dark"] .aarHero h1,
+.appShell[data-theme="dark"] .aarMetrics strong,
+.appShell[data-theme="dark"] .aarCardHeader h2,
+.appShell[data-theme="dark"] .aarStageList strong {
   color: #edf5f7;
 }
 
@@ -3229,8 +3415,40 @@ textarea:focus {
 .appShell[data-theme="dark"] .runtimeMessageRow time,
 .appShell[data-theme="dark"] .runtimeDraftLabelRow label,
 .appShell[data-theme="dark"] .runtimeDraftLabelRow span,
-.appShell[data-theme="dark"] .runtimeSessionStrip {
+.appShell[data-theme="dark"] .runtimeSessionStrip,
+.appShell[data-theme="dark"] .aarHero p,
+.appShell[data-theme="dark"] .aarFocusList dd,
+.appShell[data-theme="dark"] .aarReflectionCard ol,
+.appShell[data-theme="dark"] .aarTranscript p,
+.appShell[data-theme="dark"] .aarStageList span {
   color: #9eb0b8;
+}
+
+.appShell[data-theme="dark"] .aarHero,
+.appShell[data-theme="dark"] .aarMetrics article,
+.appShell[data-theme="dark"] .aarCard {
+  border-color: #294753;
+  background: #0c222b;
+}
+
+.appShell[data-theme="dark"] .aarTranscriptExport {
+  border-color: #355661;
+  background: #16323d;
+  color: #8ed5df;
+}
+
+.appShell[data-theme="dark"] .aarTranscriptExport:hover:not(:disabled) {
+  border-color: #4eaebf;
+  background: #193b47;
+}
+
+.appShell[data-theme="dark"] .aarStageList div,
+.appShell[data-theme="dark"] .aarTranscript article {
+  background: #122c36;
+}
+
+.appShell[data-theme="dark"] .aarTranscript article.trainee {
+  background: #143842;
 }
 
 .appShell[data-theme="dark"] .appHeader,
@@ -3270,8 +3488,30 @@ textarea:focus {
 .appShell[data-theme="dark"] .livePreviewChatbotSection,
 .appShell[data-theme="dark"] .runtimePanelHeader,
 .appShell[data-theme="dark"] .runtimeStageHeader,
+.appShell[data-theme="dark"] .runtimeStageSwitcher,
 .appShell[data-theme="dark"] .runtimeLiveResponse {
   border-color: #294753;
+}
+
+.appShell[data-theme="dark"] .runtimeStageSwitcher {
+  background: #0f2731;
+}
+
+.appShell[data-theme="dark"] .runtimeStageSwitcher button {
+  border-color: #355661;
+  background: #16323d;
+  color: #a9c2cb;
+}
+
+.appShell[data-theme="dark"] .runtimeStageSwitcher button:hover:not(:disabled) {
+  border-color: #4eaebf;
+  background: #193b47;
+}
+
+.appShell[data-theme="dark"] .runtimeStageSwitcher button.active {
+  border-color: #43b4c7;
+  background: #17444f;
+  color: #d8f4f7;
 }
 
 .appShell[data-theme="dark"] .homeScenarios h2,
@@ -3320,6 +3560,10 @@ textarea:focus {
   color: #7ed9e7;
 }
 
+.appShell[data-theme="dark"] .appHeaderHomeLogo:hover {
+  background: #16323d;
+}
+
 .appShell[data-theme="dark"] .appHeaderRuntimeActions button.danger,
 .appShell[data-theme="dark"] .currentCardDelete:hover {
   border-color: #7b4c50;
@@ -3363,10 +3607,50 @@ textarea:focus {
 }
 
 .appShell[data-theme="dark"] .infoNote,
+.appShell[data-theme="dark"] .persistentInfoNote,
 .appShell[data-theme="dark"] .addRowButton {
   border-color: #2f7180;
   background: #12343f;
   color: #8bcbd5;
+}
+
+.appShell[data-theme="dark"] .infoTooltipContent,
+.appShell[data-theme="dark"] .kpaOption,
+.appShell[data-theme="dark"] .scenarioParticipantCard,
+.appShell[data-theme="dark"] .domainOption,
+.appShell[data-theme="dark"] .generatedStructureCard,
+.appShell[data-theme="dark"] .configuredRoleSummary {
+  border-color: #41515d;
+  background: #26343e;
+  color: #d6e0e5;
+}
+
+.appShell[data-theme="dark"] .domainOption.selected {
+  border-color: #43b5cb;
+  background: #173943;
+  color: #8ad5e2;
+}
+
+.appShell[data-theme="dark"] .generatedStructureCard p,
+.appShell[data-theme="dark"] .scenarioParticipantCard > strong,
+.appShell[data-theme="dark"] .scenarioParticipantCardHeader > strong,
+.appShell[data-theme="dark"] .configuredRoleSummary strong {
+  color: #e0e8ec;
+}
+
+.appShell[data-theme="dark"] .removeStageButton {
+  border-color: #41515d;
+  background: #1b2b34;
+  color: #aab9c0;
+}
+
+.appShell[data-theme="dark"] .infoTooltipContentIcon {
+  color: #75c5d6;
+}
+
+.appShell[data-theme="dark"] .scenarioGenerationCallout {
+  border-color: #3f6f61;
+  background: #233a36;
 }
 
 .appShell[data-theme="dark"] .stageTabs button {

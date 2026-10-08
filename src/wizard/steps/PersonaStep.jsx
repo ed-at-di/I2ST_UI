@@ -1,9 +1,9 @@
+import { Dices, Sparkles } from "lucide-react";
 import { InfoNote } from "../../components/InfoNote.jsx";
 import { SelectControl } from "../../components/SelectControl.jsx";
 import { StageTabs } from "../../components/StageTabs.jsx";
 import { FIELD_INFO } from "../../data/fieldInfo.js";
 import {
-  CHATBOT_ROLES,
   PERSONA_COMMUNICATION_STYLE_OPTIONS,
   PERSONA_EMOTIONAL_STATE_OPTIONS,
   PERSONA_PRIMARY_CONCERN_OPTIONS,
@@ -43,10 +43,6 @@ export function PersonaStep({ form, updateForm, activeStageIndex, setActiveStage
 
   const activeStage = stages[activeStageIndex];
 
-  function stageUsingRole(role) {
-    return stages.findIndex((stage, index) => index !== activeStageIndex && role !== "Other" && stage.chatbotRole === role);
-  }
-
   function updateStage(patch) {
     const allStages = ensureScenarioStages(form, stageCount);
     const updatedStage = { ...allStages[activeStageIndex], ...patch };
@@ -57,14 +53,19 @@ export function PersonaStep({ form, updateForm, activeStageIndex, setActiveStage
     });
   }
 
-  function addStage() {
-    if (stageCount >= 3) return;
-    const nextCount = stageCount + 1;
-    updateForm({
-      stageCount: nextCount,
-      stages: ensureScenarioStages(form, nextCount),
+  function randomOption(options) {
+    const choices = options.filter((option) => option !== "Other");
+    return choices[Math.floor(Math.random() * choices.length)];
+  }
+
+  function generatePersona() {
+    updateStage({
+      personaStyle: randomOption(PERSONA_STYLE_OPTIONS),
+      personaEmotionalState: randomOption(PERSONA_EMOTIONAL_STATE_OPTIONS),
+      personaTrustLevel: randomOption(PERSONA_TRUST_LEVEL_OPTIONS),
+      personaCommunicationStyle: randomOption(PERSONA_COMMUNICATION_STYLE_OPTIONS),
+      personaPrimaryConcern: randomOption(PERSONA_PRIMARY_CONCERN_OPTIONS),
     });
-    setActiveStageIndex(nextCount - 1);
   }
 
   return (
@@ -76,13 +77,15 @@ export function PersonaStep({ form, updateForm, activeStageIndex, setActiveStage
         label="Scenario stages"
         idPrefix="stage-persona-tab"
         panelIdPrefix="stage-persona-panel"
-        onAddStage={addStage}
       />
 
-      <h2>Stage Personas</h2>
-      <p className="wizardStepIntro">
-        Choose the role and build the avatar persona for each of the {stageCount} selected {stageCount === 1 ? "stage" : "stages"}.
-      </p>
+      <div className="personaStepHeading">
+        <div><h2>Stage Personas</h2><p className="wizardStepIntro">Choose the role and persona traits of the avatar for the selected stage.</p></div>
+        <div className="personaGenerateActions">
+          <button className="secondaryButton compactActionButton" type="button" onClick={generatePersona}><Dices size={15} /><span>Randomize</span></button>
+          <button className="primaryButton compactActionButton" type="button" onClick={generatePersona}><Sparkles size={15} /><span>Generate Persona</span></button>
+        </div>
+      </div>
 
       <div
         className="studioGroup personaConfig stagePersonaBuilder"
@@ -99,32 +102,14 @@ export function PersonaStep({ form, updateForm, activeStageIndex, setActiveStage
             {stagePersonaComplete(activeStage) ? "Complete" : "In progress"}
           </strong>
         </div>
-        <label className="studioField">
-          <span className="studioLabel">Chatbot Role*</span>
-          <SelectControl value={activeStage.chatbotRole} onChange={(event) => updateStage({ chatbotRole: event.target.value })}>
-            <option value="" disabled>
-              Select a role
-            </option>
-            {CHATBOT_ROLES.map((role) => {
-              const selectedStageIndex = stageUsingRole(role);
-              return (
-                <option key={role} value={role} disabled={selectedStageIndex >= 0}>
-                  {role}{selectedStageIndex >= 0 ? ` — Selected in Stage ${selectedStageIndex + 1}` : ""}
-                </option>
-              );
-            })}
-          </SelectControl>
-          <InfoNote>{FIELD_INFO.chatbotRole}</InfoNote>
-        </label>
-        {activeStage.chatbotRole === "Other" && (
-          <label className="studioField compactField">
-            <span>Custom Chatbot Role</span>
-            <input value={activeStage.chatbotRoleOther} onChange={(event) => updateStage({ chatbotRoleOther: event.target.value })} placeholder="Direct manager" />
-          </label>
-        )}
+        <div className="configuredRoleSummary">
+          <span>Configured role</span>
+          <strong>{activeStage.chatbotRole === "Other" ? activeStage.chatbotRoleOther : activeStage.chatbotRole}</strong>
+          <small>Participant roles are configured in Scenario Setup.</small>
+        </div>
         <div className="personaControlGrid">
           <PersonaSelect
-            label="Style"
+            label="Persona Style"
             value={activeStage.personaStyle}
             options={PERSONA_STYLE_OPTIONS}
             otherValue={activeStage.personaStyleOther}
@@ -164,7 +149,7 @@ export function PersonaStep({ form, updateForm, activeStageIndex, setActiveStage
             info={FIELD_INFO.personaCommunicationStyle}
           />
           <PersonaSelect
-            label="Primary Concern"
+            label="Preferred Outcome"
             value={activeStage.personaPrimaryConcern}
             options={PERSONA_PRIMARY_CONCERN_OPTIONS}
             otherValue={activeStage.personaPrimaryConcernOther}

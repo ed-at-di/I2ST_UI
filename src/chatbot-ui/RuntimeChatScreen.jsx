@@ -61,6 +61,9 @@ export function RuntimeChatScreen({
   sendTurn,
   session,
   setInput,
+  stages = [],
+  activeStageIndex = 0,
+  onSelectStage,
 }) {
   const showTranscript = true;
   const [listening, setListening] = useState(false);
@@ -68,7 +71,9 @@ export function RuntimeChatScreen({
   const avatarTurns = messages.filter((item) => item.role === "avatar").length;
   const traineeTurns = messages.filter((item) => item.role === "trainee").length;
   const latestAvatar = [...messages].reverse().find((item) => item.role === "avatar");
-  const roleLabel = scenario?.role || scenario?.preview?.chatbotRole || "Roleplay Avatar";
+  const activeStage = stages[activeStageIndex];
+  const activeStageRole = activeStage?.chatbotRole === "Other" ? activeStage.chatbotRoleOther : activeStage?.chatbotRole;
+  const roleLabel = activeStageRole || scenario?.role || scenario?.preview?.chatbotRole || "Roleplay Avatar";
   const panelClassName = [
     "runtimeExperience",
     showTranscript ? "showTranscript" : "hideTranscript",
@@ -156,11 +161,31 @@ export function RuntimeChatScreen({
         <div className="runtimeAvatarFocus">
           <div className="runtimeStageHeader">
             <div>
-              <p>{roleLabel}</p>
+              <p>Stage {activeStageIndex + 1} of {Math.max(stages.length, 1)} · {roleLabel}</p>
               <h1>{avatarName}</h1>
             </div>
-            <span>{session?.session_id || "No active session"}</span>
+            <span>Active stage</span>
           </div>
+
+          <nav className="runtimeStageSwitcher" aria-label="Interview stages">
+              {stages.map((stage, index) => {
+                const role = stage.chatbotRole === "Other" ? stage.chatbotRoleOther : stage.chatbotRole;
+                const active = index === activeStageIndex;
+                return (
+                  <button
+                    className={active ? "active" : ""}
+                    type="button"
+                    aria-current={active ? "step" : undefined}
+                    onClick={() => onSelectStage?.(index)}
+                    disabled={busy}
+                    key={stage.id || index}
+                  >
+                    <span>Stage {index + 1}</span>
+                    <small>{role || "Avatar"}</small>
+                  </button>
+                );
+              })}
+          </nav>
 
           <div id="unity-avatar-stage" className="runtimeAvatarStage" aria-label="Avatar display" />
 
